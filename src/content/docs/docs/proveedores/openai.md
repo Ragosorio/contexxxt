@@ -17,7 +17,7 @@ La guía [Personalize ChatGPT](https://learn.chatgpt.com/docs/personalize) separ
 
 Un proyecto agrupa chats, instrucciones, archivos y fuentes. La guía [Projects and chats](https://learn.chatgpt.com/docs/projects) recomienda un chat separado por resultado distinto mientras el proyecto conserva el contexto compartido.
 
-Context OS exporta:
+contexxxt exporta:
 
 - instrucciones de proyecto;
 - inventario de fuentes;
@@ -36,15 +36,15 @@ La [documentación de Memories](https://learn.chatgpt.com/docs/customization/mem
 
 Codex compone instrucciones desde el ámbito global hasta el directorio de trabajo. Archivos más cercanos aparecen después. La guía oficial de [`AGENTS.md`](https://learn.chatgpt.com/docs/agent-configuration/agents-md) documenta un límite combinado predeterminado de 32 KiB.
 
-Context OS genera un root `AGENTS.md` corto. Usa archivos anidados solo para diferencias reales de un subárbol.
+contexxxt genera un root `AGENTS.md` corto. Usa archivos anidados solo para diferencias reales de un subárbol.
 
 ### Skills
 
-Las [skills](https://learn.chatgpt.com/docs/build-skills) cargan progresivamente: nombre y descripción primero; `SKILL.md` completo al activarse. Por eso Context OS usa un router con una descripción clara y playbooks bajo demanda.
+Las [skills](https://learn.chatgpt.com/docs/build-skills) cargan progresivamente: nombre y descripción primero; `SKILL.md` completo al activarse. Por eso contexxxt usa un router con una descripción clara y playbooks bajo demanda.
 
 ### Memoria local
 
-La memoria local vive bajo el home de Codex y está separada de ChatGPT web. Las reglas requeridas se mantienen en el repositorio. Context OS puede auditar esa memoria, pero no editarla a escondidas.
+La memoria local vive bajo el home de Codex y está separada de ChatGPT web. Las reglas requeridas se mantienen en el repositorio. contexxxt puede auditar esa memoria, pero no editarla a escondidas.
 
 ## Adaptador recomendado
 
@@ -55,4 +55,4 @@ AGENTS.md
 .contextos/generated/chatgpt/
 ```
 
-No instales Context OS solo en una carpeta secundaria esperando que Codex descubra su configuración. Inicia Codex desde la raíz primaria del proyecto.
+No instales contexxxt solo en una carpeta secundaria esperando que Codex descubra su configuración. Inicia Codex desde la raíz primaria del proyecto.

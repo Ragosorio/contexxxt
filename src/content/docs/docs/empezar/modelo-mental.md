@@ -34,7 +34,7 @@ Preferencias o patrones que seguirán cambiando una recomendación futura. Inclu
 
 ## El paquete de contexto
 
-Antes de ejecutar, Context OS intenta formar un paquete pequeño:
+Antes de ejecutar, contexxxt intenta formar un paquete pequeño:
 
 ```yaml
 space: producto

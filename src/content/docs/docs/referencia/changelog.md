@@ -1,19 +1,21 @@
 ---
 title: Changelog
-description: Estado y evolución pública de Context OS.
+description: Estado y evolución pública de contexxxt.
 ---
 
 ## Unreleased
 
-- Landing y documentación pública.
-- CLI local con `init`, `audit`, `doctor`, `add-space`, `sync`, `status` y `prompt`.
-- Runtime neutral, skill-router y agentes opcionales.
-- Adaptadores Codex, Claude Code y exports manuales.
-- Esquemas y evaluaciones iniciales.
+Sin cambios todavía.
 
 ## 0.1.0 — 22 de agosto de 2026
 
-Primera arquitectura pública.
+Primera arquitectura pública y paquete npm `contexxxt`.
+
+- Landing y documentación pública.
+- CLI con `init`, `audit`, `doctor`, `add-space`, `sync`, `export`, `status` y `prompt`.
+- Runtime neutral, skill-router y agentes opcionales.
+- Adaptadores Codex, Claude Code y exports manuales.
+- Esquemas y evaluaciones iniciales.
 
 ### Garantías objetivo
 

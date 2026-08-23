@@ -195,7 +195,7 @@ export async function acquireLock(root) {
       throw error;
     }
   } catch (error) {
-    if (error?.code === 'EEXIST') throw new UsageError('Otra operación de Context OS parece estar en curso.');
+    if (error?.code === 'EEXIST') throw new UsageError('Otra operación de contexxxt parece estar en curso.');
     throw error;
   }
   return async () => {

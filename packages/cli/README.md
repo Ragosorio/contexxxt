@@ -1,12 +1,12 @@
-# context-os CLI
+# contexxxt CLI
 
-CLI local y sin telemetría para inicializar, auditar y mantener una instancia de Context OS.
+Paquete oficial y CLI sin telemetría para inicializar, auditar y mantener una instancia de contexxxt.
 
 ```bash
-context-os help
-context-os audit .
-context-os init
-context-os doctor .
+npx contexxxt help
+npx contexxxt audit .
+npx contexxxt init
+npx contexxxt doctor .
 ```
 
-El paquete está preparado para publicación, pero este README no afirma que ya esté disponible en npm.
+También puedes usar `pnpm dlx contexxxt`. Requiere Node.js 22 o superior.

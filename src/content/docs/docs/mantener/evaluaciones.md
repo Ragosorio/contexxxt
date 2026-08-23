@@ -51,9 +51,9 @@ Una condición C con instrucciones conflictivas puede medir resistencia al choqu
 ## Idempotencia de CLI
 
 ```bash
-pnpm context-os init fixture
-pnpm context-os init fixture
-pnpm context-os doctor fixture --json
+pnpm contexxxt init fixture
+pnpm contexxxt init fixture
+pnpm contexxxt doctor fixture --json
 ```
 
 La segunda ejecución debe crear cero archivos y conservar todos los contenidos. Después modifica un adaptador administrado y confirma que `sync` crea una propuesta, no una sobrescritura.

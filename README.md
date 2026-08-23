@@ -1,6 +1,6 @@
-# Context OS
+# contexxxt
 
-Context OS es un sistema operativo de contexto para personas que trabajan con ChatGPT, Codex, Claude, Claude Code y Cowork. Convierte una petición humana —incluso incompleta— en un paquete pequeño de contexto verificable: espacio, fuentes, autoridad, vigencia, límites y condición de cierre.
+`contexxxt` es un sistema operativo de contexto para personas que trabajan con ChatGPT, Codex, Claude, Claude Code y Cowork. Convierte una petición humana —incluso incompleta— en un paquete pequeño de contexto verificable: espacio, fuentes, autoridad, vigencia, límites y condición de cierre.
 
 No intenta crear una memoria universal. Mantiene una fuente canónica neutral y genera adaptadores pequeños para cada superficie.
 
@@ -14,22 +14,22 @@ pnpm build
 pnpm test
 ```
 
-Para probar la CLI desde este repositorio:
+Para desarrollar la CLI desde este repositorio:
 
 ```bash
-pnpm context-os help
-pnpm context-os audit .
+pnpm contexxxt help
+pnpm contexxxt audit .
 ```
 
-Después de publicar el paquete en npm, el recorrido previsto será:
+Para usar el paquete publicado:
 
 ```bash
-npx context-os init
-npx context-os audit .
-npx context-os doctor .
+npx contexxxt init
+npx contexxxt audit .
+npx contexxxt doctor .
 ```
 
-El nombre del paquete está preparado, pero este repositorio no afirma que ya esté publicado en npm.
+Con pnpm puedes ejecutar lo mismo con `pnpm dlx contexxxt`.
 
 ## Qué incluye
 
@@ -64,8 +64,8 @@ Lee [PRODUCT.md](docs/PRODUCT.md), [DESIGN.md](docs/DESIGN.md) y [ARCHITECTURE.m
 
 ## Privacidad del autor
 
-La configuración personal usada para desarrollar Context OS vive fuera de este repositorio. Los ejemplos públicos son ficticios y no contienen memorias, cuentas, auditorías o proyectos reales del autor.
+La configuración personal usada para desarrollar contexxxt vive fuera de este repositorio. Los ejemplos públicos son ficticios y no contienen memorias, cuentas, auditorías o proyectos reales del autor.
 
 ## Licencia
 
-[MIT](LICENSE). Context OS se inspira en la claridad de producto y la arquitectura de skills de [Impeccable](https://impeccable.style/), sin reutilizar su identidad visual, assets o contenido.
+[MIT](LICENSE). contexxxt se inspira en la claridad de producto y la arquitectura de skills de [Impeccable](https://impeccable.style/), sin reutilizar su identidad visual, assets o contenido.

@@ -1,12 +1,12 @@
 ---
 title: Referencia CLI
-description: Comandos, opciones, salida y códigos de Context OS.
+description: Comandos, opciones, salida y códigos de contexxxt.
 ---
 
 ## Uso
 
 ```bash
-context-os <command> [path] [options]
+npx contexxxt <command> [path] [options]
 ```
 
 La CLI no tiene telemetría ni dependencias runtime.

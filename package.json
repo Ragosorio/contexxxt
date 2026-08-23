@@ -1,5 +1,5 @@
 {
-  "name": "context-os-monorepo",
+  "name": "contexxxt-monorepo",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -13,7 +13,7 @@
     "test": "pnpm test:cli && pnpm test:content",
     "test:cli": "node --test packages/cli/test/*.test.mjs",
     "test:content": "node scripts/check-content.mjs",
-    "context-os": "node packages/cli/bin/context-os.mjs",
+    "contexxxt": "node packages/cli/bin/contexxxt.mjs",
     "astro": "astro"
   },
   "dependencies": {

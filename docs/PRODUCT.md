@@ -1,8 +1,8 @@
-# Producto: Context OS
+# Producto: contexxxt
 
 ## Promesa
 
-Una persona puede pedir una tarea con sus propias palabras. Context OS prepara el contexto mínimo que un agente necesita, detecta huecos que sí cambian la decisión y deja una continuidad verificable para la próxima sesión.
+Una persona puede pedir una tarea con sus propias palabras. contexxxt prepara el contexto mínimo que un agente necesita, detecta huecos que sí cambian la decisión y deja una continuidad verificable para la próxima sesión.
 
 ## Problema
 
@@ -24,7 +24,7 @@ La documentación ofrece tres prompts: descubrir, diseñar y aplicar. Ningún ca
 
 ### Proyecto existente
 
-El recorrido empieza con `context-os audit` para inspeccionar sin escribir. Después, `context-os init` crea su núcleo dentro de `.contextos/` y propone cómo enlazar instrucciones existentes; no las reemplaza.
+El recorrido empieza con `contexxxt audit` para inspeccionar sin escribir. Después, `contexxxt init` crea su núcleo dentro de `.contextos/` y propone cómo enlazar instrucciones existentes; no las reemplaza.
 
 ### Proyecto nuevo
 

@@ -1,6 +1,6 @@
 ---
 title: Matriz de capacidades
-description: Qué puede automatizar Context OS y qué requiere aplicación manual en cada superficie.
+description: Qué puede automatizar contexxxt y qué requiere aplicación manual en cada superficie.
 ---
 
 Revisado contra documentación oficial el 22 de agosto de 2026. Los productos cambian; `doctor` y esta matriz deben versionarse.

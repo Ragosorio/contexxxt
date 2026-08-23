@@ -2,7 +2,7 @@
 
 ## Principio raíz
 
-No existe una memoria compartida automáticamente entre ChatGPT, Codex local, Claude Chat, Claude Code y Cowork. Context OS mantiene una fuente canónica neutral y trata la memoria nativa de cada producto como una capa de recuerdo de menor autoridad.
+No existe una memoria compartida automáticamente entre ChatGPT, Codex local, Claude Chat, Claude Code y Cowork. contexxxt mantiene una fuente canónica neutral y trata la memoria nativa de cada producto como una capa de recuerdo de menor autoridad.
 
 ```text
 perfil privado opcional

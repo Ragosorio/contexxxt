@@ -1,6 +1,6 @@
 ---
 title: Adoptar un proyecto existente
-description: Audita primero y añade Context OS sin borrar instrucciones o decisiones previas.
+description: Audita primero e integra contexxxt sin borrar instrucciones o decisiones previas.
 ---
 
 Un proyecto existente ya tiene arquitectura de contexto, aunque nadie la haya llamado así: README, reglas, issues, código, decisiones, scripts, chats y conocimiento tácito. Adoptarlo empieza con descubrimiento de solo lectura.
@@ -8,7 +8,7 @@ Un proyecto existente ya tiene arquitectura de contexto, aunque nadie la haya ll
 ## 1. Crea una línea base
 
 ```bash
-pnpm context-os audit /ruta/al/proyecto --json > context-audit.json
+npx contexxxt audit /ruta/al/proyecto --json > context-audit.json
 ```
 
 La salida JSON no incluye valores de posibles secretos. Revisa:
@@ -40,7 +40,7 @@ No conviertas el README en fuente canónica si el código y una ADR aceptada dic
 ## 3. Inicializa sin integrar a ciegas
 
 ```bash
-pnpm context-os init /ruta/al/proyecto
+npx contexxxt init /ruta/al/proyecto
 ```
 
 La primera ejecución crea `.contextos/`. Si encuentra un adaptador existente, lo preserva y escribe una propuesta en `.contextos/patches/`.
@@ -52,8 +52,8 @@ Completa `.contextos/projects/<id>/` con estado, fuentes, decisiones, preguntas 
 ## 5. Sincroniza una superficie
 
 ```bash
-pnpm context-os sync /ruta/al/proyecto --provider codex --dry-run
-pnpm context-os sync /ruta/al/proyecto --provider codex
+npx contexxxt sync /ruta/al/proyecto --provider codex --dry-run
+npx contexxxt sync /ruta/al/proyecto --provider codex
 ```
 
 Prueba un proveedor antes de generar todos. Si el archivo administrado cambió manualmente, `sync` produce un patch.
@@ -61,7 +61,7 @@ Prueba un proveedor antes de generar todos. Si el archivo administrado cambió m
 ## 6. Verifica
 
 ```bash
-pnpm context-os doctor /ruta/al/proyecto
+npx contexxxt doctor /ruta/al/proyecto
 ```
 
 Después prueba una tarea real en una sesión limpia y compara con tu línea base. Una compilación correcta no demuestra que el agente descubra las instrucciones adecuadas; inspecciona el paquete que leyó.

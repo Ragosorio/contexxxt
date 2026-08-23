@@ -1,4 +1,4 @@
-# Context OS evaluations
+# contexxxt evaluations
 
 Evaluations cover routing, memory, security, authority, handoff and CLI safety. Each case declares applicable dimensions; non-applicable dimensions do not receive points.
 

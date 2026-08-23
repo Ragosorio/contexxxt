@@ -11,7 +11,7 @@ export default defineConfig({
   site,
   integrations: [
     starlight({
-      title: 'Context OS',
+      title: 'contexxxt',
       description: 'Un sistema operativo de contexto para trabajar con agentes sin escribir megaprompts.',
       favicon: '/favicon.svg',
       logo: { src: './src/assets/context-os-mark.svg', replacesTitle: false },
@@ -19,7 +19,7 @@ export default defineConfig({
       social: [
         {
           icon: 'github',
-          label: 'Context OS en GitHub',
+          label: 'contexxxt en GitHub',
           href: 'https://github.com/Ragosorio/contexxxt',
         },
       ],
@@ -30,7 +30,7 @@ export default defineConfig({
       pagination: true,
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
       sidebar: [
-        { label: '← Producto Context OS', link: '/' },
+        { label: '← Producto contexxxt', link: '/' },
         { label: 'Inicio de documentación', link: '/docs/' },
         {
           label: 'Empezar',

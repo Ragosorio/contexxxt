@@ -1,6 +1,6 @@
 ---
 title: Inicio rápido
-description: Configura Context OS en un proyecto sin sobrescribir instrucciones existentes.
+description: Configura contexxxt en un proyecto sin sobrescribir instrucciones existentes.
 ---
 
 ## Requisitos
@@ -9,23 +9,22 @@ description: Configura Context OS en un proyecto sin sobrescribir instrucciones 
 - Una carpeta específica. No uses `/` ni tu directorio personal completo.
 - Git recomendado para revisar cada cambio.
 
-## Desde este repositorio
+## Ejecutar desde npm
 
-Hasta que el paquete se publique en npm:
+No necesitas instalarlo globalmente:
 
 ```bash
-git clone https://github.com/Ragosorio/contexxxt.git
-cd contexxxt
-pnpm install
-pnpm context-os help
+npx contexxxt help
+# o
+pnpm dlx contexxxt help
 ```
 
 ## Adoptar un proyecto existente
 
 ```bash
-pnpm context-os audit /ruta/al/proyecto
-pnpm context-os init /ruta/al/proyecto
-pnpm context-os doctor /ruta/al/proyecto
+npx contexxxt audit /ruta/al/proyecto
+npx contexxxt init /ruta/al/proyecto
+npx contexxxt doctor /ruta/al/proyecto
 ```
 
 `audit` es solo lectura. `init` escribe dentro de `.contextos/`. Si encuentra `AGENTS.md` o `CLAUDE.md`, no los sustituye; coloca un adaptador propuesto en `.contextos/patches/`.
@@ -33,7 +32,7 @@ pnpm context-os doctor /ruta/al/proyecto
 ## Crear un espacio
 
 ```bash
-pnpm context-os add-space producto --path /ruta/al/proyecto
+npx contexxxt add-space producto --path /ruta/al/proyecto
 ```
 
 Abre `.contextos/spaces/producto/SPACE.md` y completa:
@@ -48,8 +47,8 @@ Abre `.contextos/spaces/producto/SPACE.md` y completa:
 ## Generar adaptadores
 
 ```bash
-pnpm context-os sync /ruta/al/proyecto --provider codex
-pnpm context-os sync /ruta/al/proyecto --provider claude-code
+npx contexxxt sync /ruta/al/proyecto --provider codex
+npx contexxxt sync /ruta/al/proyecto --provider claude-code
 ```
 
 Para ChatGPT, Claude Chat o Cowork, usa `export`: la CLI produce bloques para revisar y copiar manualmente.

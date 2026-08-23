@@ -1,6 +1,6 @@
 ---
 title: Archivos y autoridad
-description: Contrato de cada archivo generado por Context OS y quién puede modificarlo.
+description: Contrato de cada archivo generado por contexxxt y quién puede modificarlo.
 ---
 
 ## Núcleo canónico
@@ -28,7 +28,7 @@ template-version: 1
 content-sha256: ...
 ```
 
-El manifiesto conserva el hash aplicado. Si el usuario edita el derivado, Context OS no lo borra. Coloca la nueva versión propuesta en `patches/`.
+El manifiesto conserva el hash aplicado. Si el usuario edita el derivado, contexxxt no lo borra. Coloca la nueva versión propuesta en `patches/`.
 
 ## Autoridad sugerida
 

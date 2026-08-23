@@ -2,7 +2,7 @@
   <rect width="1200" height="630" fill="#F4F1E8"/>
   <path d="M0 95h1200M0 535h1200M82 0v630M1118 0v630" stroke="#0B1739" stroke-opacity=".18"/>
   <g transform="translate(82 74)"><path d="M0 0h42v34H0z" fill="#2458E8"/><path d="M54 0h42v16H54z" fill="#2FD6A2"/><path d="M54 28h42v56H54z" fill="#0B1739"/><path d="M0 46h42v38H0z" fill="#F2A93B"/></g>
-  <text x="210" y="119" fill="#0B1739" font-family="Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="2">CONTEXT OS</text>
+  <text x="210" y="119" fill="#0B1739" font-family="Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="2">CONTEXXXT</text>
   <text x="82" y="290" fill="#0B1739" font-family="Georgia, serif" font-size="72" font-weight="700">Pide la tarea.</text>
   <text x="82" y="382" fill="#2458E8" font-family="Georgia, serif" font-size="72" font-weight="700">Prepara el contexto.</text>
   <text x="82" y="488" fill="#0B1739" font-family="Arial, sans-serif" font-size="28">Una fuente canónica. Adaptadores por agente. Sin megaprompts.</text>

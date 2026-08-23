@@ -3,7 +3,7 @@ title: Prompts copiables
 description: Tres conversaciones para descubrir, diseñar y aplicar tu sistema de contexto.
 ---
 
-Estos prompts son puntos de partida. Context OS está diseñado para que luego puedas hablar con normalidad.
+Estos prompts son puntos de partida. contexxxt está diseñado para que luego puedas hablar con normalidad.
 
 ## 1. Descubrir
 

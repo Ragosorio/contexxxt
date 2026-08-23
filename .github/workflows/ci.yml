@@ -23,4 +23,4 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
       - run: pnpm build
-      - run: pnpm --filter context-os pack --pack-destination /tmp
+      - run: pnpm --filter contexxxt pack --pack-destination /tmp

@@ -8,9 +8,9 @@ Un proyecto nuevo necesita muy poco contexto para empezar bien.
 ## Crear
 
 ```bash
-pnpm context-os init mi-proyecto
+npx contexxxt init mi-proyecto
 cd mi-proyecto
-pnpm context-os add-space producto --path mi-proyecto
+npx contexxxt add-space producto
 ```
 
 ## Completar el núcleo

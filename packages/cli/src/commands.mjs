@@ -81,10 +81,10 @@ async function loadManifest(root, mode = 'existing') {
   await assertNoSymlinkPath(root, path);
   const manifest = await readJson(path);
   if (manifest.schema_version !== SCHEMA_VERSION || !Array.isArray(manifest.managed_files)) {
-    throw new UsageError('El manifiesto no es compatible. Ejecuta context-os doctor antes de sincronizar.');
+    throw new UsageError('El manifiesto no es compatible. Ejecuta contexxxt doctor antes de sincronizar.');
   }
   if (manifest.managed_files.some((entry) => !validManagedEntry(entry))) {
-    throw new UsageError('El manifiesto contiene entradas inválidas. Ejecuta context-os doctor antes de sincronizar.');
+    throw new UsageError('El manifiesto contiene entradas inválidas. Ejecuta contexxxt doctor antes de sincronizar.');
   }
   const normalizedEntries = manifest.managed_files.map((entry) => ({
     ...entry,
@@ -92,7 +92,7 @@ async function loadManifest(root, mode = 'existing') {
     source: portablePath(entry.source),
   }));
   if (new Set(normalizedEntries.map((entry) => entry.path)).size !== normalizedEntries.length) {
-    throw new UsageError('El manifiesto contiene rutas administradas duplicadas. Ejecuta context-os doctor.');
+    throw new UsageError('El manifiesto contiene rutas administradas duplicadas. Ejecuta contexxxt doctor.');
   }
   manifest.managed_files = normalizedEntries;
   return manifest;
@@ -589,5 +589,5 @@ export async function commandStatus(positionals) {
 }
 
 export function helpText() {
-  return `Context OS ${VERSION}\n\nUso:\n  context-os <comando> [ruta] [opciones]\n\nComandos:\n  init [ruta]                 Inicializa sin sobrescribir\n  audit [ruta]                Inventario de solo lectura\n  doctor [ruta]               Valida estructura, vigencia y drift\n  add-space <slug>            Crea un espacio configurable\n  sync [ruta] --provider ID   Genera un adaptador\n  export [ruta] --provider ID Genera un bloque para una superficie cloud\n  status [ruta]               Resume la instancia\n  prompt <nombre>             Imprime un prompt para uso solo-chat\n  version                     Muestra la versión\n  help                        Muestra esta ayuda\n\nOpciones:\n  --json       Salida JSON determinista\n  --dry-run    No escribe\n  --provider   codex, claude-code, chatgpt, claude-chat o cowork\n  --path       Ruta para add-space\n`;
+  return `contexxxt — Context OS ${VERSION}\n\nUso:\n  contexxxt <comando> [ruta] [opciones]\n\nComandos:\n  init [ruta]                 Inicializa sin sobrescribir\n  audit [ruta]                Inventario de solo lectura\n  doctor [ruta]               Valida estructura, vigencia y drift\n  add-space <slug>            Crea un espacio configurable\n  sync [ruta] --provider ID   Genera un adaptador\n  export [ruta] --provider ID Genera un bloque para una superficie cloud\n  status [ruta]               Resume la instancia\n  prompt <nombre>             Imprime un prompt para uso solo-chat\n  version                     Muestra la versión\n  help                        Muestra esta ayuda\n\nOpciones:\n  --json       Salida JSON determinista\n  --dry-run    No escribe\n  --provider   codex, claude-code, chatgpt, claude-chat o cowork\n  --path       Ruta para add-space\n`;
 }

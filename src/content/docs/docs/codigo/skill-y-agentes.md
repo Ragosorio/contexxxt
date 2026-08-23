@@ -44,4 +44,4 @@ Devuelve una transferencia compacta: objetivo, estado verificado, decisiones, fu
 
 ## Portabilidad
 
-Codex y Claude Code descubren skills y subagentes de forma distinta. Context OS genera copias desde una fuente canónica. Cowork o productos cloud pueden requerir instalación separada; una skill local no implica disponibilidad allí.
+Codex y Claude Code descubren skills y subagentes de forma distinta. contexxxt genera copias desde una fuente canónica. Cowork o productos cloud pueden requerir instalación separada; una skill local no implica disponibilidad allí.

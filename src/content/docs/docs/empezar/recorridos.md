@@ -21,8 +21,8 @@ Resultado: un mapa de fuentes, una lista de cambios y bloques listos para copiar
 Úsalo cuando ya existe un repositorio, carpeta, `AGENTS.md`, `CLAUDE.md`, documentación o historia de decisiones.
 
 ```bash
-pnpm context-os audit /ruta/al/proyecto
-pnpm context-os init /ruta/al/proyecto
+npx contexxxt audit /ruta/al/proyecto
+npx contexxxt init /ruta/al/proyecto
 ```
 
 El orden es importante. La auditoría debe ocurrir antes de escribir integración. Si el proyecto ya tiene instrucciones, `init` las conserva y crea una propuesta.
@@ -32,8 +32,8 @@ El orden es importante. La auditoría debe ocurrir antes de escribir integració
 Úsalo para una carpeta vacía o una iniciativa que aún no tiene decisiones durables.
 
 ```bash
-pnpm context-os init mi-proyecto
-pnpm context-os add-space producto --path mi-proyecto
+npx contexxxt init mi-proyecto
+npx contexxxt add-space producto --path mi-proyecto
 ```
 
 Empieza con un espacio. Agrega otro solo cuando cambien el objetivo, la sensibilidad, la cuenta o las fuentes canónicas.

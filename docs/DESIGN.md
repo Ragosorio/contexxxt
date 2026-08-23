@@ -2,7 +2,7 @@
 
 ## Concepto
 
-Context OS se siente como una bitácora de vuelo cruzada con un mapa de rutas: cada pieza de contexto tiene origen, autoridad, vigencia y destino. La interfaz no promete magia; muestra qué entró, qué quedó fuera y qué necesita confirmación.
+contexxxt se siente como una bitácora de vuelo cruzada con un mapa de rutas: cada pieza de contexto tiene origen, autoridad, vigencia y destino. La interfaz no promete magia; muestra qué entró, qué quedó fuera y qué necesita confirmación.
 
 La referencia metodológica es Impeccable: propuesta clara, prueba visible y documentación operativa. La identidad visual, interacción y vocabulario son propios.
 

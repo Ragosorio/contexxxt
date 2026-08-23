@@ -15,7 +15,7 @@ Fuentes:
 - [Create and manage projects](https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects)
 - [Chat search and memory](https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context)
 
-Context OS exporta bloques con versión y fecha de revisión. No modifica la cuenta.
+contexxxt exporta bloques con versión y fecha de revisión. No modifica la cuenta.
 
 ## Claude Code
 
@@ -29,7 +29,7 @@ Es local por repositorio y no sustituye el estado versionado. Una memoria falsa 
 
 ### Skills y subagentes
 
-Claude Code descubre skills y subagentes con convenciones propias. Context OS genera una copia para `.claude/skills/` y agentes en `.claude/agents/`. Un subagente empieza con contexto separado, así que su delegación debe incluir objetivo, fuentes y condición de cierre.
+Claude Code descubre skills y subagentes con convenciones propias. contexxxt genera una copia para `.claude/skills/` y agentes en `.claude/agents/`. Un subagente empieza con contexto separado, así que su delegación debe incluir objetivo, fuentes y condición de cierre.
 
 Fuentes:
 

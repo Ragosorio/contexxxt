@@ -14,13 +14,13 @@ const flows = [
   {
     id: 'existing',
     label: 'Proyecto existente',
-    command: 'pnpm context-os audit /ruta/al/proyecto && pnpm context-os init /ruta/al/proyecto',
+    command: 'npx contexxxt audit /ruta/al/proyecto && npx contexxxt init /ruta/al/proyecto',
     text: 'Primero inventaria lo que ya existe. Después propone una integración sin reemplazar AGENTS.md, CLAUDE.md ni tus reglas locales.',
   },
   {
     id: 'new',
     label: 'Proyecto nuevo',
-    command: 'pnpm context-os init mi-proyecto',
+    command: 'npx contexxxt init mi-proyecto',
     text: 'Crea el núcleo neutral, una plantilla de espacio y adaptadores seleccionados. Tus dominios no vienen codificados de fábrica.',
   },
   {
@@ -32,14 +32,14 @@ const flows = [
 ];
 ---
 
-<LandingLayout title="Context OS — Pide la tarea. Prepara el contexto." description="Un sistema operativo de contexto para ChatGPT, Codex, Claude y Cowork. Una fuente canónica, adaptadores por agente y cero megaprompts.">
+<LandingLayout title="contexxxt — Pide la tarea. Prepara el contexto." description="Un sistema operativo de contexto para ChatGPT, Codex, Claude y Cowork. Una fuente canónica, adaptadores por agente y cero megaprompts.">
   <section class="ledger-shell border-b hairline bg-paper-bright">
     <div class="grid lg:grid-cols-[0.95fr_1.05fr]">
       <div class="flex flex-col justify-between border-b hairline px-5 py-14 sm:px-8 sm:py-20 lg:border-b-0 lg:border-r lg:py-24">
         <div>
-          <p class="kicker mb-6 text-signal">Open source · Context engineering</p>
+          <p class="kicker mb-6 text-signal">contexxxt · Open source · Context engineering</p>
           <h1 class="display-title max-w-3xl text-[clamp(3.4rem,8vw,7.6rem)]">Pide la tarea.<br /><span class="text-signal">Prepara el contexto.</span></h1>
-          <p class="mt-8 max-w-xl text-lg leading-8 text-ink/70 sm:text-xl">Context OS ayuda a un agente a entender qué necesita saber, qué debe ignorar y cuándo preguntarte. Aunque tu prompt no sea perfecto.</p>
+          <p class="mt-8 max-w-xl text-lg leading-8 text-ink/70 sm:text-xl">contexxxt ayuda a un agente a entender qué necesita saber, qué debe ignorar y cuándo preguntarte. Aunque tu prompt no sea perfecto.</p>
         </div>
         <div class="mt-10 flex flex-wrap items-center gap-3">
           <a href="/docs/empezar/inicio-rapido/" class="bg-signal px-5 py-3.5 font-bold text-white no-underline hover:bg-ink">Empezar ahora <span aria-hidden="true">→</span></a>
@@ -99,7 +99,7 @@ const flows = [
       <div class="border-b hairline p-5 sm:p-8 lg:border-b-0 lg:border-r lg:p-12">
         <p class="kicker text-signal">Escudo de tarea</p>
         <h2 id="shield-title" class="mt-5 font-serif text-4xl font-bold tracking-[-0.04em] sm:text-6xl">Tu prompt puede estar incompleto.</h2>
-        <p class="mt-6 max-w-xl text-lg leading-8 text-ink/65">Context OS no te castiga por no conocer su vocabulario. Separa hechos de conclusiones, detecta huecos y pregunta solo cuando realmente cambia la ejecución.</p>
+        <p class="mt-6 max-w-xl text-lg leading-8 text-ink/65">contexxxt no te castiga por no conocer su vocabulario. Separa hechos de conclusiones, detecta huecos y pregunta solo cuando realmente cambia la ejecución.</p>
       </div>
       <ol class="divide-y divide-ink/15">
         <li class="grid grid-cols-[3rem_1fr] gap-4 p-5 sm:p-7"><span class="font-mono text-signal">01</span><div><h3 class="font-bold">Resuelve el espacio</h3><p class="mt-2 text-sm leading-6 text-ink/60">Proyecto, cuenta, sensibilidad y superficie.</p></div></li>
@@ -127,7 +127,7 @@ const flows = [
       <div class="min-w-0 border-b hairline p-5 sm:p-8 lg:border-b-0 lg:border-r lg:p-12">
         <p class="kicker text-signal">Instalación</p>
         <h2 id="install-title" class="mt-5 font-serif text-4xl font-bold tracking-[-0.04em] sm:text-5xl">Una entrada. Varios recorridos.</h2>
-        <p class="mt-5 leading-7 text-ink/60">El paquete aún no afirma estar publicado en npm. Estos comandos son el contrato preparado para la primera publicación.</p>
+        <p class="mt-5 leading-7 text-ink/60">Instala bajo demanda desde npm con <code>npx contexxxt</code> o <code>pnpm dlx contexxxt</code>. El núcleo queda dentro del proyecto.</p>
       </div>
       <div class="min-w-0 bg-ink text-paper">
         <div role="tablist" aria-label="Recorridos de instalación" class="flex flex-wrap border-b border-paper/20">
@@ -148,7 +148,7 @@ const flows = [
           <div class="grid sm:grid-cols-2"><div class="border-b border-ink/15 p-4 sm:border-b-0 sm:border-r">AGENTS.md<br/><span class="text-ink/60">Codex adapter</span></div><div class="p-4">CLAUDE.md<br/><span class="text-ink/60">Claude Code adapter</span></div></div>
           <div class="grid border-t border-ink/15 sm:grid-cols-3"><div class="border-b border-ink/15 p-4 sm:border-b-0 sm:border-r">ChatGPT export</div><div class="border-b border-ink/15 p-4 sm:border-b-0 sm:border-r">Claude export</div><div class="p-4">Cowork export</div></div>
         </div>
-        <p class="mt-5 text-sm leading-6 text-ink/60">La memoria nativa de cada proveedor sigue separada. Context OS la audita como recuerdo de baja autoridad; las reglas obligatorias viven en archivos versionados.</p>
+        <p class="mt-5 text-sm leading-6 text-ink/60">La memoria nativa de cada proveedor sigue separada. contexxxt la audita como recuerdo de baja autoridad; las reglas obligatorias viven en archivos versionados.</p>
       </div>
     </div>
   </section>

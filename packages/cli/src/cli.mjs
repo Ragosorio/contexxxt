@@ -8,13 +8,13 @@ export async function runCli(argv) {
     let response;
     if (['help', '--help', '-h'].includes(command)) {
       if (options.json) {
-        printResult({ ok: true, command: 'help', version: VERSION, summary: 'Ayuda de Context OS.', data: { text: helpText() } }, { json: true });
+        printResult({ ok: true, command: 'help', version: VERSION, summary: 'Ayuda de contexxxt.', data: { text: helpText() } }, { json: true });
       } else process.stdout.write(helpText());
       return 0;
     }
     if (['version', '--version', '-v'].includes(command)) {
       if (options.json) {
-        printResult({ ok: true, command: 'version', version: VERSION, summary: `Context OS ${VERSION}.`, data: { version: VERSION } }, { json: true });
+        printResult({ ok: true, command: 'version', version: VERSION, summary: `contexxxt ${VERSION}.`, data: { version: VERSION } }, { json: true });
       } else process.stdout.write(`${VERSION}\n`);
       return 0;
     }

@@ -1,9 +1,9 @@
 ---
 title: Seguridad y privacidad
-description: Fronteras de cuenta, memoria y archivos que Context OS no cruza automáticamente.
+description: Fronteras de cuenta, memoria y archivos que contexxxt no cruza automáticamente.
 ---
 
-Context OS ayuda a organizar contexto; no es una sandbox ni un gestor de secretos.
+contexxxt ayuda a organizar contexto; no es una sandbox ni un gestor de secretos.
 
 ## Fronteras
 
