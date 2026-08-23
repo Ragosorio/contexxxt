@@ -1,0 +1,54 @@
+@layer base, starlight, theme, components, utilities;
+
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+:root {
+  --sl-font: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  --sl-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --sl-color-accent-low: #dce5ff;
+  --sl-color-accent: #2458e8;
+  --sl-color-accent-high: #10245d;
+  --sl-color-white: #0b1739;
+  --sl-color-gray-1: #182447;
+  --sl-color-gray-2: #35415f;
+  --sl-color-gray-3: #687087;
+  --sl-color-gray-4: #a9a99f;
+  --sl-color-gray-5: #d7d3c8;
+  --sl-color-gray-6: #ebe7dc;
+  --sl-color-black: #f7f4eb;
+  --sl-content-width: 52rem;
+}
+
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #122458;
+  --sl-color-accent: #8da9ff;
+  --sl-color-accent-high: #dce5ff;
+  --sl-color-white: #f7f4eb;
+  --sl-color-gray-1: #ebe7dc;
+  --sl-color-gray-2: #c8c5bc;
+  --sl-color-gray-3: #9195a3;
+  --sl-color-gray-4: #5c6378;
+  --sl-color-gray-5: #28314e;
+  --sl-color-gray-6: #151f3d;
+  --sl-color-black: #09122c;
+}
+
+body {
+  background-image: linear-gradient(to right, color-mix(in srgb, var(--sl-color-gray-4) 18%, transparent) 1px, transparent 1px);
+  background-size: 5rem 100%;
+}
+
+.site-title { font-weight: 800; letter-spacing: -0.03em; }
+.site-title img { width: 1.8rem; height: 1.8rem; }
+.content-panel, .right-sidebar-panel { background: color-mix(in srgb, var(--sl-color-black) 94%, transparent); }
+.sl-markdown-content h1, .sl-markdown-content h2 { font-family: Iowan Old Style, Baskerville, "Times New Roman", serif; letter-spacing: -0.035em; }
+.sl-markdown-content h2 { border-top: 1px solid var(--sl-color-gray-5); padding-top: 1.5rem; }
+.sl-markdown-content code:not(:where(.expressive-code *)) { border-radius: 0; border: 1px solid var(--sl-color-gray-5); }
+.sl-markdown-content table { display: table; width: 100%; }
+
+@media (max-width: 50rem) {
+  body { background-size: 3rem 100%; }
+  .sl-markdown-content table { display: block; overflow-x: auto; }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Ragosorio/contexxxt/main/schemas/space.schema.json",
+  "title": "Context OS space",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "purpose", "belongs", "does_not_belong", "allowed_surfaces", "sensitivity", "canonical_sources", "review_on"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "purpose": { "type": "string", "minLength": 1 },
+    "belongs": { "type": "array", "items": { "type": "string" } },
+    "does_not_belong": { "type": "array", "items": { "type": "string" } },
+    "allowed_accounts": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "allowed_surfaces": { "type": "array", "items": { "type": "string" } },
+    "sensitivity": { "enum": ["public", "internal", "confidential", "restricted", "private"] },
+    "canonical_sources": { "type": "array", "items": { "type": "string" } },
+    "review_on": { "type": "string", "format": "date" }
+  }
+}

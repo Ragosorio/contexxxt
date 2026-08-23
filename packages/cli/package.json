@@ -1,0 +1,34 @@
+{
+  "name": "context-os",
+  "version": "0.1.0",
+  "description": "Context engineering toolkit for human prompts, agent projects, memory and provider adapters.",
+  "type": "module",
+  "bin": {
+    "context-os": "./bin/context-os.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "runtime",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "context-engineering",
+    "agents",
+    "codex",
+    "claude-code",
+    "skills"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ragosorio/contexxxt.git",
+    "directory": "packages/cli"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

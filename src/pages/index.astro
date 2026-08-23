@@ -1,0 +1,228 @@
+---
+import LandingLayout from '../layouts/LandingLayout.astro';
+import ContextRecorder from '../components/ContextRecorder.astro';
+
+const failures = [
+  ['Inventa y repite', 'Envenenamiento', 'Abrir una sesión limpia'],
+  ['No propone nada nuevo', 'Distracción', 'Compactar y reiniciar'],
+  ['Usa la herramienta incorrecta', 'Confusión', 'Podar el catálogo'],
+  ['Se contradice entre turnos', 'Choque', 'Buscar instrucciones duplicadas'],
+  ['Olvida lo del inicio', 'Degradación', 'Mover la regla a una fuente durable'],
+];
+
+const flows = [
+  {
+    id: 'existing',
+    label: 'Proyecto existente',
+    command: 'pnpm context-os audit /ruta/al/proyecto && pnpm context-os init /ruta/al/proyecto',
+    text: 'Primero inventaria lo que ya existe. Después propone una integración sin reemplazar AGENTS.md, CLAUDE.md ni tus reglas locales.',
+  },
+  {
+    id: 'new',
+    label: 'Proyecto nuevo',
+    command: 'pnpm context-os init mi-proyecto',
+    text: 'Crea el núcleo neutral, una plantilla de espacio y adaptadores seleccionados. Tus dominios no vienen codificados de fábrica.',
+  },
+  {
+    id: 'chat',
+    label: 'Solo chat',
+    command: 'Abre /docs/chat/auditoria y copia el prompt Descubrir',
+    text: 'No necesitas instalar nada. Audita memoria e instrucciones, diseña espacios y aplica cada cambio solo después de aprobar el texto exacto.',
+  },
+];
+---
+
+<LandingLayout title="Context OS — Pide la tarea. Prepara el contexto." description="Un sistema operativo de contexto para ChatGPT, Codex, Claude y Cowork. Una fuente canónica, adaptadores por agente y cero megaprompts.">
+  <section class="ledger-shell border-b hairline bg-paper-bright">
+    <div class="grid lg:grid-cols-[0.95fr_1.05fr]">
+      <div class="flex flex-col justify-between border-b hairline px-5 py-14 sm:px-8 sm:py-20 lg:border-b-0 lg:border-r lg:py-24">
+        <div>
+          <p class="kicker mb-6 text-signal">Open source · Context engineering</p>
+          <h1 class="display-title max-w-3xl text-[clamp(3.4rem,8vw,7.6rem)]">Pide la tarea.<br /><span class="text-signal">Prepara el contexto.</span></h1>
+          <p class="mt-8 max-w-xl text-lg leading-8 text-ink/70 sm:text-xl">Context OS ayuda a un agente a entender qué necesita saber, qué debe ignorar y cuándo preguntarte. Aunque tu prompt no sea perfecto.</p>
+        </div>
+        <div class="mt-10 flex flex-wrap items-center gap-3">
+          <a href="/docs/empezar/inicio-rapido/" class="bg-signal px-5 py-3.5 font-bold text-white no-underline hover:bg-ink">Empezar ahora <span aria-hidden="true">→</span></a>
+          <a href="/docs/chat/auditoria/" class="border border-ink px-5 py-3.5 font-bold no-underline hover:bg-ink hover:text-paper">Usarlo sin instalar</a>
+        </div>
+      </div>
+      <div class="p-5 sm:p-8 lg:p-10"><ContextRecorder /></div>
+    </div>
+    <div class="grid grid-cols-2 border-t hairline md:grid-cols-4">
+      <div class="border-r hairline p-4"><span class="signal-label text-signal">Fuente</span><p class="mt-2 text-sm">Canónica y neutral</p></div>
+      <div class="border-r hairline p-4"><span class="signal-label text-mint-ink">Memoria</span><p class="mt-2 text-sm">Curada, no automática</p></div>
+      <div class="border-r hairline p-4"><span class="signal-label text-amber-ink">Vigencia</span><p class="mt-2 text-sm">Fechada y revisable</p></div>
+      <div class="p-4"><span class="signal-label text-coral-ink">Límites</span><p class="mt-2 text-sm">Explícitos por espacio</p></div>
+    </div>
+  </section>
+
+  <section id="como-funciona" class="ledger-shell border-b hairline bg-paper" aria-labelledby="routes-title">
+    <div class="grid border-b hairline lg:grid-cols-[0.7fr_1.3fr]">
+      <div class="border-b hairline p-5 sm:p-8 lg:border-b-0 lg:border-r"><p class="kicker text-signal">Tres puertas</p></div>
+      <div class="p-5 sm:p-8">
+        <h2 id="routes-title" class="font-serif text-4xl font-bold tracking-[-0.04em] sm:text-6xl">Empieza donde ya estás.</h2>
+        <p class="mt-4 max-w-2xl text-lg leading-8 text-ink/65">La persona no tiene que entender la arquitectura antes de obtener valor. El sistema adapta el recorrido a la superficie y al estado real del trabajo.</p>
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-3">
+      <a class="route-card block p-6 no-underline sm:p-8" href="/docs/chat/auditoria/">
+        <span class="route-number">01</span><p class="kicker mt-8 text-signal">Sin descargar</p><h3 class="mt-4 font-serif text-3xl font-bold">Solo chat</h3><p class="mt-4 leading-7 opacity-70">Audita instrucciones y memoria. Separa espacios. Aplica cambios con confirmación.</p><span class="absolute bottom-7 right-7 text-2xl" aria-hidden="true">↗</span>
+      </a>
+      <a class="route-card block p-6 no-underline sm:p-8" href="/docs/codigo/proyecto-existente/">
+        <span class="route-number">02</span><p class="kicker mt-8 text-signal">Audit-first</p><h3 class="mt-4 font-serif text-3xl font-bold">Proyecto existente</h3><p class="mt-4 leading-7 opacity-70">Descubre reglas, estado, duplicados y drift antes de escribir una sola integración.</p><span class="absolute bottom-7 right-7 text-2xl" aria-hidden="true">↗</span>
+      </a>
+      <a class="route-card block p-6 no-underline sm:p-8" href="/docs/codigo/proyecto-nuevo/">
+        <span class="route-number">03</span><p class="kicker mt-8 text-signal">Desde cero</p><h3 class="mt-4 font-serif text-3xl font-bold">Proyecto nuevo</h3><p class="mt-4 leading-7 opacity-70">Crea un sistema mínimo que puede crecer sin convertir cada instrucción en una regla global.</p><span class="absolute bottom-7 right-7 text-2xl" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="ledger-shell border-b hairline bg-ink px-5 py-16 text-paper sm:px-8 sm:py-20" aria-labelledby="cycle-title">
+    <div class="grid gap-12 lg:grid-cols-[0.65fr_1.35fr]">
+      <div><p class="kicker text-mint">El ciclo</p><h2 id="cycle-title" class="mt-4 font-serif text-4xl font-bold tracking-[-0.04em] sm:text-5xl">No acumula. Mantiene.</h2></div>
+      <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
+        {['Enrutar', 'Recuperar', 'Ejecutar', 'Verificar', 'Registrar', 'Curar'].map((step, index) => (
+          <div class="flow-step"><span class="font-mono text-xs text-mint">0{index + 1}</span><p class="mt-3 font-bold">{step}</p></div>
+        ))}
+      </div>
+    </div>
+    <div class="mt-14 grid gap-px bg-paper/20 md:grid-cols-4">
+      <div class="bg-ink p-5"><p class="kicker text-mint">Relevance</p><p class="mt-3 text-sm leading-6 text-paper/65">Qué entra.</p></div>
+      <div class="bg-ink p-5"><p class="kicker text-mint">Recency</p><p class="mt-3 text-sm leading-6 text-paper/65">Qué puede morir.</p></div>
+      <div class="bg-ink p-5"><p class="kicker text-mint">Retrieval</p><p class="mt-3 text-sm leading-6 text-paper/65">Cuándo se trae.</p></div>
+      <div class="bg-ink p-5"><p class="kicker text-mint">Ranking</p><p class="mt-3 text-sm leading-6 text-paper/65">Dónde se coloca.</p></div>
+    </div>
+  </section>
+
+  <section class="ledger-shell border-b hairline bg-paper-bright" aria-labelledby="shield-title">
+    <div class="grid lg:grid-cols-2">
+      <div class="border-b hairline p-5 sm:p-8 lg:border-b-0 lg:border-r lg:p-12">
+        <p class="kicker text-signal">Escudo de tarea</p>
+        <h2 id="shield-title" class="mt-5 font-serif text-4xl font-bold tracking-[-0.04em] sm:text-6xl">Tu prompt puede estar incompleto.</h2>
+        <p class="mt-6 max-w-xl text-lg leading-8 text-ink/65">Context OS no te castiga por no conocer su vocabulario. Separa hechos de conclusiones, detecta huecos y pregunta solo cuando realmente cambia la ejecución.</p>
+      </div>
+      <ol class="divide-y divide-ink/15">
+        <li class="grid grid-cols-[3rem_1fr] gap-4 p-5 sm:p-7"><span class="font-mono text-signal">01</span><div><h3 class="font-bold">Resuelve el espacio</h3><p class="mt-2 text-sm leading-6 text-ink/60">Proyecto, cuenta, sensibilidad y superficie.</p></div></li>
+        <li class="grid grid-cols-[3rem_1fr] gap-4 p-5 sm:p-7"><span class="font-mono text-signal">02</span><div><h3 class="font-bold">Define el cierre</h3><p class="mt-2 text-sm leading-6 text-ink/60">Qué significa “listo” en este caso.</p></div></li>
+        <li class="grid grid-cols-[3rem_1fr] gap-4 p-5 sm:p-7"><span class="font-mono text-signal">03</span><div><h3 class="font-bold">Busca el mínimo útil</h3><p class="mt-2 text-sm leading-6 text-ink/60">Trae fuentes vigentes y descarta ruido.</p></div></li>
+        <li class="grid grid-cols-[3rem_1fr] gap-4 p-5 sm:p-7"><span class="font-mono text-signal">04</span><div><h3 class="font-bold">Pregunta o avanza</h3><p class="mt-2 text-sm leading-6 text-ink/60">Bloquea lo irreversible; asume lo reversible con transparencia.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="ledger-shell border-b hairline bg-paper" aria-labelledby="failure-title">
+    <div class="grid border-b hairline lg:grid-cols-[0.7fr_1.3fr]">
+      <div class="border-b hairline p-5 sm:p-8 lg:border-b-0 lg:border-r"><p class="kicker text-coral-ink">Diagnóstico</p></div>
+      <div class="p-5 sm:p-8"><h2 id="failure-title" class="font-serif text-4xl font-bold tracking-[-0.04em] sm:text-5xl">Cada síntoma pide una acción distinta.</h2></div>
+    </div>
+    <div role="table" aria-label="Fallas de contexto y primera acción">
+      <div class="failure-row bg-ink font-mono text-xs uppercase tracking-[0.1em] text-paper" role="row"><div role="columnheader">Síntoma</div><div role="columnheader">Falla</div><div role="columnheader">Primera acción</div></div>
+      {failures.map(([symptom, failure, action]) => <div class="failure-row" role="row"><div role="cell" class="font-bold">{symptom}</div><div role="cell" class="font-mono text-xs uppercase tracking-[0.08em] text-coral-ink">{failure}</div><div role="cell" class="text-ink/65">{action}</div></div>)}
+    </div>
+    <div class="border-t hairline p-5 sm:p-8"><a class="font-bold text-signal underline underline-offset-4" href="/docs/mantener/diagnostico/">Abrir el playbook completo de diagnóstico →</a></div>
+  </section>
+
+  <section class="ledger-shell border-b hairline bg-paper-bright" aria-labelledby="install-title">
+    <div class="grid min-w-0 lg:grid-cols-[0.75fr_1.25fr]">
+      <div class="min-w-0 border-b hairline p-5 sm:p-8 lg:border-b-0 lg:border-r lg:p-12">
+        <p class="kicker text-signal">Instalación</p>
+        <h2 id="install-title" class="mt-5 font-serif text-4xl font-bold tracking-[-0.04em] sm:text-5xl">Una entrada. Varios recorridos.</h2>
+        <p class="mt-5 leading-7 text-ink/60">El paquete aún no afirma estar publicado en npm. Estos comandos son el contrato preparado para la primera publicación.</p>
+      </div>
+      <div class="min-w-0 bg-ink text-paper">
+        <div role="tablist" aria-label="Recorridos de instalación" class="flex flex-wrap border-b border-paper/20">
+          {flows.map((flow, index) => <button type="button" role="tab" id={`tab-${flow.id}`} aria-controls={`panel-${flow.id}`} aria-selected={index === 0 ? 'true' : 'false'} tabindex={index === 0 ? 0 : -1} class="tab-button border-r border-paper/20 px-4 py-3 font-mono text-xs uppercase tracking-[0.08em] text-paper/70" data-tab={flow.id}>{flow.label}</button>)}
+        </div>
+        {flows.map((flow, index) => <div role="tabpanel" id={`panel-${flow.id}`} aria-labelledby={`tab-${flow.id}`} class="tab-panel p-5 sm:p-8" hidden={index !== 0} data-panel={flow.id}><p class="mb-6 max-w-xl leading-7 text-paper/65">{flow.text}</p><div class="flex items-stretch border border-paper/20 bg-black/20"><code class="command-line min-w-0 flex-1 overflow-x-auto whitespace-nowrap p-4 font-mono text-sm text-mint" data-command={flow.command}>{flow.command}</code><button type="button" class="copy-button border-l border-paper/20 px-4 font-mono text-xs uppercase tracking-[0.08em] hover:bg-paper hover:text-ink" data-copy={flow.command}>Copiar</button></div></div>)}
+        <p class="sr-only" aria-live="polite" id="copy-status"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ledger-shell border-b hairline bg-paper px-5 py-16 sm:px-8 sm:py-20" aria-labelledby="one-core-title">
+    <div class="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+      <div><p class="kicker text-signal">Portabilidad real</p><h2 id="one-core-title" class="mt-4 font-serif text-4xl font-bold tracking-[-0.04em] sm:text-5xl">Un núcleo. Adaptadores pequeños.</h2></div>
+      <div>
+        <div class="border border-ink/20 bg-paper-bright font-mono text-xs leading-6">
+          <div class="border-b border-ink/15 p-4 text-ink/50">.contextos/ <span class="float-right text-mint-ink">CANONICAL</span></div>
+          <div class="grid sm:grid-cols-2"><div class="border-b border-ink/15 p-4 sm:border-b-0 sm:border-r">AGENTS.md<br/><span class="text-ink/60">Codex adapter</span></div><div class="p-4">CLAUDE.md<br/><span class="text-ink/60">Claude Code adapter</span></div></div>
+          <div class="grid border-t border-ink/15 sm:grid-cols-3"><div class="border-b border-ink/15 p-4 sm:border-b-0 sm:border-r">ChatGPT export</div><div class="border-b border-ink/15 p-4 sm:border-b-0 sm:border-r">Claude export</div><div class="p-4">Cowork export</div></div>
+        </div>
+        <p class="mt-5 text-sm leading-6 text-ink/60">La memoria nativa de cada proveedor sigue separada. Context OS la audita como recuerdo de baja autoridad; las reglas obligatorias viven en archivos versionados.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ledger-shell bg-signal px-5 py-16 text-white sm:px-8 sm:py-20">
+    <div class="grid items-end gap-10 lg:grid-cols-[1.3fr_0.7fr]">
+      <div><p class="kicker text-paper">Empieza pequeño</p><h2 class="mt-5 max-w-4xl font-serif text-5xl font-bold tracking-[-0.05em] sm:text-7xl">No necesitas recordar cómo funciona. Solo pedir la tarea.</h2></div>
+      <div class="flex flex-col gap-3"><a href="/docs/empezar/inicio-rapido/" class="bg-white px-5 py-4 text-center font-bold text-ink no-underline hover:bg-mint">Leer inicio rápido</a><a href="https://github.com/Ragosorio/contexxxt" class="border border-white/60 px-5 py-4 text-center font-bold no-underline hover:bg-ink">Ver el código</a></div>
+    </div>
+  </section>
+
+  <script>
+    const tablists = document.querySelectorAll('[role="tablist"]');
+    for (const tablist of tablists) {
+      const tabs = Array.from(tablist.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+      const activate = (tab: HTMLButtonElement) => {
+        for (const item of tabs) {
+          const selected = item === tab;
+          item.setAttribute('aria-selected', String(selected));
+          item.setAttribute('tabindex', selected ? '0' : '-1');
+          const controls = item.getAttribute('aria-controls');
+          const panel = controls ? document.getElementById(controls) : null;
+          if (panel) panel.hidden = !selected;
+        }
+      };
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activate(tab));
+        tab.addEventListener('keydown', (event: KeyboardEvent) => {
+          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+          event.preventDefault();
+          let next = index;
+          if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+          if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+          if (event.key === 'Home') next = 0;
+          if (event.key === 'End') next = tabs.length - 1;
+          const nextTab = tabs[next];
+          if (nextTab) { nextTab.focus(); activate(nextTab); }
+        });
+      });
+    }
+
+    const status = document.getElementById('copy-status');
+    const copyText = async (value: string) => {
+      if (window.isSecureContext && navigator.clipboard) {
+        await navigator.clipboard.writeText(value);
+        return;
+      }
+
+      const fallback = document.createElement('textarea');
+      fallback.value = value;
+      fallback.setAttribute('readonly', '');
+      fallback.style.position = 'fixed';
+      fallback.style.opacity = '0';
+      document.body.append(fallback);
+      fallback.select();
+      const execCopy = Reflect.get(document, 'execCommand') as ((command: string) => boolean) | undefined;
+      const copied = execCopy?.call(document, 'copy') ?? false;
+      fallback.remove();
+      if (!copied) throw new Error('Clipboard unavailable');
+    };
+
+    for (const button of document.querySelectorAll('[data-copy]')) {
+      button.addEventListener('click', async () => {
+        const value = button.getAttribute('data-copy') ?? '';
+        try {
+          await copyText(value);
+          button.setAttribute('data-copied', 'true');
+          button.textContent = 'Copiado';
+          if (status) status.textContent = `Comando copiado: ${value}`;
+          window.setTimeout(() => { button.setAttribute('data-copied', 'false'); button.textContent = 'Copiar'; }, 1800);
+        } catch {
+          if (status) status.textContent = 'No se pudo copiar. Selecciona el comando manualmente.';
+        }
+      });
+    }
+  </script>
+</LandingLayout>

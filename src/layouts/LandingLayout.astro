@@ -1,0 +1,77 @@
+---
+import '../styles/landing.css';
+import mark from '../assets/context-os-mark.svg';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b1739" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL('/og-card.png', Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={new URL('/og-card.png', Astro.site)} />
+    <title>{title}</title>
+  </head>
+  <body class="page-grid overflow-x-hidden">
+    <a class="sr-only z-50 bg-mint p-3 text-ink focus:not-sr-only focus:fixed focus:left-3 focus:top-3" href="#contenido">Saltar al contenido</a>
+    <header class="ledger-shell border-b hairline bg-paper/95 backdrop-blur" aria-label="Navegación principal">
+      <nav class="flex min-h-18 items-center justify-between gap-5 px-5 md:px-8">
+        <a href="/" class="flex items-center gap-3 font-bold tracking-[-0.03em] no-underline" aria-label="Context OS, inicio">
+          <img src={mark.src} width="34" height="34" alt="" />
+          <span>Context OS</span>
+          <span class="hidden border border-ink/20 px-2 py-0.5 font-mono text-[0.62rem] font-semibold uppercase tracking-[0.12em] sm:inline">v0.1</span>
+        </a>
+        <div class="flex items-center gap-5 text-sm font-semibold">
+          <a class="hidden underline-offset-4 hover:underline sm:inline" href="#como-funciona">Cómo funciona</a>
+          <a class="hidden underline-offset-4 hover:underline md:inline" href="https://github.com/Ragosorio/contexxxt">GitHub</a>
+          <a class="bg-ink px-4 py-2.5 text-paper no-underline hover:bg-signal" href="/docs/">Documentación <span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
+    <main id="contenido"><slot /></main>
+    <footer class="ledger-shell border-t hairline bg-ink px-5 py-10 text-paper md:px-8">
+      <div class="grid gap-8 md:grid-cols-[1.5fr_1fr_1fr]">
+        <div>
+          <div class="mb-4 flex items-center gap-3 text-lg font-bold"><img src={mark.src} width="32" height="32" alt="" /> Context OS</div>
+          <p class="max-w-md text-sm leading-6 text-paper/65">Código abierto. Contexto pequeño, verificable y portátil. Tus memorias personales se quedan fuera del producto público.</p>
+        </div>
+        <div class="text-sm">
+          <p class="kicker mb-3 text-mint">Explorar</p>
+          <ul class="space-y-2 text-paper/75">
+            <li><a class="hover:text-mint" href="/docs/">Documentación</a></li>
+            <li><a class="hover:text-mint" href="/docs/referencia/cli/">Referencia CLI</a></li>
+            <li><a class="hover:text-mint" href="/docs/referencia/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="text-sm">
+          <p class="kicker mb-3 text-mint">Proyecto</p>
+          <ul class="space-y-2 text-paper/75">
+            <li><a class="hover:text-mint" href="https://github.com/Ragosorio/contexxxt">GitHub</a></li>
+            <li><a class="hover:text-mint" href="https://github.com/Ragosorio/contexxxt/blob/main/SECURITY.md">Seguridad</a></li>
+            <li><a class="hover:text-mint" href="https://github.com/Ragosorio/contexxxt/blob/main/LICENSE">MIT License</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-10 flex flex-wrap justify-between gap-3 border-t border-paper/15 pt-5 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-paper/50">
+        <span>Built with Astro + Tailwind</span><span>Open source · 2026</span>
+      </div>
+    </footer>
+  </body>
+</html>

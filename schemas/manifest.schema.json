@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Ragosorio/contexxxt/main/schemas/manifest.schema.json",
+  "title": "Context OS manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "context_os_version", "created_at", "updated_at", "mode", "managed_files"],
+  "properties": {
+    "$schema": { "type": "string", "format": "uri" },
+    "schema_version": { "const": 1 },
+    "context_os_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+" },
+    "created_at": { "type": "string", "format": "date" },
+    "updated_at": { "type": "string", "format": "date" },
+    "mode": { "enum": ["new", "existing"] },
+    "managed_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "source", "template_version", "applied_sha256", "generated_sha256", "provider"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "source": { "type": "string", "minLength": 1 },
+          "template_version": { "type": "integer", "minimum": 1 },
+          "applied_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "generated_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "provider": { "enum": ["codex", "claude-code", "chatgpt", "claude-chat", "cowork"] }
+        }
+      }
+    }
+  }
+}

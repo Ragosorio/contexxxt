@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Ragosorio/contexxxt/main/schemas/memory.schema.json",
+  "title": "Context OS memory entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "scope", "type", "status", "claim", "evidence", "counterevidence", "sample_size", "source", "observed_at", "verified_at", "review_on", "confidence", "sensitivity", "allowed_surfaces", "supersedes"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^mem-\\d{8}-[a-z0-9-]+$" },
+    "scope": { "type": "string", "minLength": 1 },
+    "type": { "enum": ["preference", "pattern", "decision", "constraint"] },
+    "status": { "enum": ["candidate", "confirmed", "superseded", "expired", "rejected"] },
+    "claim": { "type": "string", "minLength": 1 },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "counterevidence": { "type": "array", "items": { "type": "string" } },
+    "sample_size": { "type": "integer", "minimum": 0 },
+    "source": { "enum": ["user-explicit", "measured-observation", "external-evidence", "model-inference"] },
+    "observed_at": { "type": "string", "format": "date" },
+    "verified_at": { "type": ["string", "null"], "format": "date" },
+    "review_on": { "type": "string", "format": "date" },
+    "confidence": { "enum": ["low", "medium", "high"] },
+    "sensitivity": { "enum": ["public", "internal", "confidential", "restricted", "private"] },
+    "allowed_surfaces": { "type": "array", "items": { "type": "string" } },
+    "supersedes": { "type": ["string", "null"] }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "confirmed" } } },
+      "then": {
+        "properties": {
+          "verified_at": { "type": "string", "format": "date" },
+          "evidence": { "minItems": 1 },
+          "allowed_surfaces": { "minItems": 1 }
+        }
+      }
+    }
+  ]
+}

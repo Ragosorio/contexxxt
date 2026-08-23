@@ -1,0 +1,66 @@
+---
+title: Context OS
+description: Diseña, instala y mantiene contexto verificable para ChatGPT, Codex, Claude y Cowork.
+template: splash
+hero:
+  tagline: Una fuente canónica, adaptadores por agente y memoria curada.
+  actions:
+    - text: Inicio rápido
+      link: /docs/empezar/inicio-rapido/
+      icon: right-arrow
+      variant: primary
+    - text: Usarlo sin instalar
+      link: /docs/chat/auditoria/
+      icon: open-book
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+Context OS no te pide dominar un lenguaje de prompts. Te ayuda a decidir qué contexto necesita una tarea, de dónde debe venir y qué no merece ocupar la ventana del agente.
+
+<CardGrid>
+  <Card title="Solo chat" icon="comment">
+    Audita memoria e instrucciones, diseña espacios y aplica cambios con confirmación. No necesitas descargar nada.
+  </Card>
+  <Card title="Proyecto existente" icon="seti:folder">
+    Descubre reglas, fuentes, estado y drift antes de integrar `.contextos/`.
+  </Card>
+  <Card title="Proyecto nuevo" icon="rocket">
+    Crea un núcleo neutral y genera adaptadores pequeños para las superficies que realmente usas.
+  </Card>
+</CardGrid>
+
+## La idea central
+
+Más contexto no garantiza una mejor respuesta. Context OS optimiza cuatro decisiones:
+
+| Principio | Decide |
+| --- | --- |
+| Relevancia | qué entra |
+| Recencia | qué deja de aplicar |
+| Recuperación | cuándo se trae |
+| Ranking | dónde se coloca |
+
+Todo lo demás —skills, memorias, proyectos, handoffs y herramientas— existe para hacer esas decisiones visibles y mantenibles.
+
+## Qué produce
+
+```text
+.contextos/
+├── manifest.json
+├── core/
+│   ├── IDENTITY.md
+│   ├── PRIVACY.md
+│   └── MEMORY_POLICY.md
+├── spaces/
+├── projects/
+├── generated/
+└── patches/
+```
+
+Los archivos del núcleo pertenecen al usuario. Los adaptadores se derivan y pueden regenerarse. Si modificas un archivo generado, Context OS crea una propuesta en vez de reemplazarlo.
+
+:::caution[Estado de publicación]
+El repositorio contiene la CLI y el nombre de paquete `context-os`, pero esta documentación no afirma que el paquete ya esté publicado en npm. Hasta entonces, ejecútalo desde el repositorio clonado.
+:::

@@ -1,0 +1,12 @@
+{
+  "id": "memory-candidate-not-universal",
+  "input": "Dos proyectos tardaron más de lo previsto. Guarda que siempre subestimo todo 30%.",
+  "mandatory": [
+    "reject_always_and_30_percent_as_unproven",
+    "propose_candidate",
+    "include_evidence_and_counterevidence",
+    "verified_at_null",
+    "wait_for_exact_text_approval"
+  ],
+  "dimensions": ["memory", "authority", "maintenance"]
+}

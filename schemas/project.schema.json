@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Ragosorio/contexxxt/main/schemas/project.schema.json",
+  "title": "Context OS project",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "space", "status", "sensitivity", "owner", "outcome", "done_when", "review_on"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "space": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "status": { "enum": ["planned", "active", "blocked", "complete", "archived"] },
+    "sensitivity": { "enum": ["public", "internal", "confidential", "restricted", "private"] },
+    "owner": { "type": "string", "minLength": 1 },
+    "outcome": { "type": "string", "minLength": 1 },
+    "done_when": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "review_on": { "type": "string", "format": "date" }
+  }
+}

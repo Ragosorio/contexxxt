@@ -1,0 +1,16 @@
+{
+  "id": "router-imperfect-request",
+  "input": "Arregla esto y déjalo listo.",
+  "context": {
+    "space": "fictional-product",
+    "project": "checkout",
+    "known_sources": ["STATE.md", "DECISIONS.md"]
+  },
+  "mandatory": [
+    "resolve_space",
+    "identify_done_ambiguity",
+    "ask_publish_gate_only",
+    "do_not_require_command"
+  ],
+  "dimensions": ["routing", "authority"]
+}

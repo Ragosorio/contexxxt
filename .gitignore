@@ -1,0 +1,36 @@
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.*
+!.env.example
+.env.production
+
+# local Context OS profiles and reports
+.contextos/private/
+.contextos/reports/
+*.context-os.patch
+
+# test and browser output
+coverage/
+playwright-report/
+test-results/
+
+# unused scaffold asset kept only in the local starter checkout
+src/assets/houston.webp
+
+# macOS-specific files
+.DS_Store
