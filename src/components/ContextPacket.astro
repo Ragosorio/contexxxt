@@ -1,0 +1,13 @@
+---
+interface Props { lang: 'en' | 'es' }
+const { lang } = Astro.props;
+const c = lang === 'es'
+  ? { title: 'ContextPacket', artifact: 'ARTEFACTO', resolved: 'RESUELTO', units: 'UNIDADES', task: 'Tarea', taskValue: 'Añadir un filtro a la capa de consulta', target: 'Objetivo', goal: 'Meta', goalValue: 'Mantener consultas deterministas y acotadas', constraints: 'Restricciones', constraintValue: 'Orden estable · evidencia trazable · 10 kB máx.', decisions: 'Decisiones', decisionValue: 'Query Layer ≠ resolvedor semántico', evidence: 'Evidencia', evidenceValue: 'ev.query-code · ev.query-tests · ev.architecture', unknowns: 'Desconocido', unknownValue: 'Ninguno que bloquee esta tarea', verify: 'Verificar', verifyValue: 'caso positivo · vacío · budget · orden estable' }
+  : { title: 'ContextPacket', artifact: 'ARTIFACT', resolved: 'RESOLVED', units: 'UNITS', task: 'Task', taskValue: 'Add a filter to the query layer', target: 'Target', goal: 'Goal', goalValue: 'Keep retrieval deterministic and bounded', constraints: 'Constraints', constraintValue: 'Stable order · traceable evidence · 10 kB max', decisions: 'Decisions', decisionValue: 'Query Layer ≠ semantic resolver', evidence: 'Evidence', evidenceValue: 'ev.query-code · ev.query-tests · ev.architecture', unknowns: 'Unknowns', unknownValue: 'None blocking this task', verify: 'Verify', verifyValue: 'positive · empty · budget · stable-order cases' };
+const rows = [[c.task,c.taskValue],[c.target,'packages/cli/src/query/query.mjs'],[c.goal,c.goalValue],[c.constraints,c.constraintValue],[c.decisions,c.decisionValue],[c.evidence,c.evidenceValue],[c.unknowns,c.unknownValue],[c.verify,c.verifyValue]];
+---
+<article class="packet" aria-label={c.title}>
+  <header class="packet__header"><div><span class="micro-label">{c.artifact} · SCHEMA 1.0.0</span><h3>{c.title}</h3></div><span class="status-chip status-chip--resolved">{c.resolved}</span></header>
+  <dl>{rows.map(([label,value], index) => <div class:list={['packet__row', index === 3 && 'packet__row--pine']}><dt>{label}</dt><dd>{value}</dd><span>{String(index + 1).padStart(2,'0')}</span></div>)}</dl>
+  <footer class="packet__footer"><span>ctxpkt_a0249cb8</span><span>10,042 B</span><span>12 {c.units}</span></footer>
+</article>

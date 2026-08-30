@@ -1,77 +1,93 @@
 ---
 import '../styles/landing.css';
-import mark from '../assets/context-os-mark.svg';
+import BrandMark from '../components/BrandMark.astro';
 
-interface Props {
-  title: string;
-  description: string;
-}
-
-const { title, description } = Astro.props;
+interface Props { lang: 'en' | 'es'; title: string; description: string }
+const { lang, title, description } = Astro.props;
+const isEs = lang === 'es';
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const english = new URL('/', Astro.site);
+const spanish = new URL('/es/', Astro.site);
+const nav = isEs
+  ? { product: 'Producto', evidence: 'Evidencia', architecture: 'Arquitectura', docs: 'Docs', skip: 'Saltar al contenido', navLabel: 'Navegación principal', themeDark: 'Cambiar a tema oscuro', themeLight: 'Cambiar a tema claro', language: 'English', languageHref: '/', footer: 'Compilador adaptativo de contexto para agentes de software.' }
+  : { product: 'Product', evidence: 'Evidence', architecture: 'Architecture', docs: 'Docs', skip: 'Skip to content', navLabel: 'Main navigation', themeDark: 'Switch to dark theme', themeLight: 'Switch to light theme', language: 'Español', languageHref: '/es/', footer: 'Adaptive context compiler for software agents.' };
 ---
-
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0b1739" />
+    <meta name="theme-color" content="#F3F1EE" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0B0F0E" media="(prefers-color-scheme: dark)" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={english} />
+    <link rel="alternate" hreflang="es" href={spanish} />
+    <link rel="alternate" hreflang="x-default" href={english} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="contexxxt" />
+    <meta property="og:locale" content={isEs ? 'es_GT' : 'en_US'} />
+    <meta property="og:locale:alternate" content={isEs ? 'en_US' : 'es_GT'} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL('/og-card.png', Astro.site)} />
+    <meta property="og:image:alt" content="contexxxt — adaptive context compiler" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL('/og-card.png', Astro.site)} />
     <title>{title}</title>
+    <script is:inline>
+      (() => {
+        const saved = localStorage.getItem('contexxxt-theme');
+        const theme = saved === 'light' || saved === 'dark' ? saved : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
   </head>
-  <body class="page-grid overflow-x-hidden">
-    <a class="sr-only z-50 bg-mint p-3 text-ink focus:not-sr-only focus:fixed focus:left-3 focus:top-3" href="#contenido">Saltar al contenido</a>
-    <header class="ledger-shell border-b hairline bg-paper/95 backdrop-blur" aria-label="Navegación principal">
-      <nav class="flex min-h-18 items-center justify-between gap-5 px-5 md:px-8">
-        <a href="/" class="flex items-center gap-3 font-bold tracking-[-0.03em] no-underline" aria-label="contexxxt, inicio">
-          <img src={mark.src} width="34" height="34" alt="" />
-          <span>contexxxt</span>
-          <span class="hidden border border-ink/20 px-2 py-0.5 font-mono text-[0.62rem] font-semibold uppercase tracking-[0.12em] sm:inline">v0.1</span>
-        </a>
-        <div class="flex items-center gap-5 text-sm font-semibold">
-          <a class="hidden underline-offset-4 hover:underline sm:inline" href="#como-funciona">Cómo funciona</a>
-          <a class="hidden underline-offset-4 hover:underline md:inline" href="https://github.com/Ragosorio/contexxxt">GitHub</a>
-          <a class="bg-ink px-4 py-2.5 text-paper no-underline hover:bg-signal" href="/docs/">Documentación <span aria-hidden="true">↗</span></a>
+  <body>
+    <a class="skip-link" href="#content">{nav.skip}</a>
+    <header class="site-header">
+      <nav class="nav-shell" aria-label={nav.navLabel}>
+        <a class="nav-brand" href={isEs ? '/es/' : '/'}><BrandMark size={34} wordmark /></a>
+        <div class="nav-links"><a href="#problem">{nav.product}</a><a href="#evaluation">{nav.evidence}</a><a href="#architecture">{nav.architecture}</a><a href="/docs/">{nav.docs}</a></div>
+        <div class="nav-tools">
+          <a class="language-link" href={nav.languageHref} hreflang={isEs ? 'en' : 'es'}>{nav.language}</a>
+          <button class="theme-toggle" type="button" aria-label={nav.themeDark} title={nav.themeDark} aria-pressed="false" data-theme-toggle data-dark-label={nav.themeDark} data-light-label={nav.themeLight}><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg><span class="theme-toggle__track" aria-hidden="true"><i></i></span></button>
         </div>
       </nav>
     </header>
-    <main id="contenido"><slot /></main>
-    <footer class="ledger-shell border-t hairline bg-ink px-5 py-10 text-paper md:px-8">
-      <div class="grid gap-8 md:grid-cols-[1.5fr_1fr_1fr]">
-        <div>
-          <div class="mb-4 flex items-center gap-3 text-lg font-bold"><img src={mark.src} width="32" height="32" alt="" /> contexxxt</div>
-          <p class="max-w-md text-sm leading-6 text-paper/65">Código abierto. Contexto pequeño, verificable y portátil. Tus memorias personales se quedan fuera del producto público.</p>
-        </div>
-        <div class="text-sm">
-          <p class="kicker mb-3 text-mint">Explorar</p>
-          <ul class="space-y-2 text-paper/75">
-            <li><a class="hover:text-mint" href="/docs/">Documentación</a></li>
-            <li><a class="hover:text-mint" href="/docs/referencia/cli/">Referencia CLI</a></li>
-            <li><a class="hover:text-mint" href="/docs/referencia/changelog/">Changelog</a></li>
-          </ul>
-        </div>
-        <div class="text-sm">
-          <p class="kicker mb-3 text-mint">Proyecto</p>
-          <ul class="space-y-2 text-paper/75">
-            <li><a class="hover:text-mint" href="https://github.com/Ragosorio/contexxxt">GitHub</a></li>
-            <li><a class="hover:text-mint" href="https://github.com/Ragosorio/contexxxt/blob/main/SECURITY.md">Seguridad</a></li>
-            <li><a class="hover:text-mint" href="https://github.com/Ragosorio/contexxxt/blob/main/LICENSE">MIT License</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="mt-10 flex flex-wrap justify-between gap-3 border-t border-paper/15 pt-5 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-paper/50">
-        <span>Built with Astro + Tailwind</span><span>Open source · 2026</span>
-      </div>
+    <main id="content"><slot /></main>
+    <footer class="site-footer section-shell">
+      <div class="footer-brand"><BrandMark size={42} wordmark /><p>{nav.footer}</p></div>
+      <div><span class="micro-label">SYSTEM</span><a href="/docs/">{nav.docs}</a><a href="https://github.com/Ragosorio/contexxxt/blob/main/docs/ARCHITECTURE.md">{nav.architecture}</a><a href="https://github.com/Ragosorio/contexxxt/blob/main/docs/EVALUATION.md">{nav.evidence}</a></div>
+      <div><span class="micro-label">SOURCE</span><a href="https://github.com/Ragosorio/contexxxt">GitHub</a><a href="https://github.com/Ragosorio/contexxxt/blob/main/LICENSE">MIT License</a><a href="https://github.com/Ragosorio/contexxxt/blob/main/SECURITY.md">Security</a></div>
+      <p class="footer-meta">ASTRO 7 · TAILWIND 4 · OPEN SOURCE · 2026</p>
     </footer>
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+      const syncToggle = () => {
+        if (!toggle) return;
+        const dark = document.documentElement.dataset.theme === 'dark';
+        const label = dark ? toggle.dataset.lightLabel : toggle.dataset.darkLabel;
+        toggle.setAttribute('aria-pressed', String(dark));
+        if (label) {
+          toggle.setAttribute('aria-label', label);
+          toggle.title = label;
+        }
+      };
+      syncToggle();
+      toggle?.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        document.documentElement.style.colorScheme = next;
+        localStorage.setItem('contexxxt-theme', next);
+        syncToggle();
+      });
+    </script>
   </body>
 </html>

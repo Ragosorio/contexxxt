@@ -4,7 +4,7 @@ import starlight from '@astrojs/starlight';
 import tailwindcss from '@tailwindcss/vite';
 
 const productionHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-const site = process.env.SITE_URL ?? (productionHost ? `https://${productionHost}` : 'http://localhost:4321');
+const site = process.env.SITE_URL ?? (productionHost ? `https://${productionHost}` : 'https://contexxxt.vercel.app');
 const socialImage = new URL('/og-card.png', site).href;
 
 export default defineConfig({
@@ -12,7 +12,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'contexxxt',
-      description: 'Un sistema operativo de contexto para trabajar con agentes sin escribir megaprompts.',
+      description: 'Compilador adaptativo de contexto para agentes de software.',
       favicon: '/favicon.svg',
       logo: { src: './src/assets/context-os-mark.svg', replacesTitle: false },
       customCss: ['./src/styles/starlight.css'],
@@ -97,7 +97,7 @@ export default defineConfig({
         { tag: 'meta', attrs: { property: 'og:image', content: socialImage } },
         { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },
         { tag: 'meta', attrs: { name: 'twitter:image', content: socialImage } },
-        { tag: 'meta', attrs: { name: 'theme-color', content: '#0b1739' } },
+        { tag: 'meta', attrs: { name: 'theme-color', content: '#0F2C24' } },
       ],
     }),
   ],

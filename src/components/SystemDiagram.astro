@@ -1,0 +1,75 @@
+---
+interface Props {
+  lang: 'en' | 'es';
+  variant?: 'full' | 'simple';
+}
+
+const { lang, variant = 'full' } = Astro.props;
+const copy = lang === 'es'
+  ? {
+      fullTitle: 'Arquitectura de producto de contexxxt',
+      fullDesc: 'El repositorio se inspecciona para producir evidencia y un Modelo de Proyecto; las consultas, el resolvedor 7Q y el compilador crean un ContextPacket para el agente. La ejecución vuelve como observación evaluada.',
+      repository: 'Repositorio', inspection: 'Inspección', evidence: 'Evidencia', model: 'Modelo de Proyecto', query: 'Consulta', resolver: 'Resolvedor 7Q', compiler: 'Compilador', agent: 'Agente', evaluation: 'Evaluación',
+      simpleTitle: 'Flujo esencial de contexxxt',
+      simpleDesc: 'El proyecto se entiende, se compila contexto acotado y el agente trabaja con él.',
+      project: 'Proyecto', understand: 'Entender', compile: 'Compilar contexto', work: 'Agente',
+    }
+  : {
+      fullTitle: 'contexxxt product architecture',
+      fullDesc: 'The repository is inspected into evidence and a Project Model; queries, the 7Q Resolver and compiler create a ContextPacket for the agent. Execution returns as evaluated observation.',
+      repository: 'Repository', inspection: 'Inspection', evidence: 'Evidence', model: 'Project Model', query: 'Query Layer', resolver: '7Q Resolver', compiler: 'Context Compiler', agent: 'Agent', evaluation: 'Evaluation',
+      simpleTitle: 'The essential contexxxt flow',
+      simpleDesc: 'The project is understood, bounded context is compiled, and the agent works with it.',
+      project: 'Project', understand: 'Understand', compile: 'Compile context', work: 'Agent',
+    };
+---
+
+{variant === 'simple' ? (
+  <svg class="system-diagram system-diagram--simple" viewBox="0 0 760 188" role="img" aria-labelledby="simple-diagram-title simple-diagram-desc">
+    <title id="simple-diagram-title">{copy.simpleTitle}</title>
+    <desc id="simple-diagram-desc">{copy.simpleDesc}</desc>
+    <defs>
+      <marker id="simple-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0 0 8 3 0 6Z" /></marker>
+    </defs>
+    <g class="diagram-connectors">
+      <path d="M172 94H220" marker-end="url(#simple-arrow)" />
+      <path d="M356 94H404" marker-end="url(#simple-arrow)" />
+      <path d="M540 94H588" marker-end="url(#simple-arrow)" />
+    </g>
+    <g class="diagram-node"><rect x="36" y="54" width="136" height="80" /><text x="104" y="99">{copy.project}</text><text class="diagram-tag" x="104" y="119">01 · SOURCE</text></g>
+    <g class="diagram-node"><rect x="220" y="54" width="136" height="80" /><text x="288" y="99">{copy.understand}</text><text class="diagram-tag" x="288" y="119">02 · MODEL</text></g>
+    <g class="diagram-node diagram-node--focal"><rect x="404" y="54" width="136" height="80" /><text x="472" y="93">{copy.compile}</text><text class="diagram-tag" x="472" y="119">03 · PACKET</text></g>
+    <g class="diagram-node"><rect x="588" y="54" width="136" height="80" /><text x="656" y="99">{copy.work}</text><text class="diagram-tag" x="656" y="119">04 · EXECUTE</text></g>
+  </svg>
+) : (
+  <svg class="system-diagram system-diagram--full" viewBox="0 0 1120 560" role="img" aria-labelledby="architecture-diagram-title architecture-diagram-desc">
+    <title id="architecture-diagram-title">{copy.fullTitle}</title>
+    <desc id="architecture-diagram-desc">{copy.fullDesc}</desc>
+    <defs>
+      <marker id="architecture-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0 0 8 3 0 6Z" /></marker>
+      <marker id="architecture-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0 0 8 3 0 6Z" /></marker>
+    </defs>
+    <g class="diagram-zone"><rect x="32" y="92" width="456" height="300" /><text x="52" y="120">EVIDENCE LAYER</text></g>
+    <g class="diagram-zone"><rect x="520" y="92" width="568" height="300" /><text x="540" y="120">TASK CONTEXT LAYER</text></g>
+    <g class="diagram-connectors">
+      <path d="M180 202H220" marker-end="url(#architecture-arrow)" />
+      <path d="M356 202H396" marker-end="url(#architecture-arrow)" />
+      <path d="M476 250V292" marker-end="url(#architecture-arrow)" />
+      <path d="M476 332H556" marker-end="url(#architecture-arrow)" />
+      <path d="M692 332H732" marker-end="url(#architecture-arrow)" />
+      <path class="diagram-connector--accent" d="M868 332H908" marker-end="url(#architecture-arrow-accent)" />
+      <path class="diagram-connector--accent" d="M976 292V250" marker-end="url(#architecture-arrow-accent)" />
+      <path class="diagram-connector--return" d="M1044 202H1072V452H372" marker-end="url(#architecture-arrow)" />
+      <path class="diagram-connector--return" d="M280 412V392H476V372" marker-end="url(#architecture-arrow)" />
+    </g>
+    <g class="diagram-node"><rect x="44" y="162" width="136" height="80" /><text x="112" y="204">{copy.repository}</text><text class="diagram-tag" x="112" y="224">SOURCE</text></g>
+    <g class="diagram-node"><rect x="220" y="162" width="136" height="80" /><text x="288" y="204">{copy.inspection}</text><text class="diagram-tag" x="288" y="224">READ ONLY</text></g>
+    <g class="diagram-node"><rect x="396" y="162" width="160" height="80" /><text x="476" y="204">{copy.evidence}</text><text class="diagram-tag" x="476" y="224">PROVENANCE</text></g>
+    <g class="diagram-node diagram-node--steel"><rect x="396" y="292" width="160" height="80" /><text x="476" y="334">{copy.model}</text><text class="diagram-tag" x="476" y="354">CANONICAL IR</text></g>
+    <g class="diagram-node"><rect x="556" y="292" width="136" height="80" /><text x="624" y="334">{copy.query}</text><text class="diagram-tag" x="624" y="354">DETERMINISTIC</text></g>
+    <g class="diagram-node"><rect x="732" y="292" width="136" height="80" /><text x="800" y="334">{copy.resolver}</text><text class="diagram-tag" x="800" y="354">TASK SCOPE</text></g>
+    <g class="diagram-node diagram-node--focal"><rect x="908" y="292" width="136" height="80" /><text x="976" y="328">{copy.compiler}</text><text class="diagram-tag" x="976" y="354">CONTEXT PACKET</text></g>
+    <g class="diagram-node"><rect x="908" y="162" width="136" height="80" /><text x="976" y="204">{copy.agent}</text><text class="diagram-tag" x="976" y="224">CODEX · CLAUDE</text></g>
+    <g class="diagram-node diagram-node--optional"><rect x="188" y="412" width="184" height="80" /><text x="280" y="454">{copy.evaluation}</text><text class="diagram-tag" x="280" y="474">PROMOTE · REJECT</text></g>
+  </svg>
+)}

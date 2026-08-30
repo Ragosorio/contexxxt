@@ -1,64 +1,66 @@
-# Diseño: Flight Ledger
+# Design — Computational Luxury
 
-## Concepto
+## Thesis
 
-contexxxt se siente como una bitácora de vuelo cruzada con un mapa de rutas: cada pieza de contexto tiene origen, autoridad, vigencia y destino. La interfaz no promete magia; muestra qué entró, qué quedó fuera y qué necesita confirmación.
+contexxxt presents engineering evidence with the quiet confidence of an architectural studio: precise, material, restrained and legible. The product artifact is the visual language. ContextPackets, Evidence, 7Q state, the Project Model and evaluation results replace generic SaaS decoration.
 
-La referencia metodológica es Impeccable: propuesta clara, prueba visible y documentación operativa. La identidad visual, interacción y vocabulario son propios.
+The methodological references are Impeccable's conviction, Diagram Design's explanatory clarity and Codebase Memory's technical proof. Their visual identities are not copied.
 
-## Dirección visual
+## Materials and color
 
-- **Papel mineral** `#f4f1e8`: superficie de lectura.
-- **Azul noche** `#0b1739`: consola, navegación y texto de alto contraste.
-- **Azul señal** `#2458e8`: contexto activo y enlaces.
-- **Menta verificada** `#2fd6a2`: hechos confirmados.
-- **Ámbar de vigencia** `#f2a93b`: información por revisar.
-- **Coral de choque** `#f06b5d`: contradicción o frontera cruzada.
+- **Warm Ivory** `#F3F1EE`: primary light editorial field.
+- **Soft Bone** `#E5E1DC`: secondary light material.
+- **Graphite** `#242322`: primary light typography.
+- **Deep Pine** `#0F2C24`: verified knowledge and grounded intelligence.
+- **Steel Blue** `#46617E`: technical structure, analysis and precision.
+- **Cold Silver** `#C7C9C8`: separators and quiet metallic detail.
+- **Deep Void** `#0B0F0E`: primary dark field.
 
-La tipografía combina una sans utilitaria para interfaz, una serif editorial para ideas y una mono para rutas, fechas y fuentes. El sistema funciona con fallbacks locales y no depende de que una fuente externa cargue.
+Color behaves like material, not paint. Pine and steel are used for hierarchy and state; neither floods every surface. Dark mode uses pine-black surfaces, ivory type and low-chroma steel details rather than pure white on pure black.
 
-## Motivos
+## Typography
 
-- Líneas regladas y columnas marginales.
-- Etiquetas de procedencia: `source`, `scope`, `verified`, `expires`.
-- Paquetes de contexto apilados, no tarjetas SaaS genéricas.
-- Bordes rectos y radios mínimos.
-- Un registrador de contexto como demostración principal.
+- **Sora**: wordmark, hero and major product statements.
+- **Geist**: body, navigation and interface.
+- **Geist Mono**: commands, evidence IDs, metrics, schema names and metadata.
+- **Instrument Serif Italic**: rare editorial accents only.
 
-## Diagramas de producto
+All four families are packaged locally through Fontsource. The public landing does not rely on runtime font APIs.
 
-Los diagramas extienden Flight Ledger: papel mineral, azul noche, azul señal y colores de estado solo cuando expresan verificación, vigencia o conflicto. Usan SVG accesible dentro de HTML autocontenido; cada figura tiene título y descripción, conectores ortogonales, lectura estática completa y como máximo un foco visual principal.
+## Composition
 
-La fuente editable vive en `docs/diagrams/*.html`; el SVG con el mismo nombre es una exportación para README y documentación. No se usa Mermaid como canon visual. El diagrama debe distinguir explícitamente arquitectura objetivo de comportamiento implementado.
+- Editorial asymmetry and deliberate negative space.
+- Thin rules, square corners and restrained material contrast.
+- Technical plates, specimen rows, layered documents and precise annotations.
+- No decorative gradients, glassmorphism, glow, inflated radius or generic feature-card grids.
+- Motion is limited to state change and precise feedback, with reduced-motion support.
 
-## Landing
+## Identity
 
-El hero parte de una petición imperfecta: “Arregla esto y déjalo listo”. Una demostración determinista muestra cómo se convierte en espacio, fuentes, contexto descartado, riesgo semántico, pregunta mínima y condición de cierre.
+The custom mark compresses three intersecting X forms into an inverted triangular spine and resolves into a T stem. It must remain recognizable at favicon and navigation sizes, use `currentColor` where practical and avoid AI sparkle or mascot language.
 
-La demo debe etiquetarse como simulación. No sugiere que existe una llamada a IA en vivo.
+## Product diagrams
 
-## Interacción
+Diagrams use Diagram Design's architecture and process grammar with a contexxxt skin: warm ivory / deep void paper, graphite / ivory ink, pine as the single focal accent and steel as structural support. Connectors are orthogonal, arrows are drawn behind nodes, node count stays bounded and every SVG provides a title and description.
 
-- Tabs con semántica ARIA y teclado.
-- Botones de copia con confirmación visible y anuncio para lector de pantalla.
-- Tema persistente en documentación.
-- `skip link`, focus visible y navegación lógica.
-- Animaciones solo para explicar flujo y desactivadas con `prefers-reduced-motion`.
-- Ninguna información depende únicamente del color.
+The full product diagram is capped at nine nodes. Provider internals and detailed evaluation mechanics remain outside it. The simplified homepage diagram uses four stages. The 7Q plate is a product-state visualization rather than a generic flowchart.
 
-## Responsive
+## Interaction and accessibility
 
-- Móvil: una sola columna, demo en secuencia y comandos con scroll horizontal controlado.
-- Tablet: dos columnas únicamente donde la comparación lo exige.
-- Escritorio: ledger de doce columnas con margen de fuente.
+- Theme follows `prefers-color-scheme` on first visit and persists explicit choice.
+- English and Spanish are static Astro routes, not client-side string replacement.
+- Theme, language and copy controls are keyboard accessible with visible focus.
+- Information hierarchy is identical across themes and meaning never relies on color alone.
+- Reduced motion disables non-essential transitions.
 
-No se permite overflow horizontal a 320 px, 390 px, 768 px o 1440 px.
+## Responsive behavior
 
-## Evitar
+Desktop composition is not merely collapsed on mobile. At 390 px, editorial sections change order, technical plates become scrollable only when their geometry requires it, 7Q states move to a single-column specimen, and commands preserve readable horizontal scrolling without page overflow.
 
-- La frase “The missing ___ for agents”.
-- Oro sobre negro, pátina o la identidad Neo Kinpaku de Impeccable.
-- Un deslizador visual antes/después idéntico.
-- Gradientes decorativos, glassmorphism o grids de tarjetas intercambiables.
-- Logos de proveedores como prueba de compatibilidad.
-- Testimonios o métricas no verificadas.
+## Evidence rules
+
+- Benchmark language always says current bounded evaluation or equivalent.
+- `0.2.0-rc.1` is described as repository source, never as the npm latest.
+- npm installation copy names public `0.1.0` explicitly.
+- Generated skills are never described as promoted without an evaluation decision.
+- No customer, usage, pricing, quality or performance claim may be invented.

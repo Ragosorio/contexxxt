@@ -1,12 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#F4F1E8"/>
-  <path d="M0 95h1200M0 535h1200M82 0v630M1118 0v630" stroke="#0B1739" stroke-opacity=".18"/>
-  <g transform="translate(82 74)"><path d="M0 0h42v34H0z" fill="#2458E8"/><path d="M54 0h42v16H54z" fill="#2FD6A2"/><path d="M54 28h42v56H54z" fill="#0B1739"/><path d="M0 46h42v38H0z" fill="#F2A93B"/></g>
-  <text x="210" y="119" fill="#0B1739" font-family="Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="2">CONTEXXXT</text>
-  <text x="82" y="290" fill="#0B1739" font-family="Georgia, serif" font-size="72" font-weight="700">Pide la tarea.</text>
-  <text x="82" y="382" fill="#2458E8" font-family="Georgia, serif" font-size="72" font-weight="700">Prepara el contexto.</text>
-  <text x="82" y="488" fill="#0B1739" font-family="Arial, sans-serif" font-size="28">Una fuente canónica. Adaptadores por agente. Sin megaprompts.</text>
-  <rect x="925" y="444" width="193" height="91" fill="#0B1739"/>
-  <text x="948" y="481" fill="#2FD6A2" font-family="monospace" font-size="16">SOURCE  04</text>
-  <text x="948" y="510" fill="#F4F1E8" font-family="monospace" font-size="16">STATUS  READY</text>
+  <rect width="1200" height="630" fill="#F3F1EE"/>
+  <path d="M64 64h1072M64 566h1072M64 64v502M1136 64v502" stroke="#242322" stroke-opacity=".18"/>
+  <g transform="translate(86 92)" fill="none" stroke="#0F2C24" stroke-width="5" stroke-linecap="square">
+    <path d="M0 0l15 20M15 0 0 20M25 0l15 20M40 0 25 20M50 0l15 20M65 0 50 20"/>
+    <path d="M15 29h35M32.5 29v24"/>
+  </g>
+  <path d="M101 112l17.5 14 17.5-14" fill="none" stroke="#46617E" stroke-width="2"/>
+  <text x="180" y="133" fill="#242322" font-family="Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="-1">contexxxt</text>
+  <text x="86" y="300" fill="#242322" font-family="Arial, sans-serif" font-size="72" font-weight="700" letter-spacing="-4">Give agents the context</text>
+  <text x="86" y="386" fill="#242322" font-family="Arial, sans-serif" font-size="72" font-weight="700" letter-spacing="-4">the task actually needs.</text>
+  <text x="88" y="458" fill="#46617E" font-family="Georgia, serif" font-size="42" font-style="italic">less context, more understanding</text>
+  <rect x="862" y="494" width="274" height="72" fill="#0F2C24"/>
+  <text x="886" y="522" fill="#AFC0B8" font-family="monospace" font-size="13" letter-spacing="1">ADAPTIVE CONTEXT COMPILER</text>
+  <text x="886" y="548" fill="#F3F1EE" font-family="monospace" font-size="13">PROJECT → PACKET → AGENT</text>
 </svg>

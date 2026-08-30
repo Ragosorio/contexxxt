@@ -1,0 +1,18 @@
+---
+interface Props {
+  size?: number;
+  label?: string;
+  wordmark?: boolean;
+}
+
+const { size = 32, label = 'contexxxt', wordmark = false } = Astro.props;
+---
+
+<span class="brand-lockup" aria-label={label}>
+  <svg class="brand-mark" width={size} height={size} viewBox="0 0 48 48" aria-hidden="true">
+    <path d="M4 10 13 22M13 10 4 22M18 10l9 12M27 10l-9 12M32 10l9 12M41 10l-9 12" />
+    <path d="M13 27h22M24 27v12" />
+    <path class="brand-mark__spine" d="M13 22 24 31 35 22" />
+  </svg>
+  {wordmark && <span class="brand-wordmark">contexxxt</span>}
+</span>

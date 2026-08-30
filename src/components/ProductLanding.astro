@@ -1,0 +1,180 @@
+---
+import ContextPacket from './ContextPacket.astro';
+import SystemDiagram from './SystemDiagram.astro';
+
+interface Props { lang: 'en' | 'es' }
+const { lang } = Astro.props;
+const es = lang === 'es';
+const c = es ? {
+  eyebrow: 'CÓDIGO ABIERTO · CONTEXT ENGINEERING · RC 0.2',
+  hero: 'Dale al agente el contexto que la tarea necesita.',
+  heroAccent: 'menos contexto, más entendimiento',
+  intro: 'contexxxt es un compilador adaptativo de contexto para agentes de software. Inspecciona el proyecto, estructura evidencia y produce un ContextPacket acotado para la tarea actual.',
+  explore: 'Explorar la arquitectura', docs: 'Leer documentación',
+  problemLabel: '01 · EL PROBLEMA', problem: 'Ver el código no significa entender el proyecto.',
+  problemBody: 'Un agente puede leer archivos y aun así perder la decisión que gobierna un módulo, una restricción de alcance o la razón detrás de una prueba. Más texto no resuelve una fuente de verdad débil.',
+  thesisLabel: '02 · LA TESIS', thesis: 'La IA solo es tan útil como el contexto que puede recuperar en el momento correcto.',
+  flowNote: 'Proyecto → evidencia → contexto acotado → ejecución verificable.',
+  productLabel: '03 · EL PRODUCTO', product: 'Un compilador, no otro depósito de memoria.',
+  productBody: 'contexxxt convierte el repositorio en un Modelo de Proyecto respaldado por evidencia. Después consulta, resuelve y compila solo lo aplicable a la tarea.',
+  sevenLabel: '04 · RESOLUCIÓN 7Q', seven: 'Siete dimensiones. Solo las que importan ahora.',
+  sevenBody: 'No son siete preguntas para la persona. Para cada tarea, contexxxt decide qué dimensiones hacen falta y si están resueltas, parciales, desconocidas, en conflicto, obsoletas o no requeridas.',
+  questions: [['WHAT','Qué cambia'],['WHY','Por qué existe'],['HOW','Cómo funciona'],['FOR WHAT','Para qué sirve'],['WHICH','Cuál aplica'],['WHO','Quién decide'],['WHERE','Dónde vive']],
+  states: ['RESUELTO','PARCIAL','DESCONOCIDO','EN CONFLICTO','OBSOLETO','NO REQUERIDO'],
+  artifactLabel: '05 · EL ARTEFACTO', artifact: 'Contexto que se puede inspeccionar.',
+  artifactBody: 'Cada paquete explica qué incluyó, de dónde vino, qué quedó fuera y cómo verificar el trabajo. El modelo canónico permanece en disco; el agente recibe una selección pequeña.',
+  disclosureLabel: '06 · DIVULGACIÓN PROGRESIVA', disclosure: 'El conocimiento puede ser grande en disco. El contexto debe ser pequeño en el modelo.',
+  evidence: '87 unidades de evidencia', knowledge: '12 KnowledgeUnits relevantes', packet: '10,042 B ContextPacket',
+  measured: 'Medido en el modelo dogfood actual para packages/cli/src/query/query.mjs con budget de 10 kB.',
+  nativeLabel: '07 · ESTRUCTURA', native: 'Funciona solo. Ve más cuando puede.',
+  nativeBody: 'El proveedor Native inspecciona Git, archivos, manifests, CI, tests, documentación e instrucciones sin ejecutar el proyecto. Codebase Memory es un acelerador estructural opcional para símbolos, llamadas y dependencias; nunca es requisito.',
+  learnLabel: '08 · APRENDER SIN AUTOMODIFICARSE A CIEGAS', learn: 'Generado no significa promovido.',
+  learnBody: 'La ejecución produce observaciones. Las observaciones pueden sostener candidatos. Un candidato solo se promueve si una evaluación demuestra valor sobre el ContextPacket solo.',
+  learnSteps: ['Ejecución','Observación','Candidato','Evaluación','Promover / rechazar'],
+  evalLabel: '09 · EVALUACIÓN ACOTADA', eval: 'La ausencia de mejora también es evidencia.',
+  evalBody: 'En la suite conductual actual, Codex y Claude Code obtuvieron un puntaje mayor con ContextPacket que en baseline. La skill generada no mejoró el resultado sobre ContextPacket solo, por lo que no fue promovida.',
+  baseline: 'Baseline', context: 'ContextPacket', candidate: '+ skill candidata', bounded: 'Evaluación acotada actual · no es una afirmación general de calidad de modelo',
+  dxLabel: '10 · EXPERIENCIA DE DESARROLLO', dx: 'La arquitectura aparece en la CLI.',
+  dxBody: 'Comandos reales del RC local. El canal público npm continúa en 0.1.0; la versión 0.2.0-rc.1 no se anuncia como publicada.',
+  agentsLabel: '11 · AGENTES', agents: 'Un núcleo. Adaptadores mínimos.',
+  agentsBody: 'Codex y Claude Code consumen el mismo contrato del núcleo mediante adaptadores separados. Sus métricas y capacidades se reportan por proveedor, sin fingir paridad interna.',
+  architectureLabel: '12 · ARQUITECTURA', architecture: 'Evidencia antes de contexto. Evaluación antes de promoción.',
+  architectureBody: 'La consulta determinista permanece separada del resolvedor semántico. Native siempre está disponible; Codebase Memory entra como evidencia estructural opcional.',
+  installLabel: '13 · EMPEZAR', install: 'Elige el canal que realmente existe.',
+  installBody: 'La versión pública estable es 0.1.0. Para explorar el núcleo RC, clona el repositorio y usa los comandos locales documentados.',
+  publicChannel: 'Canal público', sourceChannel: 'RC desde fuente', copy: 'Copiar', copied: 'Copiado',
+  final: 'Compila el contexto. Después deja trabajar al agente.', finalBody: 'Menos contexto. Mejor contexto. Mejor evidencia. Mejor entendimiento de la tarea.',
+  github: 'Ver en GitHub', evaluation: 'Leer evaluación', architectureLink: 'Documento de arquitectura',
+} : {
+  eyebrow: 'OPEN SOURCE · CONTEXT ENGINEERING · RC 0.2',
+  hero: 'Give agents the context the task actually needs.',
+  heroAccent: 'less context, more understanding',
+  intro: 'contexxxt is an adaptive context compiler for software agents. It inspects the project, structures evidence, and produces a bounded ContextPacket for the task at hand.',
+  explore: 'Explore the architecture', docs: 'Read the docs',
+  problemLabel: '01 · THE PROBLEM', problem: 'Seeing the code is not the same as understanding the project.',
+  problemBody: 'An agent can read files and still miss the decision governing a module, a scope constraint, or the reason behind a test. More text does not repair a weak source of truth.',
+  thesisLabel: '02 · THE THESIS', thesis: 'AI is only as useful as the context it can retrieve at the right moment.',
+  flowNote: 'Project → evidence → bounded context → verifiable execution.',
+  productLabel: '03 · THE PRODUCT', product: 'A compiler, not another memory warehouse.',
+  productBody: 'contexxxt turns the repository into an evidence-backed Project Model. It then queries, resolves, and compiles only what applies to the task.',
+  sevenLabel: '04 · 7Q RESOLUTION', seven: 'Seven dimensions. Only the ones that matter now.',
+  sevenBody: 'They are not seven questions for the user. For each task, contexxxt determines which dimensions are required and whether they are resolved, partial, unknown, conflicted, stale, or not required.',
+  questions: [['WHAT','Current state'],['WHY','Cause and intent'],['HOW','Mechanism'],['FOR WHAT','Purpose'],['WHICH','Applicable choice'],['WHO','Actor and authority'],['WHERE','Scope and location']],
+  states: ['RESOLVED','PARTIAL','UNKNOWN','CONFLICTED','STALE','NOT REQUIRED'],
+  artifactLabel: '05 · THE ARTIFACT', artifact: 'Context you can inspect.',
+  artifactBody: 'Every packet explains what was included, where it came from, what stayed out, and how to verify the work. The canonical model remains on disk; the agent receives a small selection.',
+  disclosureLabel: '06 · PROGRESSIVE DISCLOSURE', disclosure: 'Knowledge can be large on disk. Context must stay small in the model.',
+  evidence: '87 evidence units', knowledge: '12 relevant KnowledgeUnits', packet: '10,042 B ContextPacket',
+  measured: 'Measured on the current dogfood model for packages/cli/src/query/query.mjs under a 10 kB budget.',
+  nativeLabel: '07 · STRUCTURE', native: 'Works alone. Sees more when it can.',
+  nativeBody: 'The Native provider inspects Git, files, manifests, CI, tests, docs, and instructions without executing the project. Codebase Memory is an optional structural accelerator for symbols, calls, and dependencies; it is never required.',
+  learnLabel: '08 · LEARNING WITHOUT BLIND SELF-MODIFICATION', learn: 'Generated does not mean promoted.',
+  learnBody: 'Execution produces observations. Observations may support candidates. A candidate is promoted only when evaluation demonstrates value beyond the ContextPacket alone.',
+  learnSteps: ['Execution','Observation','Candidate','Evaluation','Promote / reject'],
+  evalLabel: '09 · BOUNDED EVALUATION', eval: 'No improvement is evidence too.',
+  evalBody: 'In the current behavioral suite, Codex and Claude Code scored higher with the ContextPacket than at baseline. The generated skill did not improve the result beyond ContextPacket alone, so it was not promoted.',
+  baseline: 'Baseline', context: 'ContextPacket', candidate: '+ candidate skill', bounded: 'Current bounded evaluation · not a general model-quality claim',
+  dxLabel: '10 · DEVELOPER EXPERIENCE', dx: 'The architecture shows up in the CLI.',
+  dxBody: 'Real commands from the local RC. The public npm channel remains at 0.1.0; version 0.2.0-rc.1 is not presented as published.',
+  agentsLabel: '11 · AGENTS', agents: 'One core. Minimal adapters.',
+  agentsBody: 'Codex and Claude Code consume the same core contract through separate adapters. Their metrics and capabilities remain provider-specific; internal parity is never implied.',
+  architectureLabel: '12 · ARCHITECTURE', architecture: 'Evidence before context. Evaluation before promotion.',
+  architectureBody: 'Deterministic retrieval stays separate from semantic resolution. Native is always available; Codebase Memory enters as optional structural evidence.',
+  installLabel: '13 · GET STARTED', install: 'Choose the channel that actually exists.',
+  installBody: 'The public stable version is 0.1.0. To explore the RC core, clone the repository and use the documented local commands.',
+  publicChannel: 'Public channel', sourceChannel: 'RC from source', copy: 'Copy', copied: 'Copied',
+  final: 'Compile the context. Then let the agent work.', finalBody: 'Less context. Better context. Better evidence. Better task understanding.',
+  github: 'View on GitHub', evaluation: 'Read the evaluation', architectureLink: 'Architecture document',
+};
+const commands = ['contexxxt inspect .','contexxxt model build --root .','contexxxt model validate --root .','contexxxt context packages/cli/src/query/query.mjs --root .','contexxxt resolve --target packages/cli/src/query/query.mjs --intent "Add a query filter" --root .','contexxxt eval behavioral evals/core-behavioral.json --host codex --variant baseline,context,candidate'];
+---
+
+<section class="hero section-shell" aria-labelledby="hero-title">
+  <div class="hero__copy">
+    <p class="eyebrow">{c.eyebrow}</p>
+    <h1 id="hero-title">{c.hero}</h1>
+    <p class="hero__accent"><em>{c.heroAccent}</em></p>
+    <p class="hero__intro">{c.intro}</p>
+    <div class="actions"><a class="button button--primary" href="#architecture">{c.explore}</a><a class="button button--quiet" href="/docs/">{c.docs}</a></div>
+  </div>
+  <div class="hero__artifact" aria-hidden="true"><ContextPacket lang={lang} /></div>
+  <div class="hero__flow"><SystemDiagram lang={lang} variant="simple" /></div>
+</section>
+
+<section id="problem" class="manifesto section-shell section-rule" aria-labelledby="problem-title">
+  <div class="section-index"><p class="eyebrow">{c.problemLabel}</p></div>
+  <div class="manifesto__body"><h2 id="problem-title">{c.problem}</h2><p>{c.problemBody}</p></div>
+  <aside class="manifesto__thesis"><p class="eyebrow">{c.thesisLabel}</p><blockquote>{c.thesis}</blockquote><span>{c.flowNote}</span></aside>
+</section>
+
+<section class="product-statement section-shell section-rule" aria-labelledby="product-title">
+  <p class="eyebrow">{c.productLabel}</p><h2 id="product-title">{c.product}</h2><p>{c.productBody}</p>
+  <div class="material-line" aria-hidden="true"><span></span><span></span><span></span></div>
+</section>
+
+<section class="seven-q section-shell section-rule" aria-labelledby="seven-title">
+  <header class="section-heading"><p class="eyebrow">{c.sevenLabel}</p><h2 id="seven-title">{c.seven}</h2><p>{c.sevenBody}</p></header>
+  <div class="questions-plate">
+    {c.questions.map(([name,desc], index) => <article class:list={['question', index === 1 && 'question--active']}><span>0{index + 1}</span><h3>{name}</h3><p>{desc}</p><div class="state-line"><i></i><b>{index === 5 ? c.states[5] : index === 4 ? c.states[1] : c.states[0]}</b></div></article>)}
+  </div>
+  <div class="state-key"><span><i class="resolved"></i>{c.states[0]}</span><span><i class="partial"></i>{c.states[1]}</span><span><i class="unknown"></i>{c.states[2]}</span><span><i class="conflicted"></i>{c.states[3]}</span><span><i class="stale"></i>{c.states[4]}</span><span><i class="not-required"></i>{c.states[5]}</span></div>
+</section>
+
+<section class="artifact-section section-shell section-rule" aria-labelledby="artifact-title">
+  <div class="section-heading"><p class="eyebrow">{c.artifactLabel}</p><h2 id="artifact-title">{c.artifact}</h2><p>{c.artifactBody}</p></div>
+  <ContextPacket lang={lang} />
+</section>
+
+<section class="disclosure section-shell section-rule" aria-labelledby="disclosure-title">
+  <header class="section-heading"><p class="eyebrow">{c.disclosureLabel}</p><h2 id="disclosure-title">{c.disclosure}</h2></header>
+  <div class="funnel" aria-label={c.measured}>
+    <div><span>01</span><strong>87</strong><p>{c.evidence}</p></div><i>↓</i><div><span>02</span><strong>12</strong><p>{c.knowledge}</p></div><i>↓</i><div class="funnel__result"><span>03</span><strong>10,042 B</strong><p>{c.packet}</p></div>
+  </div><p class="measure-note">{c.measured}</p>
+</section>
+
+<section class="native section-shell section-rule" aria-labelledby="native-title">
+  <div class="section-heading"><p class="eyebrow">{c.nativeLabel}</p><h2 id="native-title">{c.native}</h2><p>{c.nativeBody}</p></div>
+  <div class="provider-plate"><div><span class="micro-label">ALWAYS AVAILABLE</span><h3>Native</h3><p>Git · filesystem · manifests · CI · tests · docs · instructions</p></div><div><span class="micro-label">OPTIONAL ACCELERATOR</span><h3>Codebase Memory</h3><p>symbols · callers · data flow · structural impact</p></div></div>
+</section>
+
+<section class="learning section-shell section-rule" aria-labelledby="learn-title">
+  <header class="section-heading"><p class="eyebrow">{c.learnLabel}</p><h2 id="learn-title">{c.learn}</h2><p>{c.learnBody}</p></header>
+  <ol class="learning-flow">{c.learnSteps.map((step,index) => <li class:list={[index === 3 && 'is-focal']}><span>0{index + 1}</span><strong>{step}</strong>{index < 4 && <i aria-hidden="true">→</i>}</li>)}</ol>
+</section>
+
+<section id="evaluation" class="evaluation section-shell section-rule" aria-labelledby="eval-title">
+  <header class="section-heading"><p class="eyebrow">{c.evalLabel}</p><h2 id="eval-title">{c.eval}</h2><p>{c.evalBody}</p></header>
+  <div class="eval-grid">
+    {['Codex','Claude Code'].map(agent => <article class="eval-plate"><header><h3>{agent}</h3><span>2 CASES · 3 VARIANTS</span></header><div class="metric"><span>{c.baseline}</span><b>0.475</b><i style="--score:47.5%"></i></div><div class="metric metric--focal"><span>{c.context}</span><b>1.00</b><i style="--score:100%"></i></div><div class="metric"><span>{c.candidate}</span><b>1.00</b><i style="--score:100%"></i></div><footer>SKILL VALUE Δ 0 · NOT PROMOTED</footer></article>)}
+  </div><p class="bounded-note">{c.bounded}</p>
+</section>
+
+<section class="developer section-shell section-rule" aria-labelledby="dx-title">
+  <header class="section-heading"><p class="eyebrow">{c.dxLabel}</p><h2 id="dx-title">{c.dx}</h2><p>{c.dxBody}</p></header>
+  <div class="terminal" role="region" aria-label="contexxxt CLI"><div class="terminal__bar"><span>contexxxt / 0.2.0-rc.1 / local source</span><i></i></div>{commands.map((command,index) => <div class="command"><span>{String(index + 1).padStart(2,'0')}</span><code>{command}</code><button type="button" data-copy={command} data-label={c.copy} data-copied-label={c.copied} aria-label={`${c.copy}: ${command}`}>{c.copy}</button></div>)}</div>
+</section>
+
+<section class="agents section-shell section-rule" aria-labelledby="agents-title"><div class="section-heading"><p class="eyebrow">{c.agentsLabel}</p><h2 id="agents-title">{c.agents}</h2><p>{c.agentsBody}</p></div><div class="agent-lockups"><div><span>01</span><strong>Codex</strong><small>ADAPTER · VERIFIED</small></div><div><span>02</span><strong>Claude Code</strong><small>ADAPTER · VERIFIED</small></div></div></section>
+
+<section id="architecture" class="architecture section-shell section-rule" aria-labelledby="architecture-title"><header class="section-heading"><p class="eyebrow">{c.architectureLabel}</p><h2 id="architecture-title">{c.architecture}</h2><p>{c.architectureBody}</p></header><div class="diagram-frame"><SystemDiagram lang={lang} /><footer><span>DIAGRAM DESIGN · DOC-WIDE · MIXED AUDIENCE</span><a href="https://github.com/Ragosorio/contexxxt/blob/main/docs/ARCHITECTURE.md">{c.architectureLink} ↗</a></footer></div></section>
+
+<section class="install section-shell section-rule" aria-labelledby="install-title"><header class="section-heading"><p class="eyebrow">{c.installLabel}</p><h2 id="install-title">{c.install}</h2><p>{c.installBody}</p></header><div class="install-grid"><article><span class="micro-label">{c.publicChannel} · NPM 0.1.0</span><code>npx contexxxt@0.1.0 --help</code></article><article><span class="micro-label">{c.sourceChannel} · 0.2.0-rc.1</span><code>git clone https://github.com/Ragosorio/contexxxt.git</code></article></div></section>
+
+<section class="final-cta section-shell" aria-labelledby="final-title"><p class="eyebrow">CONTEXXXT · ADAPTIVE CONTEXT COMPILER</p><h2 id="final-title">{c.final}</h2><p><em>{c.finalBody}</em></p><div class="actions"><a class="button button--ivory" href="https://github.com/Ragosorio/contexxxt">{c.github}</a><a class="button button--outline" href="https://github.com/Ragosorio/contexxxt/blob/main/docs/EVALUATION.md">{c.evaluation}</a></div></section>
+
+<p class="sr-only" aria-live="polite" id="copy-status"></p>
+<script>
+  const status = document.getElementById('copy-status');
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy]')) {
+    button.addEventListener('click', async () => {
+      const value = button.dataset.copy ?? '';
+      try {
+        await navigator.clipboard.writeText(value);
+        const original = button.dataset.label ?? 'Copy';
+        button.textContent = button.dataset.copiedLabel ?? 'Copied';
+        status && (status.textContent = `${button.textContent}: ${value}`);
+        window.setTimeout(() => { button.textContent = original; }, 1600);
+      } catch { status && (status.textContent = value); }
+    });
+  }
+</script>
