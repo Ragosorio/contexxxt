@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "id": "observation.phase6.learning-pipeline",
+  "task": {
+    "intent": "Implement structured observations, drift, and learning candidate lifecycle",
+    "target": "packages/cli/src/learning"
+  },
+  "revision": {
+    "before": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+    "after": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+    "dirty": true
+  },
+  "verification": [
+    {
+      "id": "verification.phase6.check",
+      "status": "passed",
+      "summary": "Astro diagnostics and 71 accumulated CLI tests passed; the content gate passed after removing a local-path fixture.",
+      "command": "pnpm check"
+    }
+  ],
+  "assertions": [
+    {
+      "id": "assertion.phase6.public-core-gate",
+      "kind": "new_procedure",
+      "statement": "Every new public core command requires contract tests, public CLI dogfood, explicit fallback or failure behavior, and truth-bound documentation before its phase gate closes.",
+      "scopes": [
+        {
+          "kind": "package",
+          "value": "packages/cli"
+        }
+      ],
+      "confidence": 0.95,
+      "authority": "supporting",
+      "evidence_refs": [
+        "verification.phase6.check"
+      ],
+      "repeat_key": "public-core-phase-gate",
+      "risk": "low",
+      "suggested_form": "procedure"
+    }
+  ],
+  "observed_at": "2026-08-29T20:00:00.000Z"
+}

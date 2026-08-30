@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "id": "observation.phase5.structural-provider",
+  "task": {
+    "intent": "Implement the optional Codebase Memory structural provider with Native fallback",
+    "target": "packages/cli/src/structural"
+  },
+  "revision": {
+    "before": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+    "after": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+    "dirty": true
+  },
+  "verification": [
+    {
+      "id": "verification.phase5.cli-tests",
+      "status": "passed",
+      "summary": "The accumulated CLI suite passed 63 tests after Phase 5.",
+      "command": "node --test packages/cli/test/*.test.mjs"
+    }
+  ],
+  "assertions": [
+    {
+      "id": "assertion.phase5.public-core-gate",
+      "kind": "new_procedure",
+      "statement": "Every new public core command requires contract tests, public CLI dogfood, explicit fallback or failure behavior, and truth-bound documentation before its phase gate closes.",
+      "scopes": [
+        {
+          "kind": "package",
+          "value": "packages/cli"
+        }
+      ],
+      "confidence": 0.9,
+      "authority": "supporting",
+      "evidence_refs": [
+        "verification.phase5.cli-tests"
+      ],
+      "repeat_key": "public-core-phase-gate",
+      "risk": "low",
+      "suggested_form": "procedure"
+    }
+  ],
+  "observed_at": "2026-08-29T19:45:00.000Z"
+}

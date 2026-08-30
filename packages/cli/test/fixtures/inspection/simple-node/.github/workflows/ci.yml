@@ -1,0 +1,12 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm test
+      - run: |
+          npm run build
+          node scripts/check-output.mjs

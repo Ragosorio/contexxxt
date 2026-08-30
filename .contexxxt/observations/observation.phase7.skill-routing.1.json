@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "id": "observation.phase7.skill-routing.1",
+  "task": {
+    "intent": "Route Phase 5 structural-provider work through public contexxxt contracts",
+    "target": "packages/cli/src/structural"
+  },
+  "revision": {
+    "before": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+    "after": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+    "dirty": true
+  },
+  "verification": [
+    {
+      "id": "verification.phase7.routing.1",
+      "status": "passed",
+      "summary": "Phase 5 used resolve, public CLI dogfood, focused tests, and structured observation."
+    }
+  ],
+  "assertions": [
+    {
+      "id": "assertion.phase7.skill-routing.1",
+      "kind": "possible_skill",
+      "statement": "Route non-trivial contexxxt core changes through the public resolve, verification, and observation loop.",
+      "scopes": [
+        {
+          "kind": "package",
+          "value": "packages/cli"
+        }
+      ],
+      "confidence": 0.92,
+      "authority": "supporting",
+      "evidence_refs": [
+        "verification.phase7.routing.1"
+      ],
+      "repeat_key": "contexxxt-core-development-routing",
+      "risk": "low",
+      "suggested_form": "skill",
+      "skill_contract": {
+        "name": "contexxxt-core-development",
+        "description": "Use for non-trivial changes to contexxxt core commands, Project Model contracts, Query Layer, resolver, providers, learning, skills, or evals. Route the task through contexxxt resolve, scoped retrieval, verification, and structured observation.",
+        "positive_triggers": [
+          "Add a new filter to the contexxxt Query Layer and preserve deterministic budgets.",
+          "Change the Project Model schema and update the resolver contract safely."
+        ],
+        "negative_triggers": [
+          "Fix a typo in the public landing page heading without changing product behavior.",
+          "Explain what contexxxt is without modifying files or running a development workflow."
+        ],
+        "boundary_triggers": [
+          {
+            "prompt": "Update README wording because a core command changed its actual behavior.",
+            "should_trigger": true
+          },
+          {
+            "prompt": "Translate one README sentence with no product claim change.",
+            "should_trigger": false
+          }
+        ],
+        "workflow": [
+          "Run contexxxt resolve for the target and human intent, then inspect only unresolved decision-relevant gaps.",
+          "Implement the smallest coherent change while respecting the packet constraints and source authority.",
+          "Run deterministic verification from the packet and capture an ExecutionObservation without transcript or secrets."
+        ],
+        "verification": [
+          "Run the relevant focused tests and pnpm check before closing a core phase gate.",
+          "Confirm generated artifacts are no-clobber and the Project Model did not change silently."
+        ]
+      }
+    }
+  ],
+  "observed_at": "2026-08-29T20:20:00.000Z"
+}

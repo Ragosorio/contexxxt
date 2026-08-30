@@ -1,7 +1,7 @@
 {
   "name": "contexxxt",
-  "version": "0.1.0",
-  "description": "Context engineering toolkit for human prompts, agent projects, memory and provider adapters.",
+  "version": "0.2.0-rc.1",
+  "description": "Adaptive context compiler with a deterministic Project Model query layer for software agents.",
   "type": "module",
   "bin": {
     "contexxxt": "bin/contexxxt.mjs"
@@ -9,6 +9,7 @@
   "files": [
     "bin",
     "src",
+    "schemas",
     "runtime",
     "README.md",
     "LICENSE",

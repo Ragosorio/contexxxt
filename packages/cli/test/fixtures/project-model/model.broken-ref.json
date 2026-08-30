@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.1.0",
+  "project": { "id": "broken-fixture", "name": "Broken fixture" },
+  "snapshot": { "id": "broken-fixture.snapshot", "created_at": "2026-08-28T12:00:00Z", "as_of": "2026-08-28" },
+  "evidence": [],
+  "knowledge": [
+    {
+      "id": "broken.reference",
+      "type": "fact",
+      "summary": "This unit references missing evidence.",
+      "statement": "The missing evidence reference must be detected.",
+      "dimensions": { "what": "complete" },
+      "scopes": [{ "kind": "project", "value": "broken-fixture" }],
+      "evidence": ["ev.missing"],
+      "provenance": { "created_by": "human", "method": "declared", "created_at": "2026-08-28T12:00:00Z" },
+      "authority": { "level": "unknown", "subject": "fixture" },
+      "confidence": 0.5,
+      "validity": { "observed_at": "2026-08-28T12:00:00Z" },
+      "status": "active"
+    }
+  ]
+}

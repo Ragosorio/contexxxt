@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contexxxt.dev/schemas/execution-observation-1.0.0.json",
+  "title": "contexxxt Execution Observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "task", "revision", "verification", "assertions", "observed_at"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "id": { "$ref": "#/$defs/id" },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["intent", "target"],
+      "properties": {
+        "intent": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "target": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "resolution_id": { "$ref": "#/$defs/id" }
+      }
+    },
+    "revision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["before", "after", "dirty"],
+      "properties": {
+        "before": { "type": "string", "minLength": 7, "maxLength": 64 },
+        "after": { "type": "string", "minLength": 7, "maxLength": 64 },
+        "dirty": { "type": "boolean" }
+      }
+    },
+    "verification": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "summary"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "status": { "enum": ["passed", "failed", "skipped"] },
+          "summary": { "type": "string", "minLength": 1, "maxLength": 500 },
+          "command": { "type": "string", "minLength": 1, "maxLength": 500 },
+          "duration_ms": { "type": "integer", "minimum": 0 },
+          "artifact": { "type": "string", "minLength": 1, "maxLength": 1000 }
+        }
+      }
+    },
+    "assertions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/assertion" }
+    },
+    "observed_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "id": { "type": "string", "minLength": 3, "maxLength": 160, "pattern": "^[a-z0-9][a-z0-9._:-]*$" },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": { "enum": ["project", "workspace", "package", "directory", "file", "symbol", "route", "service", "domain", "environment", "surface"] },
+        "value": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "match": { "enum": ["exact", "prefix", "glob"] }
+      }
+    },
+    "assertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "statement", "scopes", "confidence", "authority", "evidence_refs"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "enum": ["new_fact", "new_constraint", "new_decision", "new_procedure", "reinforced", "contradicted", "stale", "possible_skill"] },
+        "statement": { "type": "string", "minLength": 1, "maxLength": 4000 },
+        "scopes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/scope" } },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "authority": { "enum": ["governing", "authoritative", "supporting", "observational", "unknown"] },
+        "evidence_refs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/id" } },
+        "knowledge_id": { "$ref": "#/$defs/id" },
+        "repeat_key": { "type": "string", "minLength": 1, "maxLength": 240 },
+        "risk": { "enum": ["low", "medium", "high", "critical"] },
+        "suggested_form": { "enum": ["knowledge", "constraint", "decision", "procedure", "validator", "skill", "none"] }
+        ,"skill_contract": { "$ref": "#/$defs/skillContract" }
+      }
+    },
+    "skillContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "description", "positive_triggers", "negative_triggers", "boundary_triggers", "workflow", "verification"],
+      "properties": {
+        "name": { "type": "string", "minLength": 3, "maxLength": 64, "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "description": { "type": "string", "minLength": 20, "maxLength": 500 },
+        "positive_triggers": { "type": "array", "minItems": 2, "uniqueItems": true, "items": { "type": "string", "minLength": 10, "maxLength": 500 } },
+        "negative_triggers": { "type": "array", "minItems": 2, "uniqueItems": true, "items": { "type": "string", "minLength": 10, "maxLength": 500 } },
+        "boundary_triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["prompt", "should_trigger"],
+            "properties": {
+              "prompt": { "type": "string", "minLength": 10, "maxLength": 500 },
+              "should_trigger": { "type": "boolean" }
+            }
+          }
+        },
+        "workflow": { "type": "array", "minItems": 2, "uniqueItems": true, "items": { "type": "string", "minLength": 10, "maxLength": 1000 } },
+        "verification": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 5, "maxLength": 500 } }
+      }
+    }
+  }
+}

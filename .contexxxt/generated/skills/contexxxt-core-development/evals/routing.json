@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "cases": [
+    {
+      "prompt": "Add a new filter to the contexxxt Query Layer and preserve deterministic budgets.",
+      "should_trigger": true,
+      "class": "positive"
+    },
+    {
+      "prompt": "Change the Project Model schema and update the resolver contract safely.",
+      "should_trigger": true,
+      "class": "positive"
+    },
+    {
+      "prompt": "Fix a typo in the public landing page heading without changing product behavior.",
+      "should_trigger": false,
+      "class": "negative"
+    },
+    {
+      "prompt": "Explain what contexxxt is without modifying files or running a development workflow.",
+      "should_trigger": false,
+      "class": "negative"
+    },
+    {
+      "prompt": "Update README wording because a core command changed its actual behavior.",
+      "should_trigger": true,
+      "class": "boundary"
+    },
+    {
+      "prompt": "Translate one README sentence with no product claim change.",
+      "should_trigger": false,
+      "class": "boundary"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "skill_name": "contexxxt-core-development",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add a new filter to the contexxxt Query Layer and preserve deterministic budgets.",
+      "expected_output": "The skill should trigger and route the task through contexxxt resolve before implementation.",
+      "files": [],
+      "expectations": [
+        "The skill triggers.",
+        "A compact ContextPacket is requested before non-trivial work."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Change the Project Model schema and update the resolver contract safely.",
+      "expected_output": "The skill should trigger and route the task through contexxxt resolve before implementation.",
+      "files": [],
+      "expectations": [
+        "The skill triggers.",
+        "A compact ContextPacket is requested before non-trivial work."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Fix a typo in the public landing page heading without changing product behavior.",
+      "expected_output": "The skill should not trigger because the task does not need project-specific context compilation.",
+      "files": [],
+      "expectations": [
+        "The skill does not trigger."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Explain what contexxxt is without modifying files or running a development workflow.",
+      "expected_output": "The skill should not trigger because the task does not need project-specific context compilation.",
+      "files": [],
+      "expectations": [
+        "The skill does not trigger."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Update README wording because a core command changed its actual behavior.",
+      "expected_output": "The skill should trigger at this boundary.",
+      "files": [],
+      "expectations": [
+        "The skill triggers."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Translate one README sentence with no product claim change.",
+      "expected_output": "The skill should not trigger at this boundary.",
+      "files": [],
+      "expectations": [
+        "The skill does not trigger."
+      ]
+    }
+  ]
+}

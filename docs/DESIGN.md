@@ -25,6 +25,12 @@ La tipografía combina una sans utilitaria para interfaz, una serif editorial pa
 - Bordes rectos y radios mínimos.
 - Un registrador de contexto como demostración principal.
 
+## Diagramas de producto
+
+Los diagramas extienden Flight Ledger: papel mineral, azul noche, azul señal y colores de estado solo cuando expresan verificación, vigencia o conflicto. Usan SVG accesible dentro de HTML autocontenido; cada figura tiene título y descripción, conectores ortogonales, lectura estática completa y como máximo un foco visual principal.
+
+La fuente editable vive en `docs/diagrams/*.html`; el SVG con el mismo nombre es una exportación para README y documentación. No se usa Mermaid como canon visual. El diagrama debe distinguir explícitamente arquitectura objetivo de comportamiento implementado.
+
 ## Landing
 
 El hero parte de una petición imperfecta: “Arregla esto y déjalo listo”. Una demostración determinista muestra cómo se convierte en espacio, fuentes, contexto descartado, riesgo semántico, pregunta mínima y condición de cierre.

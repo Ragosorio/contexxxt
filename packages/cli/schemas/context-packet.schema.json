@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contexxxt.dev/schemas/context-packet-1.0.0.json",
+  "title": "contexxxt ContextPacket",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "task", "model_snapshot", "required_dimensions", "dimensions", "facts", "constraints", "decisions", "procedures", "risks", "relevant_sources", "unknowns", "conflicts", "assumptions", "questions", "verification_requirements", "inclusions", "omissions", "budget"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "id": { "type": "string", "minLength": 3 },
+    "task": { "type": "object" },
+    "model_snapshot": { "type": "string" },
+    "required_dimensions": { "type": "array", "uniqueItems": true, "items": { "enum": ["what", "why", "how", "for_what", "which", "who", "where"] } },
+    "dimensions": { "type": "object" },
+    "facts": { "$ref": "#/$defs/units" },
+    "constraints": { "$ref": "#/$defs/units" },
+    "decisions": { "$ref": "#/$defs/units" },
+    "procedures": { "$ref": "#/$defs/units" },
+    "risks": { "type": "array", "items": { "type": "string" } },
+    "relevant_sources": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+    "unknowns": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+    "conflicts": { "type": "array", "items": { "type": "object" } },
+    "assumptions": { "type": "array", "items": { "type": "string" } },
+    "questions": { "type": "array", "maxItems": 1, "items": { "type": "object" } },
+    "verification_requirements": { "type": "array", "items": { "type": "object" } },
+    "inclusions": { "type": "array", "items": { "type": "object" } },
+    "omissions": { "type": "array", "items": { "type": "object" } },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_bytes", "emitted_bytes", "estimated_tokens", "knowledge_units", "evidence_references", "retrieval_depth", "truncated", "omitted_knowledge"],
+      "properties": {
+        "max_bytes": { "type": "integer", "minimum": 1024 },
+        "emitted_bytes": { "type": "integer", "minimum": 0 },
+        "estimated_tokens": { "type": "integer", "minimum": 0 },
+        "knowledge_units": { "type": "integer", "minimum": 0 },
+        "evidence_references": { "type": "integer", "minimum": 0 },
+        "retrieval_depth": { "type": "integer", "minimum": 1 },
+        "truncated": { "type": "boolean" },
+        "omitted_knowledge": { "type": "integer", "minimum": 0 }
+      }
+    }
+  },
+  "$defs": {
+    "units": { "type": "array", "items": { "$ref": "#/$defs/unit" } },
+    "unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "summary", "statement", "authority", "confidence", "scopes", "evidence"],
+      "properties": {
+        "id": { "type": "string" }, "summary": { "type": "string" }, "statement": { "type": "string" },
+        "authority": { "type": "object" }, "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "scopes": { "type": "array", "items": { "type": "object" } },
+        "evidence": { "type": "array", "items": { "type": "string" } },
+        "additional_evidence": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

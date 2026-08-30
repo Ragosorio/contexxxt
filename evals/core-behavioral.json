@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "id": "contexxxt.core.behavioral.v1",
+  "candidate_skill": ".contexxxt/generated/skills/contexxxt-core-development",
+  "cases": [
+    {
+      "id": "query-resolver-boundary",
+      "target": "packages/cli/src/resolve/resolver.mjs",
+      "intent": "Explain why Query Layer is separate from the Resolver",
+      "prompt": "Explain why contexxxt keeps the Query Layer separate from the Resolver. State which side is deterministic, which side is semantic, and cite the governing KnowledgeUnit ID.",
+      "expected_terms": ["deterministic", "semantic"],
+      "forbidden_terms": ["Query Layer and Resolver are the same responsibility"],
+      "required_evidence_ids": ["contexxxt.architecture.query-resolver-separation"]
+    },
+    {
+      "id": "model-validation-command",
+      "target": "packages/cli/src/model/model.mjs",
+      "intent": "Identify the canonical Project Model and its validation command",
+      "prompt": "What is the canonical Project Model path, which executable schema governs it, and what exact public command validates it? Cite the relevant KnowledgeUnit ID and do not claim validation proves agent quality.",
+      "expected_terms": [".contexxxt/project-model.json", "packages/cli/schemas/project-model.schema.json", "contexxxt model validate"],
+      "forbidden_terms": ["validation proves agent quality"],
+      "required_evidence_ids": ["contexxxt.model.validation-contract"]
+    }
+  ]
+}

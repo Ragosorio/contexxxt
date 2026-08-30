@@ -1,0 +1,4236 @@
+{
+  "schema_version": "1.1.0",
+  "project": {
+    "id": "contexxxt",
+    "name": "contexxxt",
+    "repository": "https://github.com/Ragosorio/contexxxt"
+  },
+  "snapshot": {
+    "id": "contexxxt.snapshot.0a0249cb8a12f541",
+    "created_at": "2026-08-30T15:29:13.824Z",
+    "as_of": "2026-08-30",
+    "revision": {
+      "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+      "dirty": true
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev.contexxxt.architecture",
+      "type": "source_fragment",
+      "summary": "The architecture contract separates deterministic retrieval from semantic task resolution.",
+      "locator": {
+        "uri": "docs/ARCHITECTURE.md"
+      },
+      "digest": "6d8eea9918385bf68b07cd7c11b9a95747af16663370895e246ffc7e14483151",
+      "observed_at": "2026-08-28T23:15:00Z",
+      "provider": {
+        "id": "human",
+        "capabilities_used": [
+          "declared-architecture"
+        ]
+      },
+      "authority": {
+        "level": "governing",
+        "subject": "core component boundaries"
+      },
+      "sensitivity": "public"
+    },
+    {
+      "id": "ev.contexxxt.model-cli",
+      "type": "source_fragment",
+      "summary": "The public CLI declares model validate as the command that validates schema, IDs, and references.",
+      "locator": {
+        "uri": "packages/cli/src/commands.mjs",
+        "symbol": "helpText"
+      },
+      "digest": "05bd700734ae6ff2c918a915b52ff90af43f24109a8bb6706ef253fbb880e5e0",
+      "observed_at": "2026-08-29T22:12:47Z",
+      "provider": {
+        "id": "native",
+        "capabilities_used": [
+          "filesystem"
+        ]
+      },
+      "authority": {
+        "level": "authoritative",
+        "subject": "public Project Model validation command"
+      },
+      "sensitivity": "public"
+    },
+    {
+      "id": "ev.contexxxt.model-schema",
+      "type": "source_fragment",
+      "summary": "The packaged project-model.schema.json is the executable schema for Project Model version 1.1.0.",
+      "locator": {
+        "uri": "packages/cli/schemas/project-model.schema.json"
+      },
+      "digest": "2d15c456b5d0b6948e98969e1c426214600dd0046625e40aa1d1a92a5de61acd",
+      "observed_at": "2026-08-29T22:12:47Z",
+      "provider": {
+        "id": "native",
+        "capabilities_used": [
+          "filesystem"
+        ]
+      },
+      "authority": {
+        "level": "authoritative",
+        "subject": "executable Project Model shape"
+      },
+      "sensitivity": "public"
+    },
+    {
+      "id": "ev.contexxxt.model-validation-code",
+      "type": "repository_fact",
+      "summary": "The model runtime resolves the canonical path and validates schema plus semantic references before use.",
+      "locator": {
+        "uri": "packages/cli/src/model/model.mjs",
+        "symbol": "validateProjectModel"
+      },
+      "digest": "c18bb5a092d5c55b5133feeeccf16d9745118c7179f712deb0bf22d7bb014bb7",
+      "observed_at": "2026-08-29T22:12:47Z",
+      "provider": {
+        "id": "native",
+        "capabilities_used": [
+          "filesystem"
+        ]
+      },
+      "authority": {
+        "level": "authoritative",
+        "subject": "implemented Project Model validation behavior"
+      },
+      "sensitivity": "public"
+    },
+    {
+      "id": "ev.contexxxt.product",
+      "type": "source_fragment",
+      "summary": "The product contract defines contexxxt as an adaptive context and behavior compiler.",
+      "locator": {
+        "uri": "docs/PRODUCT.md"
+      },
+      "digest": "c647e3b6c9fc383fba5c20af20a57723a59d89cd86647422481b5f5e4ea7aabd",
+      "observed_at": "2026-08-28T18:00:00Z",
+      "provider": {
+        "id": "native",
+        "capabilities_used": [
+          "filesystem"
+        ]
+      },
+      "authority": {
+        "level": "governing",
+        "subject": "product contract"
+      },
+      "sensitivity": "public"
+    },
+    {
+      "id": "ev.contexxxt.project-model",
+      "type": "source_fragment",
+      "summary": "The Project Model specification defines canonical knowledge, provenance, scope, and validity.",
+      "locator": {
+        "uri": "docs/PROJECT_MODEL.md"
+      },
+      "digest": "da011e6beb713b96c7c4dc163e18b1f4d1e24ba36142b41b06d289ae59980b1d",
+      "observed_at": "2026-08-29T22:12:47Z",
+      "provider": {
+        "id": "native",
+        "capabilities_used": [
+          "filesystem"
+        ]
+      },
+      "authority": {
+        "level": "governing",
+        "subject": "Project Model contract"
+      },
+      "sensitivity": "public"
+    },
+    {
+      "id": "ev.contexxxt.query-code",
+      "type": "repository_fact",
+      "summary": "The CLI implements deterministic, budgeted query and target-context retrieval.",
+      "locator": {
+        "uri": "packages/cli/src/query/query.mjs"
+      },
+      "digest": "f50e471ef8580b26972d57d5a197a76300096de56e634d784789bae83400488a",
+      "observed_at": "2026-08-28T18:00:00Z",
+      "provider": {
+        "id": "native",
+        "capabilities_used": [
+          "filesystem"
+        ]
+      },
+      "authority": {
+        "level": "authoritative",
+        "subject": "implemented query behavior"
+      },
+      "sensitivity": "public"
+    },
+    {
+      "id": "ev.contexxxt.query-tests",
+      "type": "test_result",
+      "summary": "Deterministic fixtures test lookup, scopes, status, conflicts, budgets, ordering, and reproducibility.",
+      "locator": {
+        "uri": "packages/cli/test/model-query.test.mjs"
+      },
+      "digest": "f2412700c97117408c1abf71e934efee0722a2e8edf3bf484012a647c442795d",
+      "observed_at": "2026-08-28T18:00:00Z",
+      "provider": {
+        "id": "native",
+        "capabilities_used": [
+          "tests"
+        ]
+      },
+      "authority": {
+        "level": "supporting",
+        "subject": "Query Layer verification"
+      },
+      "sensitivity": "public"
+    },
+    {
+      "id": "inspection.ci.ci.command.211e2283fe8a",
+      "type": "repository_fact",
+      "summary": ".github/workflows/ci.yml declares a CI run command; it was not executed.",
+      "observation": {
+        "category": "ci",
+        "key": "ci.command",
+        "value": "{\"command\":\"pnpm build\",\"workflow\":\".github/workflows/ci.yml\"}"
+      },
+      "locator": {
+        "uri": ".github/workflows/ci.yml",
+        "symbol": "run.1"
+      },
+      "digest": "702e948d947e109310cb2bf19c157b5bb8142b88c87e02ae87a7594c9b797893",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "ci"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": ".github/workflows"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "ci.command"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.ci.ci.command.2fa43c9255b6",
+      "type": "repository_fact",
+      "summary": ".github/workflows/ci.yml declares a CI run command; it was not executed.",
+      "observation": {
+        "category": "ci",
+        "key": "ci.command",
+        "value": "{\"command\":\"pnpm --filter contexxxt pack --pack-destination /tmp\",\"workflow\":\".github/workflows/ci.yml\"}"
+      },
+      "locator": {
+        "uri": ".github/workflows/ci.yml",
+        "symbol": "run.0"
+      },
+      "digest": "364233793e6d8972906cd1a4b09180e7d825af2111a012bf3e4f09dfc1bc1cc4",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "ci"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": ".github/workflows"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "ci.command"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.ci.ci.command.4559d3ecc063",
+      "type": "repository_fact",
+      "summary": ".github/workflows/ci.yml declares a CI run command; it was not executed.",
+      "observation": {
+        "category": "ci",
+        "key": "ci.command",
+        "value": "{\"command\":\"pnpm install --frozen-lockfile\",\"workflow\":\".github/workflows/ci.yml\"}"
+      },
+      "locator": {
+        "uri": ".github/workflows/ci.yml",
+        "symbol": "run.3"
+      },
+      "digest": "f733afb2da73a36bd48778fd7502436e384741ad191367d97182afc4909130a5",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "ci"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": ".github/workflows"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "ci.command"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.ci.ci.command.5e81455ae9c1",
+      "type": "repository_fact",
+      "summary": ".github/workflows/ci.yml declares a CI run command; it was not executed.",
+      "observation": {
+        "category": "ci",
+        "key": "ci.command",
+        "value": "{\"command\":\"pnpm check\",\"workflow\":\".github/workflows/ci.yml\"}"
+      },
+      "locator": {
+        "uri": ".github/workflows/ci.yml",
+        "symbol": "run.2"
+      },
+      "digest": "6552223b93659279b99845a67f2dc3857e0bc30551e3dbb79340dd13bfe18dde",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "ci"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": ".github/workflows"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "ci.command"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.ci.ci.job.949046e7f0a6",
+      "type": "repository_fact",
+      "summary": ".github/workflows/ci.yml declares CI job verify.",
+      "observation": {
+        "category": "ci",
+        "key": "ci.job",
+        "value": "{\"job\":\"verify\",\"workflow\":\".github/workflows/ci.yml\"}"
+      },
+      "locator": {
+        "uri": ".github/workflows/ci.yml",
+        "symbol": "jobs.verify"
+      },
+      "digest": "fb1ea2412adf54bb7e5da69122fea425550c3c0d82385ac87fbee4ccb6e2c21d",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "ci"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": ".github/workflows"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "ci.job"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.ci.ci.workflow.1aec0e26c02c",
+      "type": "repository_fact",
+      "summary": ".github/workflows/ci.yml defines GitHub Actions workflow CI.",
+      "observation": {
+        "category": "ci",
+        "key": "ci.workflow",
+        "value": "{\"name\":\"CI\",\"path\":\".github/workflows/ci.yml\"}"
+      },
+      "locator": {
+        "uri": ".github/workflows/ci.yml"
+      },
+      "digest": "fed3a0c207cd8bce028a59630bf6b4d7b33c315156c26b2890b98d15842c4609",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "ci"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": ".github/workflows"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "ci.workflow"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.command.command.build.3bdcd50d7ba7",
+      "type": "repository_fact",
+      "summary": "package.json declares build command \"build\"; it was not executed.",
+      "observation": {
+        "category": "command",
+        "key": "command.build",
+        "value": "{\"category\":\"build\",\"command\":\"astro build\",\"name\":\"build\",\"package\":\"contexxxt-monorepo\",\"scope\":\".\"}"
+      },
+      "locator": {
+        "uri": "package.json",
+        "symbol": "scripts.build"
+      },
+      "digest": "c952295f13fc5bbec071633e787b1be116944a24ed1d6e72e02d7884a165a1ee",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "command"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "command.build"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.command.command.check.e2d1717342e4",
+      "type": "repository_fact",
+      "summary": "package.json declares check command \"check\"; it was not executed.",
+      "observation": {
+        "category": "command",
+        "key": "command.check",
+        "value": "{\"category\":\"check\",\"command\":\"astro check && pnpm test\",\"name\":\"check\",\"package\":\"contexxxt-monorepo\",\"scope\":\".\"}"
+      },
+      "locator": {
+        "uri": "package.json",
+        "symbol": "scripts.check"
+      },
+      "digest": "1f77b3faaa4311cadd691a53ea9e6697ca07573918040a00dc391568a24f52f2",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "command"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "command.check"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.command.command.dev.5476cb4dcf54",
+      "type": "repository_fact",
+      "summary": "package.json declares dev command \"start\"; it was not executed.",
+      "observation": {
+        "category": "command",
+        "key": "command.dev",
+        "value": "{\"category\":\"dev\",\"command\":\"astro dev\",\"name\":\"start\",\"package\":\"contexxxt-monorepo\",\"scope\":\".\"}"
+      },
+      "locator": {
+        "uri": "package.json",
+        "symbol": "scripts.start"
+      },
+      "digest": "da0e89f0fd0a5398c388601a1f130d9b56cb6ac674365786f0ef46533a0ec272",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "command"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "command.dev"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.command.command.dev.baed73da6eb3",
+      "type": "repository_fact",
+      "summary": "package.json declares dev command \"dev\"; it was not executed.",
+      "observation": {
+        "category": "command",
+        "key": "command.dev",
+        "value": "{\"category\":\"dev\",\"command\":\"astro dev\",\"name\":\"dev\",\"package\":\"contexxxt-monorepo\",\"scope\":\".\"}"
+      },
+      "locator": {
+        "uri": "package.json",
+        "symbol": "scripts.dev"
+      },
+      "digest": "da0e89f0fd0a5398c388601a1f130d9b56cb6ac674365786f0ef46533a0ec272",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "command"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "command.dev"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.command.command.test.85473511fafc",
+      "type": "repository_fact",
+      "summary": "package.json declares test command \"test:cli\"; it was not executed.",
+      "observation": {
+        "category": "command",
+        "key": "command.test",
+        "value": "{\"category\":\"test\",\"command\":\"node --test packages/cli/test/*.test.mjs\",\"name\":\"test:cli\",\"package\":\"contexxxt-monorepo\",\"scope\":\".\"}"
+      },
+      "locator": {
+        "uri": "package.json",
+        "symbol": "scripts.test:cli"
+      },
+      "digest": "61847b23998db1a445cb08440c827e782f70db2e4b14da1107c3d0ed372b2b6b",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "command"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "command.test"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.command.command.test.bd5c1c297b8a",
+      "type": "repository_fact",
+      "summary": "package.json declares test command \"test:content\"; it was not executed.",
+      "observation": {
+        "category": "command",
+        "key": "command.test",
+        "value": "{\"category\":\"test\",\"command\":\"node scripts/check-content.mjs\",\"name\":\"test:content\",\"package\":\"contexxxt-monorepo\",\"scope\":\".\"}"
+      },
+      "locator": {
+        "uri": "package.json",
+        "symbol": "scripts.test:content"
+      },
+      "digest": "52296327cd094a6fc5787eaa053dea897e5aca93c1418527122413429f4596a1",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "command"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "command.test"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.command.command.test.fa6bae076088",
+      "type": "repository_fact",
+      "summary": "package.json declares test command \"test\"; it was not executed.",
+      "observation": {
+        "category": "command",
+        "key": "command.test",
+        "value": "{\"category\":\"test\",\"command\":\"pnpm test:cli && pnpm test:content\",\"name\":\"test\",\"package\":\"contexxxt-monorepo\",\"scope\":\".\"}"
+      },
+      "locator": {
+        "uri": "package.json",
+        "symbol": "scripts.test"
+      },
+      "digest": "be038a438c5228be047d74d172fa9568f84555700ec00ff2d83a81d2fac987a7",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "command"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "command.test"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.architecture.0a88c7ca39e9",
+      "type": "repository_fact",
+      "summary": "docs/ARCHITECTURE.md was detected as architecture documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.architecture",
+        "value": "docs/ARCHITECTURE.md"
+      },
+      "locator": {
+        "uri": "docs/ARCHITECTURE.md"
+      },
+      "digest": "de10fede5d9bc23993bcf27b7b73b3056adcff0eb6aa93b43f68366cd143d2e5",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "docs"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.architecture"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.changelog.4114e6805158",
+      "type": "repository_fact",
+      "summary": "packages/cli/CHANGELOG.md was detected as changelog documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.changelog",
+        "value": "packages/cli/CHANGELOG.md"
+      },
+      "locator": {
+        "uri": "packages/cli/CHANGELOG.md"
+      },
+      "digest": "4ebb109e26a3b8d5b9a25cebda6c64ed2faadc31c1df2b160409895ca32d9719",
+      "observed_at": "2026-08-30T15:29:13.824Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "packages/cli"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.changelog"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.changelog.9855c7f11339",
+      "type": "repository_fact",
+      "summary": "CHANGELOG.md was detected as changelog documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.changelog",
+        "value": "CHANGELOG.md"
+      },
+      "locator": {
+        "uri": "CHANGELOG.md"
+      },
+      "digest": "a8e851990b9819e6f812e30b049057ccb683b74a5ffed4647d3648858f7364e0",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.changelog"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.changelog.d9d9625c45ad",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/referencia/changelog.md was detected as changelog documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.changelog",
+        "value": "src/content/docs/docs/referencia/changelog.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/referencia/changelog.md"
+      },
+      "digest": "87a82358b3f52915005c83d04f74cebecba4adda1c5588cec99d7d0fc3995d49",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/referencia"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.changelog"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.contributing.c0cd06c95a62",
+      "type": "repository_fact",
+      "summary": "CONTRIBUTING.md was detected as contributing documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.contributing",
+        "value": "CONTRIBUTING.md"
+      },
+      "locator": {
+        "uri": "CONTRIBUTING.md"
+      },
+      "digest": "94a086e727270cd07f3ae9443da658bbb744e83675265b0f65b52b1877d26264",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.contributing"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.016d904ed974",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/mantener/evaluaciones.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/mantener/evaluaciones.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/mantener/evaluaciones.md"
+      },
+      "digest": "2605a375931813cbf59bb4101c6f2d6e481cf4f4ab103f52f6797d5d2d5248f2",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/mantener"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.05d9addcc493",
+      "type": "repository_fact",
+      "summary": "docs/EVALUATION.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "docs/EVALUATION.md"
+      },
+      "locator": {
+        "uri": "docs/EVALUATION.md"
+      },
+      "digest": "abc843ed7427fb2dc59a8f880a1f9a4236a629a97c7fb32a384fbf83a2d32318",
+      "observed_at": "2026-08-30T15:29:13.824Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "docs"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.09f6af3d1ebc",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/codigo/archivos.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/codigo/archivos.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/codigo/archivos.md"
+      },
+      "digest": "47b654a191d66c9ef05f0500ac6c8d0ff01f51888a9a73bfda892427da3af187",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/codigo"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.159a8e5fd50b",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/chat/memoria.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/chat/memoria.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/chat/memoria.md"
+      },
+      "digest": "e684a0b60090e9d2cb0807e104184256b4845f6be9404a1ba1f519f8a577a998",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/chat"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.1c5dc79c7009",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/codigo/proyecto-nuevo.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/codigo/proyecto-nuevo.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/codigo/proyecto-nuevo.md"
+      },
+      "digest": "39f543088cf4adb2451ad200d6482d699fc9664856dbfdebea604761d792d6cc",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/codigo"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.2768cc964e5e",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/chat/prompts.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/chat/prompts.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/chat/prompts.md"
+      },
+      "digest": "3a07507162823a9e15bd556ba52dae4bcecd8607da4cdbc04f6dc117c903dd59",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/chat"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.2ecafdb28228",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/codigo/handoffs.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/codigo/handoffs.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/codigo/handoffs.md"
+      },
+      "digest": "cb5c8074789793c0efc88d987d1c2966bd5538302a7658238200f2541dd75fb8",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/codigo"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.3598d01bb2d8",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/proveedores/anthropic.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/proveedores/anthropic.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/proveedores/anthropic.md"
+      },
+      "digest": "a502a841d8a236b94e324e31cd843451edccc51b46f8167e0a8b955b682e7fa6",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/proveedores"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.3748a68682b1",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/codigo/proyecto-existente.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/codigo/proyecto-existente.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/codigo/proyecto-existente.md"
+      },
+      "digest": "6f24f0f58c0503e3fc9ec2d9cace85803d6d85aa17af520af958c4a82104b90a",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/codigo"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.5a989b90a638",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/index.mdx was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/index.mdx"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/index.mdx"
+      },
+      "digest": "07e8ef24420d66180dee261afcf5bf4cc074180543e8a471d324448d526c7288",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.5af6f771a44b",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/empezar/modelo-mental.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/empezar/modelo-mental.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/empezar/modelo-mental.md"
+      },
+      "digest": "8d748d884f88a77634e6af7773dd8dca0e04be8156f2935c663fa0bf8ddb2aef",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/empezar"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.742f463e09c6",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/conceptos/presupuesto.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/conceptos/presupuesto.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/conceptos/presupuesto.md"
+      },
+      "digest": "80581692bad2698bf1bed321a385db2da7dcd81f5e2308cbbb229d3914a99898",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/conceptos"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.7b477db78fc8",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/empezar/recorridos.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/empezar/recorridos.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/empezar/recorridos.md"
+      },
+      "digest": "7423cc9f1b0685701563220a86a73727ffebae446e68b0523b5fe71725bf96d3",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/empezar"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.86affaa8f938",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/conceptos/donde-vive.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/conceptos/donde-vive.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/conceptos/donde-vive.md"
+      },
+      "digest": "a93eedae8c9c23f242c3c6f3edd5e247e7e9ac1ce3edc157dee2ca6154e53a48",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/conceptos"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.8b57dc518aec",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/conceptos/fundamentos.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/conceptos/fundamentos.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/conceptos/fundamentos.md"
+      },
+      "digest": "ed04fed618d9cb7470702f97a6b9305b9732d0ba5868c49ae3e1e1cf912408a9",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/conceptos"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.8d7835a333cb",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/proveedores/index.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/proveedores/index.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/proveedores/index.md"
+      },
+      "digest": "caf5e4bcf547552a4a509b2889348a6aca3dab7ea4c7abcd7c6b308d377180ad",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/proveedores"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.90e653004f2d",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/chat/auditoria.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/chat/auditoria.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/chat/auditoria.md"
+      },
+      "digest": "3a5654e035c723f5cafb2becad0bc2148287221087362f129fc968e8ab851f64",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/chat"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.97facc47829f",
+      "type": "repository_fact",
+      "summary": "docs/TRANSITION.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "docs/TRANSITION.md"
+      },
+      "locator": {
+        "uri": "docs/TRANSITION.md"
+      },
+      "digest": "ca2992ab769307f26fbabf47c3017975889af5e1321da1a29386b120559cfe5b",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "docs"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.9cc92603f2d3",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/mantener/seguridad.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/mantener/seguridad.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/mantener/seguridad.md"
+      },
+      "digest": "157c22ee9840ec6afb371860040f391c5831a8394f9d87fa5259b6590b61e9b3",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/mantener"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.a24c30f8e795",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/proveedores/openai.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/proveedores/openai.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/proveedores/openai.md"
+      },
+      "digest": "9a93e1edb4b33c1d553d685d8a0a90a01cccfc50848fa441711e2de854b71276",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/proveedores"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.a66ea1251c5d",
+      "type": "repository_fact",
+      "summary": "docs/PROJECT_MODEL.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "docs/PROJECT_MODEL.md"
+      },
+      "locator": {
+        "uri": "docs/PROJECT_MODEL.md"
+      },
+      "digest": "da011e6beb713b96c7c4dc163e18b1f4d1e24ba36142b41b06d289ae59980b1d",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "docs"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.ab2d87a3a0fa",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/mantener/diagnostico.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/mantener/diagnostico.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/mantener/diagnostico.md"
+      },
+      "digest": "9feadc03235e0915f23c60210caab16321822fd578ba11df0dc66009c92dbff2",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/mantener"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.ac476b9fffe7",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/referencia/cli.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/referencia/cli.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/referencia/cli.md"
+      },
+      "digest": "c8f4271aea2731be8a846b86a7b16faf31a8bdf41eabb1a9e02ea7715dc0dad8",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/referencia"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.b027ca65a953",
+      "type": "repository_fact",
+      "summary": "docs/DESIGN.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "docs/DESIGN.md"
+      },
+      "locator": {
+        "uri": "docs/DESIGN.md"
+      },
+      "digest": "72663540a492fcd6a0987643ea1dd110bbd65afa622bbd72df4c26e7682414f4",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "docs"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.b67cd043f847",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/referencia/esquemas.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/referencia/esquemas.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/referencia/esquemas.md"
+      },
+      "digest": "05260ee5b81c12f1d14daf1a80070518c1afa229414fb39ad38c979543feef36",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/referencia"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.c279c4a4cbed",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/chat/espacios.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/chat/espacios.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/chat/espacios.md"
+      },
+      "digest": "9b2c8f6d0a99694bf5217211ced17370afe1363ffc1c5e9b04cb6b488fb12629",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/chat"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.c38735506c3c",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/codigo/skill-y-agentes.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/codigo/skill-y-agentes.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/codigo/skill-y-agentes.md"
+      },
+      "digest": "04bd315e2ba0265b7ff480289324171f88c6da126858e46d1e8f2e077a276374",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/codigo"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.cea9643fd883",
+      "type": "repository_fact",
+      "summary": "docs/ROADMAP.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "docs/ROADMAP.md"
+      },
+      "locator": {
+        "uri": "docs/ROADMAP.md"
+      },
+      "digest": "04d0bd812f48577fc1c0d1ed2b2260fe42135e7d9f2a977361c3a1ecce5b4d16",
+      "observed_at": "2026-08-30T03:15:40.253Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "docs"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.dcc1311f0743",
+      "type": "repository_fact",
+      "summary": "docs/RELEASE.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "docs/RELEASE.md"
+      },
+      "locator": {
+        "uri": "docs/RELEASE.md"
+      },
+      "digest": "fc7edc891ff90f5072f5bab64d2aefc54b870c447afdb48df35eb2c6b2329e10",
+      "observed_at": "2026-08-30T15:29:13.824Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "docs"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.f45930fcf3f5",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/empezar/inicio-rapido.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/empezar/inicio-rapido.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/empezar/inicio-rapido.md"
+      },
+      "digest": "75850025506d2433e5527e7174341345363855363904983e14cd19c6314c5b3c",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/empezar"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.documentation.f4c614d4d0d6",
+      "type": "repository_fact",
+      "summary": "src/content/docs/docs/mantener/curacion.md was detected as documentation documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.documentation",
+        "value": "src/content/docs/docs/mantener/curacion.md"
+      },
+      "locator": {
+        "uri": "src/content/docs/docs/mantener/curacion.md"
+      },
+      "digest": "100445e4e8bc9de930a1fd77e15c6b499a05971b5c7af45085e6e6808fb1b283",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "src/content/docs/docs/mantener"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.documentation"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.license.80610f3dfbd7",
+      "type": "repository_fact",
+      "summary": "LICENSE was detected as license documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.license",
+        "value": "LICENSE"
+      },
+      "locator": {
+        "uri": "LICENSE"
+      },
+      "digest": "5ca01faf63adcf260ce20deee468d285624f861d07fc84a0ee03ef28dde6d561",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.license"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.license.cfa080add90a",
+      "type": "repository_fact",
+      "summary": "packages/cli/LICENSE was detected as license documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.license",
+        "value": "packages/cli/LICENSE"
+      },
+      "locator": {
+        "uri": "packages/cli/LICENSE"
+      },
+      "digest": "5ca01faf63adcf260ce20deee468d285624f861d07fc84a0ee03ef28dde6d561",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "packages/cli"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.license"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.product.6266cb9aad2e",
+      "type": "repository_fact",
+      "summary": "docs/PRODUCT.md was detected as product documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.product",
+        "value": "docs/PRODUCT.md"
+      },
+      "locator": {
+        "uri": "docs/PRODUCT.md"
+      },
+      "digest": "545eed1c8f5aaa852a2852258a354cbcab4d0da339b114f8571248fb5044a55e",
+      "observed_at": "2026-08-30T03:15:40.253Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "docs"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.product"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.readme.79d98afc5438",
+      "type": "repository_fact",
+      "summary": "evals/README.md was detected as readme documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.readme",
+        "value": "evals/README.md"
+      },
+      "locator": {
+        "uri": "evals/README.md"
+      },
+      "digest": "cee71a200f5dd1bc65c504bb36b18a8e97f0380676b9050452c9cfae7047331e",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "evals"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.readme"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.readme.c5519dca924b",
+      "type": "repository_fact",
+      "summary": "packages/cli/README.md was detected as readme documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.readme",
+        "value": "packages/cli/README.md"
+      },
+      "locator": {
+        "uri": "packages/cli/README.md"
+      },
+      "digest": "b538fc1b08d8fa9111104693a52d1ecc4d5c038ef6ea7322134ad4c2b5b23963",
+      "observed_at": "2026-08-30T03:15:40.253Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "packages/cli"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.readme"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.readme.d0ce5fe83cf1",
+      "type": "repository_fact",
+      "summary": "README.md was detected as readme documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.readme",
+        "value": "README.md"
+      },
+      "locator": {
+        "uri": "README.md"
+      },
+      "digest": "c1bf5f3d7863c88b4ec89cbdebf71c76e22f91d398fd72c50e1af4b68217979a",
+      "observed_at": "2026-08-30T15:29:13.824Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.readme"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.documentation.documentation.security.005a982eb6f1",
+      "type": "repository_fact",
+      "summary": "SECURITY.md was detected as security documentation.",
+      "observation": {
+        "category": "documentation",
+        "key": "documentation.security",
+        "value": "SECURITY.md"
+      },
+      "locator": {
+        "uri": "SECURITY.md"
+      },
+      "digest": "9dd474b49c5a9b2fb1589adba53083d6779c90c50dc5e7ec425db348b985db93",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "documentation"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "documentation.security"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.filesystem.filesystem.generated-directory.2c360017d6ab",
+      "type": "repository_fact",
+      "summary": "dist matches a generated-output directory convention and was not traversed.",
+      "observation": {
+        "category": "filesystem",
+        "key": "filesystem.generated-directory",
+        "value": "dist"
+      },
+      "locator": {
+        "uri": "dist"
+      },
+      "digest": "bcae0416621b3db43d8cba1e4454a792c7af9e4b7287e51056efc5a215d95839",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "filesystem"
+        ]
+      },
+      "coverage": {
+        "status": "partial",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ],
+        "gaps": [
+          "directory contents intentionally skipped"
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "filesystem.generated-directory"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.filesystem.filesystem.generated-directory.4685e7405f79",
+      "type": "repository_fact",
+      "summary": ".astro matches a generated-output directory convention and was not traversed.",
+      "observation": {
+        "category": "filesystem",
+        "key": "filesystem.generated-directory",
+        "value": ".astro"
+      },
+      "locator": {
+        "uri": ".astro"
+      },
+      "digest": "203d0d40b086205e14138d8f17cbc4f64db2afc9a6152a947b675b0eea4e02e2",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "filesystem"
+        ]
+      },
+      "coverage": {
+        "status": "partial",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ],
+        "gaps": [
+          "directory contents intentionally skipped"
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "filesystem.generated-directory"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.filesystem.filesystem.generated-directory.4b04a5d42770",
+      "type": "repository_fact",
+      "summary": ".contexxxt/generated matches a generated-output directory convention and was not traversed.",
+      "observation": {
+        "category": "filesystem",
+        "key": "filesystem.generated-directory",
+        "value": ".contexxxt/generated"
+      },
+      "locator": {
+        "uri": ".contexxxt/generated"
+      },
+      "digest": "b50d204c29e1b4b0538c27e1c03ecc98dbe51a513956c929aeea6fa45bd6ee2e",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "filesystem"
+        ]
+      },
+      "coverage": {
+        "status": "partial",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": ".contexxxt"
+          }
+        ],
+        "gaps": [
+          "directory contents intentionally skipped"
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "filesystem.generated-directory"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.filesystem.filesystem.inventory.084d0faaebae",
+      "type": "repository_fact",
+      "summary": "Filesystem inventory found 202 project files and 93 directories; canonical model storage is reported separately.",
+      "observation": {
+        "category": "filesystem",
+        "key": "filesystem.inventory",
+        "value": "{\"directories\":93,\"files\":202,\"top_level\":[\".astro\",\".contexxxt\",\".git\",\".github\",\".gitignore\",\".vscode\",\"AGENTS.md\",\"CHANGELOG.md\",\"CLAUDE.md\",\"CONTRIBUTING.md\",\"LICENSE\",\"README.md\",\"SECURITY.md\",\"astro.config.mjs\",\"dist\",\"docs\",\"evals\",\"node_modules\",\"package.json\",\"packages\",\"pnpm-lock.yaml\",\"pnpm-workspace.yaml\",\"public\",\"schemas\",\"scripts\",\"src\",\"tsconfig.json\",\"vercel.json\"]}"
+      },
+      "locator": {
+        "uri": "."
+      },
+      "digest": "26c72a65c763d33e05ac62d42006070b565978155eac3a7fb10c204639f17b03",
+      "observed_at": "2026-08-30T15:29:13.824Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "filesystem"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "filesystem.inventory"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.filesystem.filesystem.source-root.7f16b219fe49",
+      "type": "repository_fact",
+      "summary": "packages is a conventionally named source root.",
+      "observation": {
+        "category": "filesystem",
+        "key": "filesystem.source-root",
+        "value": "packages"
+      },
+      "locator": {
+        "uri": "packages"
+      },
+      "digest": "b28b1ed9821f38c64524ea13e19264bb0772f8376afffd5d8a1f8277621833eb",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "filesystem"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "filesystem.source-root"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.filesystem.filesystem.source-root.94fd0fadb7c2",
+      "type": "repository_fact",
+      "summary": "src is a conventionally named source root.",
+      "observation": {
+        "category": "filesystem",
+        "key": "filesystem.source-root",
+        "value": "src"
+      },
+      "locator": {
+        "uri": "src"
+      },
+      "digest": "25a6634263c1b1f6fc4697a04e2b9904ea4b042a89af59dc93ec1f5d44848a26",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "filesystem"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "filesystem.source-root"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.filesystem.filesystem.source-root.b7f4ef4237ed",
+      "type": "repository_fact",
+      "summary": "packages/cli/src is a conventionally named source root.",
+      "observation": {
+        "category": "filesystem",
+        "key": "filesystem.source-root",
+        "value": "packages/cli/src"
+      },
+      "locator": {
+        "uri": "packages/cli/src"
+      },
+      "digest": "5e0ea72b4a6d0d37476a445b2dfb8ac8063ffe94fb594143dbef62d605673fa3",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "filesystem"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "packages/cli"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "filesystem.source-root"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.filesystem.filesystem.test-root.64330e4dc9d3",
+      "type": "repository_fact",
+      "summary": "packages/cli/test is a conventionally named test root.",
+      "observation": {
+        "category": "filesystem",
+        "key": "filesystem.test-root",
+        "value": "packages/cli/test"
+      },
+      "locator": {
+        "uri": "packages/cli/test"
+      },
+      "digest": "32f83e4a886922dd74fc31f434541444031abdc6fc755a9e02d70a524308ea50",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "filesystem"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "packages/cli"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "filesystem.test-root"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.instruction.instruction.file.3bae9cb3cd58",
+      "type": "repository_fact",
+      "summary": "packages/cli/runtime/instance/runtime/adapters/claude-code/CLAUDE.md supplies CLAUDE.md instructions for scope packages/cli/runtime/instance/runtime/adapters/claude-code.",
+      "observation": {
+        "category": "instruction",
+        "key": "instruction.file",
+        "value": "{\"kind\":\"CLAUDE.md\",\"path\":\"packages/cli/runtime/instance/runtime/adapters/claude-code/CLAUDE.md\",\"scope\":\"packages/cli/runtime/instance/runtime/adapters/claude-code\"}"
+      },
+      "locator": {
+        "uri": "packages/cli/runtime/instance/runtime/adapters/claude-code/CLAUDE.md"
+      },
+      "digest": "08d0ecaf86df793c8f77fe9ed2fa916a6cc9daf322e310ff73e9067ab17a70aa",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "instruction"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "packages/cli/runtime/instance/runtime/adapters/claude-code"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "instruction.file"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.instruction.instruction.file.45c640737133",
+      "type": "repository_fact",
+      "summary": "packages/cli/runtime/instance/runtime/skill/context-os/SKILL.md supplies SKILL.md instructions for scope packages/cli/runtime/instance/runtime/skill/context-os.",
+      "observation": {
+        "category": "instruction",
+        "key": "instruction.file",
+        "value": "{\"kind\":\"SKILL.md\",\"path\":\"packages/cli/runtime/instance/runtime/skill/context-os/SKILL.md\",\"scope\":\"packages/cli/runtime/instance/runtime/skill/context-os\"}"
+      },
+      "locator": {
+        "uri": "packages/cli/runtime/instance/runtime/skill/context-os/SKILL.md"
+      },
+      "digest": "e73afc261cbbebfaa82b197d9129596c0cd4340e63fb97dc5afafb644876fa82",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "instruction"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "packages/cli/runtime/instance/runtime/skill/context-os"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "instruction.file"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.instruction.instruction.file.60112bd2f8ca",
+      "type": "repository_fact",
+      "summary": "CLAUDE.md supplies CLAUDE.md instructions for scope project.",
+      "observation": {
+        "category": "instruction",
+        "key": "instruction.file",
+        "value": "{\"kind\":\"CLAUDE.md\",\"path\":\"CLAUDE.md\",\"scope\":\".\"}"
+      },
+      "locator": {
+        "uri": "CLAUDE.md"
+      },
+      "digest": "48915128fc18a6ffb37b429dc3b6243da805e5aa5ff475252bc38726a9fa0570",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "instruction"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "instruction.file"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.instruction.instruction.file.c33cd47da1d7",
+      "type": "repository_fact",
+      "summary": "AGENTS.md supplies AGENTS.md instructions for scope project.",
+      "observation": {
+        "category": "instruction",
+        "key": "instruction.file",
+        "value": "{\"kind\":\"AGENTS.md\",\"path\":\"AGENTS.md\",\"scope\":\".\"}"
+      },
+      "locator": {
+        "uri": "AGENTS.md"
+      },
+      "digest": "d4f16ffdfd91710ecba9292840d0da72e5c6b2736ea5a6271f6d5877638c2df5",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "instruction"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "instruction.file"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.instruction.instruction.file.fb27af7e5200",
+      "type": "repository_fact",
+      "summary": "packages/cli/runtime/instance/runtime/adapters/codex/AGENTS.md supplies AGENTS.md instructions for scope packages/cli/runtime/instance/runtime/adapters/codex.",
+      "observation": {
+        "category": "instruction",
+        "key": "instruction.file",
+        "value": "{\"kind\":\"AGENTS.md\",\"path\":\"packages/cli/runtime/instance/runtime/adapters/codex/AGENTS.md\",\"scope\":\"packages/cli/runtime/instance/runtime/adapters/codex\"}"
+      },
+      "locator": {
+        "uri": "packages/cli/runtime/instance/runtime/adapters/codex/AGENTS.md"
+      },
+      "digest": "836f97c72eb9975ce2ca2b1d1b8ce151afd216c12ba7e08c8caa9644b456100a",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "instruction"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "packages/cli/runtime/instance/runtime/adapters/codex"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "instruction.file"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.manifest.manifest.pnpm-workspace.yaml.9b9756ffb363",
+      "type": "repository_fact",
+      "summary": "pnpm-workspace.yaml was detected as a pnpm-workspace.yaml manifest.",
+      "observation": {
+        "category": "manifest",
+        "key": "manifest.pnpm-workspace.yaml",
+        "value": "pnpm-workspace.yaml"
+      },
+      "locator": {
+        "uri": "pnpm-workspace.yaml"
+      },
+      "digest": "f3e3c1358a8375c257e3c7558c85d17bbd3a3aadc4843b863bb575b7b0107fb0",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "manifest"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "manifest.pnpm-workspace.yaml"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.manifest.package.node.25e58587d53f",
+      "type": "repository_fact",
+      "summary": "packages/cli/package.json declares Node package contexxxt.",
+      "observation": {
+        "category": "manifest",
+        "key": "package.node",
+        "value": "{\"name\":\"contexxxt\",\"path\":\"packages/cli/package.json\",\"private\":false,\"scope\":\"packages/cli\",\"type\":\"module\"}"
+      },
+      "locator": {
+        "uri": "packages/cli/package.json"
+      },
+      "digest": "0c1689833ad12cf9e1c2b4214bc37be349ff6e4b93f68c86b87e58b9989e1ff0",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "manifest"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": "packages/cli"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "package.node"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.manifest.package.node.657c75a1d8e3",
+      "type": "repository_fact",
+      "summary": "package.json declares Node package contexxxt-monorepo.",
+      "observation": {
+        "category": "manifest",
+        "key": "package.node",
+        "value": "{\"name\":\"contexxxt-monorepo\",\"path\":\"package.json\",\"private\":true,\"scope\":\".\",\"type\":\"module\"}"
+      },
+      "locator": {
+        "uri": "package.json"
+      },
+      "digest": "2e8c06ba20f9090f9036ccaf09fa089f25c3945155b176eec2bab9ced01eb6f2",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "manifest"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "package.node"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.manifest.workspace.pnpm.9b9756ffb363",
+      "type": "repository_fact",
+      "summary": "pnpm-workspace.yaml declares 1 pnpm workspace pattern.",
+      "observation": {
+        "category": "manifest",
+        "key": "workspace.pnpm",
+        "value": "[\"packages/*\"]"
+      },
+      "locator": {
+        "uri": "pnpm-workspace.yaml"
+      },
+      "digest": "f3e3c1358a8375c257e3c7558c85d17bbd3a3aadc4843b863bb575b7b0107fb0",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "manifest"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "workspace.pnpm"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.repository.git.branch.1b36932834f8",
+      "type": "repository_fact",
+      "summary": "Current Git branch is main.",
+      "observation": {
+        "category": "repository",
+        "key": "git.branch",
+        "value": "main"
+      },
+      "locator": {
+        "uri": ".git/HEAD"
+      },
+      "digest": "0d6e4079e36703ebd37c00722f5891d28b0e2811dc114b129215123adcce3605",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "repository"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": ".git"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "git.branch"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.repository.git.head.25f39f5b92ce",
+      "type": "repository_fact",
+      "summary": "Git HEAD is 8a2b12a56d3a.",
+      "observation": {
+        "category": "repository",
+        "key": "git.head",
+        "value": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86"
+      },
+      "locator": {
+        "uri": ".git/HEAD"
+      },
+      "digest": "061425a5bdcd0b62ac2dff0f736200efa8dba14c773f037d9bbf2ebfb7543937",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "repository"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "directory",
+            "value": ".git"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "git.head"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.repository.git.root.aafb303c43ea",
+      "type": "repository_fact",
+      "summary": "Git root resolves to ..",
+      "observation": {
+        "category": "repository",
+        "key": "git.root",
+        "value": "."
+      },
+      "locator": {
+        "uri": ".git"
+      },
+      "digest": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "repository"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "git.root"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.repository.git.status.3984e1e8bbb5",
+      "type": "repository_fact",
+      "summary": "Git reports 11 changed and 31 untracked paths.",
+      "observation": {
+        "category": "repository",
+        "key": "git.status",
+        "value": "{\"changed\":11,\"conflicted\":0,\"staged\":0,\"unstaged\":11,\"untracked\":31}"
+      },
+      "locator": {
+        "uri": ".git"
+      },
+      "digest": "88ded3829c7fe89e3a3ab65da6bf3abc50a6849c5f31b0e65b1613b3caf6d43f",
+      "observed_at": "2026-08-30T03:15:40.253Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "repository"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "git.status"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.repository.git.worktrees.d52aa39d7af1",
+      "type": "repository_fact",
+      "summary": "Git reports 1 worktree.",
+      "observation": {
+        "category": "repository",
+        "key": "git.worktrees",
+        "value": "[{\"bare\":false,\"branch\":\"main\",\"detached\":false,\"head\":\"8a2b12a56d3a52d5c426ce12999cbe842eb76a86\",\"path\":\".\"}]"
+      },
+      "locator": {
+        "uri": ".git"
+      },
+      "digest": "dd4a30f9b2e5088de6e8f4267908b6e4d4f5000fe48e057e8759aa6ffb583011",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "repository"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "git.worktrees"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    },
+    {
+      "id": "inspection.test.test.files.3bf1887938de",
+      "type": "repository_fact",
+      "summary": "Filesystem conventions identify 10 test files.",
+      "observation": {
+        "category": "test",
+        "key": "test.files",
+        "value": "{\"count\":10,\"roots\":[\"packages/cli/test\"]}"
+      },
+      "locator": {
+        "uri": "."
+      },
+      "digest": "83f97cac5a0a6cecac51bd9604995b734695c40285b26456e8d2f0ba92827db6",
+      "observed_at": "2026-08-29T22:40:33.303Z",
+      "provider": {
+        "id": "native",
+        "version": "0.2.0-rc.1",
+        "capabilities_used": [
+          "test"
+        ]
+      },
+      "coverage": {
+        "status": "complete",
+        "scopes": [
+          {
+            "kind": "project",
+            "value": "*"
+          }
+        ]
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "test.files"
+      },
+      "sensitivity": "public",
+      "revision": {
+        "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+        "branch": "main",
+        "dirty": true
+      }
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "contexxxt.architecture.query-resolver-separation",
+      "type": "decision",
+      "summary": "Deterministic retrieval is separate from semantic task resolution.",
+      "statement": "The Query Layer performs exact lookup, scope matching, validity, ordering and budgets without an LLM. The Resolver decides which 7Q dimensions and knowledge a task needs. Keeping them separate makes retrieval reproducible while allowing provider-neutral semantic strategies.",
+      "dimensions": {
+        "why": "complete",
+        "how": "complete",
+        "for_what": "complete",
+        "which": "complete",
+        "where": "complete"
+      },
+      "scopes": [
+        {
+          "kind": "directory",
+          "value": "packages/cli/src/query"
+        },
+        {
+          "kind": "directory",
+          "value": "packages/cli/src/resolve"
+        }
+      ],
+      "evidence": [
+        "ev.contexxxt.architecture",
+        "ev.contexxxt.query-code"
+      ],
+      "provenance": {
+        "created_by": "human",
+        "method": "declared",
+        "created_at": "2026-08-28T23:15:00Z"
+      },
+      "authority": {
+        "level": "governing",
+        "subject": "Query Layer and Resolver boundary",
+        "source": "ev.contexxxt.architecture"
+      },
+      "confidence": 1,
+      "validity": {
+        "observed_at": "2026-08-28T23:15:00Z"
+      },
+      "relationships": [
+        {
+          "type": "supports",
+          "target": "contexxxt.query.deterministic",
+          "evidence": [
+            "ev.contexxxt.architecture"
+          ]
+        }
+      ],
+      "status": "active",
+      "payload": {
+        "problem": "Semantic task selection and deterministic retrieval have different reproducibility requirements.",
+        "options": [
+          "combine lookup and semantic resolution",
+          "separate Query Layer and Resolver"
+        ],
+        "choice": "separate Query Layer and Resolver",
+        "reasons": [
+          "lookups remain reproducible and testable",
+          "semantic strategies remain provider-neutral and replaceable"
+        ],
+        "consequences": [
+          "Resolver must consume the public Query Layer contract",
+          "Query Layer must not infer task intent"
+        ]
+      }
+    },
+    {
+      "id": "contexxxt.model.self-reading",
+      "type": "constraint",
+      "summary": "Agents query the Project Model instead of loading its canonical JSON.",
+      "statement": "JSON is storage and the Query Layer is reading: agents should prefer contexxxt query and contexxxt context over opening the complete model, except for debugging or audit.",
+      "dimensions": {
+        "why": "complete",
+        "how": "complete",
+        "for_what": "complete",
+        "where": "complete"
+      },
+      "scopes": [
+        {
+          "kind": "directory",
+          "value": "packages/cli/src/model"
+        },
+        {
+          "kind": "directory",
+          "value": "packages/cli/src/query"
+        },
+        {
+          "kind": "file",
+          "value": ".contexxxt/project-model.json"
+        }
+      ],
+      "evidence": [
+        "ev.contexxxt.project-model",
+        "ev.contexxxt.query-code"
+      ],
+      "provenance": {
+        "created_by": "human",
+        "method": "declared",
+        "created_at": "2026-08-28T18:00:00Z"
+      },
+      "authority": {
+        "level": "governing",
+        "subject": "Project Model access",
+        "source": "ev.contexxxt.project-model"
+      },
+      "confidence": 1,
+      "validity": {
+        "observed_at": "2026-08-28T18:00:00Z"
+      },
+      "relationships": [
+        {
+          "type": "implements",
+          "target": "contexxxt.product.compiler-definition",
+          "evidence": [
+            "ev.contexxxt.query-code"
+          ]
+        }
+      ],
+      "status": "active"
+    },
+    {
+      "id": "contexxxt.model.validation-contract",
+      "type": "procedure",
+      "summary": "Validate the canonical Project Model through the public CLI before querying or compiling its knowledge.",
+      "statement": "The canonical Project Model is .contexxxt/project-model.json. It is governed by packages/cli/schemas/project-model.schema.json and semantic reference checks, and the public command contexxxt model validate must pass before its knowledge is queried or compiled.",
+      "dimensions": {
+        "what": "complete",
+        "how": "complete",
+        "for_what": "complete",
+        "which": "complete",
+        "where": "complete"
+      },
+      "scopes": [
+        {
+          "kind": "file",
+          "value": ".contexxxt/project-model.json"
+        },
+        {
+          "kind": "file",
+          "value": "packages/cli/schemas/project-model.schema.json"
+        },
+        {
+          "kind": "directory",
+          "value": "packages/cli/src/model"
+        },
+        {
+          "kind": "file",
+          "value": "packages/cli/src/model-commands.mjs"
+        }
+      ],
+      "evidence": [
+        "ev.contexxxt.model-cli",
+        "ev.contexxxt.model-schema",
+        "ev.contexxxt.model-validation-code",
+        "ev.contexxxt.project-model"
+      ],
+      "provenance": {
+        "created_by": "human",
+        "method": "declared",
+        "created_at": "2026-08-29T22:12:47Z"
+      },
+      "authority": {
+        "level": "governing",
+        "subject": "canonical Project Model validation contract",
+        "source": "ev.contexxxt.project-model"
+      },
+      "confidence": 1,
+      "validity": {
+        "observed_at": "2026-08-29T22:12:47Z"
+      },
+      "relationships": [
+        {
+          "type": "depends_on",
+          "target": "contexxxt.storage.json-first",
+          "evidence": [
+            "ev.contexxxt.project-model"
+          ]
+        },
+        {
+          "type": "supports",
+          "target": "contexxxt.model.self-reading",
+          "evidence": [
+            "ev.contexxxt.model-validation-code"
+          ]
+        }
+      ],
+      "status": "active",
+      "payload": {
+        "preconditions": [
+          "Run from the project root or pass the intended root explicitly."
+        ],
+        "steps": [
+          "Run contexxxt model validate."
+        ],
+        "outputs": [
+          "A schema-valid Project Model with valid IDs and references."
+        ],
+        "validators": [
+          "packages/cli/schemas/project-model.schema.json",
+          "validateProjectModel semantic checks"
+        ],
+        "abort_when": [
+          "Validation reports schema, ID, or reference errors."
+        ]
+      }
+    },
+    {
+      "id": "contexxxt.observed.ci",
+      "type": "artifact",
+      "summary": "Native inspection found 1 CI artifact.",
+      "statement": "Observed CI artifacts: .github/workflows/ci.yml.",
+      "dimensions": {
+        "what": "complete",
+        "where": "complete",
+        "how": "partial"
+      },
+      "scopes": [
+        {
+          "kind": "project",
+          "value": "contexxxt"
+        }
+      ],
+      "evidence": [
+        "inspection.ci.ci.command.211e2283fe8a",
+        "inspection.ci.ci.command.2fa43c9255b6",
+        "inspection.ci.ci.command.4559d3ecc063",
+        "inspection.ci.ci.command.5e81455ae9c1",
+        "inspection.ci.ci.job.949046e7f0a6",
+        "inspection.ci.ci.workflow.1aec0e26c02c"
+      ],
+      "provenance": {
+        "created_by": "compiler",
+        "method": "observed",
+        "created_at": "2026-08-30T15:29:13.824Z"
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "native inspection: ci",
+        "source": "inspection.ci.ci.command.211e2283fe8a"
+      },
+      "confidence": 1,
+      "validity": {
+        "observed_at": "2026-08-30T15:29:13.824Z"
+      },
+      "relationships": [],
+      "status": "active",
+      "payload": {
+        "observed_kind": "ci",
+        "paths": [
+          ".github/workflows/ci.yml"
+        ],
+        "potential_conflicts": [],
+        "builder": "native-model-builder",
+        "generated_digest": "81a7fc8c4ca7e9266653e0dc8bed67574dcdb1e0e3e5f55a7179af02b6c70d4f"
+      }
+    },
+    {
+      "id": "contexxxt.observed.command.build",
+      "type": "procedure",
+      "summary": "Declared build command: build.",
+      "statement": "The manifests declare these build commands: contexxxt-monorepo:build -> astro build. Inspection did not execute or verify them.",
+      "dimensions": {
+        "how": "complete",
+        "where": "complete",
+        "for_what": "partial"
+      },
+      "scopes": [
+        {
+          "kind": "project",
+          "value": "contexxxt"
+        }
+      ],
+      "evidence": [
+        "inspection.command.command.build.3bdcd50d7ba7"
+      ],
+      "provenance": {
+        "created_by": "compiler",
+        "method": "declared",
+        "created_at": "2026-08-30T15:29:13.824Z"
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "native inspection: command.build",
+        "source": "inspection.command.command.build.3bdcd50d7ba7"
+      },
+      "confidence": 0.98,
+      "validity": {
+        "observed_at": "2026-08-30T15:29:13.824Z"
+      },
+      "relationships": [],
+      "status": "active",
+      "payload": {
+        "observed_kind": "declared-command",
+        "category": "build",
+        "commands": [
+          {
+            "package": "contexxxt-monorepo",
+            "scope": ".",
+            "name": "build",
+            "category": "build",
+            "command": "astro build"
+          }
+        ],
+        "executed": false,
+        "builder": "native-model-builder",
+        "generated_digest": "91f87cc629a32defc7e56753ad651ef85939b491aaf4986f46336e3224cac296"
+      }
+    },
+    {
+      "id": "contexxxt.observed.command.check",
+      "type": "procedure",
+      "summary": "Declared check command: check.",
+      "statement": "The manifests declare these check commands: contexxxt-monorepo:check -> astro check && pnpm test. Inspection did not execute or verify them.",
+      "dimensions": {
+        "how": "complete",
+        "where": "complete",
+        "for_what": "partial"
+      },
+      "scopes": [
+        {
+          "kind": "project",
+          "value": "contexxxt"
+        }
+      ],
+      "evidence": [
+        "inspection.command.command.check.e2d1717342e4"
+      ],
+      "provenance": {
+        "created_by": "compiler",
+        "method": "declared",
+        "created_at": "2026-08-30T15:29:13.824Z"
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "native inspection: command.check",
+        "source": "inspection.command.command.check.e2d1717342e4"
+      },
+      "confidence": 0.98,
+      "validity": {
+        "observed_at": "2026-08-30T15:29:13.824Z"
+      },
+      "relationships": [],
+      "status": "active",
+      "payload": {
+        "observed_kind": "declared-command",
+        "category": "check",
+        "commands": [
+          {
+            "package": "contexxxt-monorepo",
+            "scope": ".",
+            "name": "check",
+            "category": "check",
+            "command": "astro check && pnpm test"
+          }
+        ],
+        "executed": false,
+        "builder": "native-model-builder",
+        "generated_digest": "b7ff326530010294cd979d31bfa1944005e3d54cf0c8a89a0de3d5fd8e2506b0"
+      }
+    },
+    {
+      "id": "contexxxt.observed.command.dev",
+      "type": "procedure",
+      "summary": "Declared dev commands: dev, start.",
+      "statement": "The manifests declare these dev commands: contexxxt-monorepo:dev -> astro dev; contexxxt-monorepo:start -> astro dev. Inspection did not execute or verify them.",
+      "dimensions": {
+        "how": "complete",
+        "where": "complete",
+        "for_what": "partial"
+      },
+      "scopes": [
+        {
+          "kind": "project",
+          "value": "contexxxt"
+        }
+      ],
+      "evidence": [
+        "inspection.command.command.dev.5476cb4dcf54",
+        "inspection.command.command.dev.baed73da6eb3"
+      ],
+      "provenance": {
+        "created_by": "compiler",
+        "method": "declared",
+        "created_at": "2026-08-30T15:29:13.824Z"
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "native inspection: command.dev",
+        "source": "inspection.command.command.dev.5476cb4dcf54"
+      },
+      "confidence": 0.98,
+      "validity": {
+        "observed_at": "2026-08-30T15:29:13.824Z"
+      },
+      "relationships": [],
+      "status": "active",
+      "payload": {
+        "observed_kind": "declared-command",
+        "category": "dev",
+        "commands": [
+          {
+            "package": "contexxxt-monorepo",
+            "scope": ".",
+            "name": "dev",
+            "category": "dev",
+            "command": "astro dev"
+          },
+          {
+            "package": "contexxxt-monorepo",
+            "scope": ".",
+            "name": "start",
+            "category": "dev",
+            "command": "astro dev"
+          }
+        ],
+        "executed": false,
+        "builder": "native-model-builder",
+        "generated_digest": "ec0abc0b115da6578c75c87231dccced10dafad80ae3d8808625f208c804f850"
+      }
+    },
+    {
+      "id": "contexxxt.observed.command.test",
+      "type": "procedure",
+      "summary": "Declared test commands: test, test:cli, test:content.",
+      "statement": "The manifests declare these test commands: contexxxt-monorepo:test -> pnpm test:cli && pnpm test:content; contexxxt-monorepo:test:cli -> node --test packages/cli/test/*.test.mjs; contexxxt-monorepo:test:content -> node scripts/check-content.mjs. Inspection did not execute or verify them.",
+      "dimensions": {
+        "how": "complete",
+        "where": "complete",
+        "for_what": "partial"
+      },
+      "scopes": [
+        {
+          "kind": "project",
+          "value": "contexxxt"
+        }
+      ],
+      "evidence": [
+        "inspection.command.command.test.85473511fafc",
+        "inspection.command.command.test.bd5c1c297b8a",
+        "inspection.command.command.test.fa6bae076088"
+      ],
+      "provenance": {
+        "created_by": "compiler",
+        "method": "declared",
+        "created_at": "2026-08-30T15:29:13.824Z"
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "native inspection: command.test",
+        "source": "inspection.command.command.test.85473511fafc"
+      },
+      "confidence": 0.98,
+      "validity": {
+        "observed_at": "2026-08-30T15:29:13.824Z"
+      },
+      "relationships": [],
+      "status": "active",
+      "payload": {
+        "observed_kind": "declared-command",
+        "category": "test",
+        "commands": [
+          {
+            "package": "contexxxt-monorepo",
+            "scope": ".",
+            "name": "test",
+            "category": "test",
+            "command": "pnpm test:cli && pnpm test:content"
+          },
+          {
+            "package": "contexxxt-monorepo",
+            "scope": ".",
+            "name": "test:cli",
+            "category": "test",
+            "command": "node --test packages/cli/test/*.test.mjs"
+          },
+          {
+            "package": "contexxxt-monorepo",
+            "scope": ".",
+            "name": "test:content",
+            "category": "test",
+            "command": "node scripts/check-content.mjs"
+          }
+        ],
+        "executed": false,
+        "builder": "native-model-builder",
+        "generated_digest": "f2b7a28e618e4edb8916a84e96a4a091d7396f2ecfcf67780d84f0b0f3e5f93d"
+      }
+    },
+    {
+      "id": "contexxxt.observed.instructions",
+      "type": "artifact",
+      "summary": "Native inspection found 5 agent instruction artifacts.",
+      "statement": "Observed agent instruction artifacts: AGENTS.md, CLAUDE.md, packages/cli/runtime/instance/runtime/adapters/claude-code/CLAUDE.md, packages/cli/runtime/instance/runtime/adapters/codex/AGENTS.md, packages/cli/runtime/instance/runtime/skill/context-os/SKILL.md.",
+      "dimensions": {
+        "what": "complete",
+        "where": "complete"
+      },
+      "scopes": [
+        {
+          "kind": "project",
+          "value": "contexxxt"
+        }
+      ],
+      "evidence": [
+        "inspection.instruction.instruction.file.3bae9cb3cd58",
+        "inspection.instruction.instruction.file.45c640737133",
+        "inspection.instruction.instruction.file.60112bd2f8ca",
+        "inspection.instruction.instruction.file.c33cd47da1d7",
+        "inspection.instruction.instruction.file.fb27af7e5200"
+      ],
+      "provenance": {
+        "created_by": "compiler",
+        "method": "observed",
+        "created_at": "2026-08-30T15:29:13.824Z"
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "native inspection: instructions",
+        "source": "inspection.instruction.instruction.file.3bae9cb3cd58"
+      },
+      "confidence": 1,
+      "validity": {
+        "observed_at": "2026-08-30T15:29:13.824Z"
+      },
+      "relationships": [],
+      "status": "active",
+      "payload": {
+        "observed_kind": "instructions",
+        "paths": [
+          "AGENTS.md",
+          "CLAUDE.md",
+          "packages/cli/runtime/instance/runtime/adapters/claude-code/CLAUDE.md",
+          "packages/cli/runtime/instance/runtime/adapters/codex/AGENTS.md",
+          "packages/cli/runtime/instance/runtime/skill/context-os/SKILL.md"
+        ],
+        "potential_conflicts": [],
+        "builder": "native-model-builder",
+        "generated_digest": "e4e032086f3ffe47df9a5ffbbd1e6c9967c1431007be15ca983fe127cd9a1c90"
+      }
+    },
+    {
+      "id": "contexxxt.observed.structure",
+      "type": "fact",
+      "summary": "Native inspection found 2 packages and 3 source roots.",
+      "statement": "Observed packages: contexxxt-monorepo, contexxxt. Workspace patterns: packages/*. Source roots: packages, packages/cli/src, src.",
+      "dimensions": {
+        "what": "complete",
+        "how": "partial",
+        "where": "complete"
+      },
+      "scopes": [
+        {
+          "kind": "project",
+          "value": "contexxxt"
+        }
+      ],
+      "evidence": [
+        "inspection.filesystem.filesystem.inventory.084d0faaebae",
+        "inspection.filesystem.filesystem.source-root.7f16b219fe49",
+        "inspection.filesystem.filesystem.source-root.94fd0fadb7c2",
+        "inspection.filesystem.filesystem.source-root.b7f4ef4237ed",
+        "inspection.filesystem.filesystem.test-root.64330e4dc9d3",
+        "inspection.manifest.package.node.25e58587d53f",
+        "inspection.manifest.package.node.657c75a1d8e3",
+        "inspection.manifest.workspace.pnpm.9b9756ffb363"
+      ],
+      "provenance": {
+        "created_by": "compiler",
+        "method": "observed",
+        "created_at": "2026-08-30T15:29:13.824Z"
+      },
+      "authority": {
+        "level": "observational",
+        "subject": "native inspection: structure",
+        "source": "inspection.filesystem.filesystem.inventory.084d0faaebae"
+      },
+      "confidence": 1,
+      "validity": {
+        "observed_at": "2026-08-30T15:29:13.824Z"
+      },
+      "relationships": [],
+      "status": "active",
+      "payload": {
+        "observed_kind": "structure",
+        "packages": [
+          "contexxxt-monorepo",
+          "contexxxt"
+        ],
+        "workspaces": [
+          "packages/*"
+        ],
+        "source_roots": [
+          "packages",
+          "packages/cli/src",
+          "src"
+        ],
+        "builder": "native-model-builder",
+        "generated_digest": "c6e1d2230c3f37e15156a0925c3e929aa33a25a4028922f74bf988ba49cf9d11"
+      }
+    },
+    {
+      "id": "contexxxt.product.compiler-definition",
+      "type": "decision",
+      "summary": "Contexxxt is an adaptive context and behavior compiler for software agents.",
+      "statement": "Contexxxt converts repository evidence into a structured Project Model and compact task-specific artifacts; it is not a generic agent wrapper or personal-memory product.",
+      "dimensions": {
+        "what": "complete",
+        "why": "complete",
+        "for_what": "complete",
+        "which": "complete",
+        "who": "complete"
+      },
+      "scopes": [
+        {
+          "kind": "project",
+          "value": "contexxxt"
+        }
+      ],
+      "evidence": [
+        "ev.contexxxt.product"
+      ],
+      "provenance": {
+        "created_by": "human",
+        "method": "declared",
+        "created_at": "2026-08-28T18:00:00Z"
+      },
+      "authority": {
+        "level": "governing",
+        "subject": "product identity",
+        "source": "ev.contexxxt.product"
+      },
+      "confidence": 1,
+      "validity": {
+        "observed_at": "2026-08-28T18:00:00Z"
+      },
+      "status": "active"
+    },
+    {
+      "id": "contexxxt.query.deterministic",
+      "type": "constraint",
+      "summary": "Lookups, ordering, validity, relationships, and budgets are deterministic.",
+      "statement": "The Query Layer must resolve structural operations without an LLM and return the same ordered output for the same model, query, options, and as-of date.",
+      "dimensions": {
+        "why": "complete",
+        "how": "complete",
+        "for_what": "complete",
+        "which": "complete",
+        "where": "complete"
+      },
+      "scopes": [
+        {
+          "kind": "directory",
+          "value": "packages/cli/src/query"
+        }
+      ],
+      "evidence": [
+        "ev.contexxxt.query-code",
+        "ev.contexxxt.query-tests"
+      ],
+      "provenance": {
+        "created_by": "human",
+        "method": "declared",
+        "created_at": "2026-08-28T18:00:00Z"
+      },
+      "authority": {
+        "level": "governing",
+        "subject": "Query Layer behavior",
+        "source": "ev.contexxxt.project-model"
+      },
+      "confidence": 1,
+      "validity": {
+        "observed_at": "2026-08-28T18:00:00Z"
+      },
+      "relationships": [
+        {
+          "type": "validates",
+          "target": "contexxxt.model.self-reading",
+          "evidence": [
+            "ev.contexxxt.query-tests"
+          ]
+        }
+      ],
+      "status": "active"
+    },
+    {
+      "id": "contexxxt.query.progressive-disclosure",
+      "type": "procedure",
+      "summary": "Retrieve summaries first, details second, and raw evidence only when needed.",
+      "statement": "Start from a catalog or compact target context, drill into specific KnowledgeUnits or Evidence, and consult raw sources or structural providers only when deeper proof is necessary.",
+      "dimensions": {
+        "how": "complete",
+        "for_what": "complete",
+        "where": "complete"
+      },
+      "scopes": [
+        {
+          "kind": "directory",
+          "value": "packages/cli/src/query"
+        }
+      ],
+      "evidence": [
+        "ev.contexxxt.project-model",
+        "ev.contexxxt.query-code"
+      ],
+      "provenance": {
+        "created_by": "human",
+        "method": "declared",
+        "created_at": "2026-08-28T18:00:00Z"
+      },
+      "authority": {
+        "level": "governing",
+        "subject": "context retrieval",
+        "source": "ev.contexxxt.project-model"
+      },
+      "confidence": 1,
+      "validity": {
+        "observed_at": "2026-08-28T18:00:00Z"
+      },
+      "relationships": [
+        {
+          "type": "depends_on",
+          "target": "contexxxt.query.deterministic",
+          "evidence": [
+            "ev.contexxxt.query-code"
+          ]
+        }
+      ],
+      "status": "active"
+    },
+    {
+      "id": "contexxxt.storage.json-first",
+      "type": "decision",
+      "summary": "Phase 1 uses canonical versioned JSON and regenerable in-memory indexes.",
+      "statement": "The canonical Project Model is JSON; dimension, type, status, scope, source, and relationship indexes are derived and must never become a second source of truth. SQLite requires measured need.",
+      "dimensions": {
+        "what": "complete",
+        "why": "complete",
+        "how": "complete",
+        "which": "complete",
+        "where": "complete"
+      },
+      "scopes": [
+        {
+          "kind": "directory",
+          "value": "packages/cli/src/model"
+        },
+        {
+          "kind": "directory",
+          "value": "packages/cli/schemas"
+        },
+        {
+          "kind": "file",
+          "value": ".contexxxt/project-model.json"
+        }
+      ],
+      "evidence": [
+        "ev.contexxxt.project-model",
+        "ev.contexxxt.query-code"
+      ],
+      "provenance": {
+        "created_by": "human",
+        "method": "declared",
+        "created_at": "2026-08-28T18:00:00Z"
+      },
+      "authority": {
+        "level": "governing",
+        "subject": "Project Model storage",
+        "source": "ev.contexxxt.project-model"
+      },
+      "confidence": 1,
+      "validity": {
+        "observed_at": "2026-08-28T18:00:00Z"
+      },
+      "relationships": [
+        {
+          "type": "supports",
+          "target": "contexxxt.model.self-reading",
+          "evidence": [
+            "ev.contexxxt.project-model"
+          ]
+        }
+      ],
+      "status": "active"
+    }
+  ]
+}

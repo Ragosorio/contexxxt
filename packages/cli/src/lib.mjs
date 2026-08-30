@@ -4,7 +4,7 @@ import { constants as fsConstants } from 'node:fs';
 import { homedir } from 'node:os';
 import { dirname, isAbsolute, join, parse, posix, relative, resolve, sep } from 'node:path';
 
-export const VERSION = '0.1.0';
+export const VERSION = '0.2.0-rc.1';
 export const SCHEMA_VERSION = 1;
 
 const commandOptions = new Map([
@@ -16,6 +16,19 @@ const commandOptions = new Map([
   ['export', new Set(['json', 'dry_run', 'provider'])],
   ['status', new Set(['json'])],
   ['prompt', new Set(['json'])],
+  ['inspect', new Set(['json', 'root', 'limit', 'output'])],
+  ['model', new Set(['json', 'root', 'model', 'inspection', 'dry_run'])],
+  ['query', new Set(['json', 'root', 'model', 'limit', 'max_bytes', 'view', 'depth', 'include', 'exclude', 'at', 'dimensions'])],
+  ['context', new Set(['json', 'root', 'model', 'limit', 'max_bytes', 'view', 'depth', 'include', 'exclude', 'at', 'dimensions'])],
+  ['resolve', new Set(['json', 'root', 'model', 'target', 'intent', 'dimensions', 'max_bytes', 'max_tokens', 'output'])],
+  ['structural', new Set(['json', 'root', 'provider', 'project', 'snapshot'])],
+  ['observe', new Set(['json', 'root', 'input', 'store', 'dry_run'])],
+  ['learning', new Set(['json', 'root', 'store', 'status', 'reason', 'eval', 'output', 'superseded_by', 'at'])],
+  ['drift', new Set(['json', 'root', 'model'])],
+  ['skill', new Set(['json', 'root', 'store', 'output', 'name', 'at'])],
+  ['agent', new Set(['json', 'root', 'host'])],
+  ['migrate', new Set(['json', 'root', 'dry_run'])],
+  ['eval', new Set(['json', 'root', 'model', 'at', 'host', 'variant', 'output', 'agent_model', 'max_cases', 'timeout_ms'])],
   ['help', new Set(['json'])],
   ['version', new Set(['json'])],
   ['--help', new Set(['json'])],
@@ -274,4 +287,18 @@ export function printResult(result, { json = false } = {}) {
   for (const change of result.changes ?? []) process.stdout.write(`  ${change.action.padEnd(9)} ${change.path}\n`);
   for (const finding of result.findings ?? []) process.stdout.write(`  [${finding.severity}] ${finding.code}: ${finding.path ?? finding.message}\n`);
   for (const conflict of result.conflicts ?? []) process.stdout.write(`  [conflict] ${conflict.path} -> ${conflict.proposal}\n`);
+  for (const item of result.data?.items ?? []) {
+    if (typeof item === 'string') process.stdout.write(`  ${item}\n`);
+    else process.stdout.write(`  ${item.id} [${item.type}] ${item.summary ?? ''}\n`);
+  }
+  if (result.command === 'context') {
+    for (const [dimension, resolution] of Object.entries(result.data?.dimensions ?? {})) {
+      process.stdout.write(`  ${dimension.padEnd(9)} ${resolution.status}\n`);
+    }
+  }
+  if (result.command === 'inspect') {
+    for (const [name, count] of Object.entries(result.data?.counts ?? {})) {
+      process.stdout.write(`  ${name.padEnd(32)} ${count}\n`);
+    }
+  }
 }

@@ -1,0 +1,8 @@
+{
+  "name": "inspection-monorepo",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "check": "pnpm -r test"
+  }
+}

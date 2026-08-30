@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contexxxt.dev/schemas/task-resolution-1.0.0.json",
+  "title": "contexxxt TaskResolution",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "task", "model_snapshot", "resolver", "required_dimensions", "dimensions", "can_proceed", "unknowns", "conflicts", "assumptions", "questions", "selected_knowledge", "omitted_knowledge", "verification_requirements", "context_packet"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "id": { "type": "string", "minLength": 3 },
+    "task": { "$ref": "#/$defs/task" },
+    "model_snapshot": { "type": "string", "minLength": 3 },
+    "resolver": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "mode", "provider_neutral"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "mode": { "enum": ["deterministic-fallback", "host-directed-dimensions"] },
+        "provider_neutral": { "const": true }
+      }
+    },
+    "required_dimensions": { "$ref": "#/$defs/dimensions" },
+    "dimensions": { "$ref": "#/$defs/dimensionStates" },
+    "can_proceed": { "type": "boolean" },
+    "unknowns": { "$ref": "#/$defs/dimensions" },
+    "conflicts": { "type": "array", "items": { "type": "object" } },
+    "assumptions": { "type": "array", "items": { "type": "string" } },
+    "questions": {
+      "type": "array", "maxItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["dimension", "question", "reason"],
+        "properties": { "dimension": { "$ref": "#/$defs/dimension" }, "question": { "type": "string" }, "reason": { "type": "string" } }
+      }
+    },
+    "selected_knowledge": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+    "omitted_knowledge": { "type": "array", "items": { "type": "object" } },
+    "verification_requirements": { "type": "array", "items": { "type": "object" } },
+    "context_packet": { "type": "string", "minLength": 3 }
+  },
+  "$defs": {
+    "dimension": { "enum": ["what", "why", "how", "for_what", "which", "who", "where"] },
+    "dimensions": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/dimension" } },
+    "task": {
+      "type": "object", "additionalProperties": false, "required": ["id", "target", "intent"],
+      "properties": { "id": { "type": "string" }, "target": { "type": "string" }, "intent": { "type": "string" } }
+    },
+    "dimensionStates": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object", "additionalProperties": false, "required": ["status", "knowledge"],
+        "properties": {
+          "status": { "enum": ["resolved", "partial", "unknown", "conflicted", "stale", "not-required"] },
+          "knowledge": { "type": "array", "uniqueItems": true, "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

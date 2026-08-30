@@ -12,6 +12,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# locally packed release artifacts
+*.tgz
+
 
 # environment variables
 .env

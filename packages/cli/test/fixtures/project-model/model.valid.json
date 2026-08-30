@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.1.0",
+  "project": {
+    "id": "payments-fixture",
+    "name": "Payments fixture"
+  },
+  "snapshot": {
+    "id": "payments-fixture.2026-08-28",
+    "created_at": "2026-08-28T12:00:00Z",
+    "as_of": "2026-08-28",
+    "revision": {
+      "commit": "abcdef1234567890",
+      "dirty": false
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev.payments.docs",
+      "type": "source_fragment",
+      "summary": "Payment documentation defines the webhook as authoritative.",
+      "locator": { "uri": "docs/payments.md", "range": "12-24" },
+      "digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "observed_at": "2026-08-28T10:00:00Z",
+      "provider": { "id": "native", "capabilities_used": ["filesystem"] },
+      "authority": { "level": "governing", "subject": "payment completion" },
+      "sensitivity": "public"
+    },
+    {
+      "id": "ev.payments.webhook-code",
+      "type": "repository_fact",
+      "summary": "Webhook code stores callback IDs before applying transitions.",
+      "locator": { "uri": "src/payments/webhook.ts", "symbol": "handleWebhook" },
+      "digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "observed_at": "2026-08-28T10:05:00Z",
+      "provider": { "id": "native", "capabilities_used": ["filesystem", "imports"] },
+      "authority": { "level": "observational", "subject": "implemented webhook behavior" },
+      "sensitivity": "public"
+    },
+    {
+      "id": "ev.payments.retry-test",
+      "type": "test_result",
+      "summary": "Retry fixture exercises duplicate callbacks and retry limits.",
+      "locator": { "uri": "test/payments/webhook.test.ts" },
+      "digest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "observed_at": "2026-08-28T10:10:00Z",
+      "provider": { "id": "native", "capabilities_used": ["tests"] },
+      "authority": { "level": "supporting", "subject": "webhook verification" },
+      "sensitivity": "public"
+    },
+    {
+      "id": "ev.payments.legacy-docs",
+      "type": "source_fragment",
+      "summary": "An expired document described browser redirects as authoritative.",
+      "locator": { "uri": "docs/legacy-payments.md" },
+      "digest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "observed_at": "2025-01-01T00:00:00Z",
+      "provider": { "id": "native", "capabilities_used": ["filesystem"] },
+      "authority": { "level": "supporting", "subject": "legacy payment completion" },
+      "sensitivity": "public"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "payments.webhook.authority",
+      "type": "decision",
+      "summary": "The webhook is authoritative over browser redirects.",
+      "statement": "Payment completion is accepted from the verified webhook; the browser redirect is not authoritative.",
+      "dimensions": { "what": "complete", "why": "complete", "how": "complete", "which": "complete", "where": "complete" },
+      "scopes": [
+        { "kind": "directory", "value": "src/payments" },
+        { "kind": "file", "value": "src/payments/webhook.ts" },
+        { "kind": "domain", "value": "payments" }
+      ],
+      "evidence": ["ev.payments.docs", "ev.payments.webhook-code"],
+      "provenance": { "created_by": "human", "method": "declared", "created_at": "2026-08-28T10:20:00Z" },
+      "authority": { "level": "governing", "subject": "payment completion", "source": "ev.payments.docs" },
+      "confidence": 0.98,
+      "validity": { "observed_at": "2026-08-28T10:20:00Z" },
+      "relationships": [
+        { "type": "supersedes", "target": "payments.legacy.redirect", "evidence": ["ev.payments.docs"] },
+        { "type": "contradicts", "target": "payments.legacy.redirect", "evidence": ["ev.payments.docs"] }
+      ],
+      "status": "active",
+      "payload": { "choice": "webhook", "rejected": ["browser_redirect"] }
+    },
+    {
+      "id": "payments.idempotency",
+      "type": "constraint",
+      "summary": "Payment transitions must be idempotent.",
+      "statement": "A callback ID may apply a payment transition at most once.",
+      "dimensions": { "what": "complete", "how": "complete", "for_what": "complete" },
+      "scopes": [{ "kind": "directory", "value": "src/payments" }],
+      "evidence": ["ev.payments.webhook-code", "ev.payments.retry-test"],
+      "provenance": { "created_by": "agent", "method": "observed", "created_at": "2026-08-28T10:25:00Z" },
+      "authority": { "level": "authoritative", "subject": "payment transitions", "source": "ev.payments.webhook-code" },
+      "confidence": 0.96,
+      "validity": { "observed_at": "2026-08-28T10:25:00Z" },
+      "status": "active"
+    },
+    {
+      "id": "payments.retry.procedure",
+      "type": "procedure",
+      "summary": "Retries verify the callback ID before applying a transition.",
+      "statement": "Load the callback ID, return the recorded result when present, otherwise apply and persist the transition atomically.",
+      "dimensions": { "how": "partial" },
+      "scopes": [{ "kind": "file", "value": "src/payments/webhook.ts" }],
+      "evidence": ["ev.payments.webhook-code", "ev.payments.retry-test"],
+      "provenance": { "created_by": "agent", "method": "synthesized", "created_at": "2026-08-28T10:30:00Z" },
+      "authority": { "level": "supporting", "subject": "duplicate callback handling", "source": "ev.payments.retry-test" },
+      "confidence": 0.82,
+      "validity": { "observed_at": "2026-08-28T10:30:00Z" },
+      "status": "active"
+    },
+    {
+      "id": "payments.timeout.legacy",
+      "type": "fact",
+      "summary": "The old callback timeout is expired knowledge.",
+      "statement": "Callbacks use the legacy thirty-second timeout.",
+      "dimensions": { "how": "partial" },
+      "scopes": [{ "kind": "directory", "value": "src/payments" }],
+      "evidence": ["ev.payments.legacy-docs"],
+      "provenance": { "created_by": "importer", "method": "observed", "created_at": "2025-01-01T00:00:00Z" },
+      "authority": { "level": "observational", "subject": "callback timeout", "source": "ev.payments.legacy-docs" },
+      "confidence": 0.6,
+      "validity": { "observed_at": "2025-01-01T00:00:00Z", "expires_at": "2026-01-01" },
+      "status": "active"
+    },
+    {
+      "id": "payments.retry.limit-five",
+      "type": "decision",
+      "summary": "Retry callbacks at most five times.",
+      "statement": "The webhook worker retries a callback at most five times.",
+      "dimensions": { "which": "complete" },
+      "scopes": [{ "kind": "file", "value": "src/payments/webhook.ts" }],
+      "evidence": ["ev.payments.retry-test"],
+      "provenance": { "created_by": "human", "method": "declared", "created_at": "2026-08-28T10:35:00Z" },
+      "authority": { "level": "authoritative", "subject": "callback retry limit", "source": "ev.payments.retry-test" },
+      "confidence": 0.9,
+      "validity": { "observed_at": "2026-08-28T10:35:00Z" },
+      "relationships": [{ "type": "contradicts", "target": "payments.retry.limit-three", "evidence": ["ev.payments.retry-test"] }],
+      "status": "active"
+    },
+    {
+      "id": "payments.retry.limit-three",
+      "type": "decision",
+      "summary": "A competing decision limits callbacks to three retries.",
+      "statement": "The webhook worker retries a callback at most three times.",
+      "dimensions": { "which": "complete" },
+      "scopes": [{ "kind": "file", "value": "src/payments/webhook.ts" }],
+      "evidence": ["ev.payments.retry-test"],
+      "provenance": { "created_by": "agent", "method": "inferred", "created_at": "2026-08-28T10:36:00Z" },
+      "authority": { "level": "supporting", "subject": "callback retry limit", "source": "ev.payments.retry-test" },
+      "confidence": 0.7,
+      "validity": { "observed_at": "2026-08-28T10:36:00Z" },
+      "relationships": [{ "type": "contradicts", "target": "payments.retry.limit-five", "evidence": ["ev.payments.retry-test"] }],
+      "status": "disputed"
+    },
+    {
+      "id": "payments.owner",
+      "type": "actor",
+      "summary": "The Payments team owns payment transition policy.",
+      "statement": "The Payments team is the authority for payment transition and retry policy.",
+      "dimensions": { "who": "complete" },
+      "scopes": [{ "kind": "directory", "value": "src/payments" }, { "kind": "domain", "value": "payments" }],
+      "evidence": ["ev.payments.docs"],
+      "provenance": { "created_by": "human", "method": "declared", "created_at": "2026-08-28T10:40:00Z" },
+      "authority": { "level": "governing", "subject": "payment policy ownership", "source": "ev.payments.docs" },
+      "confidence": 0.99,
+      "validity": { "observed_at": "2026-08-28T10:40:00Z" },
+      "status": "active"
+    },
+    {
+      "id": "payments.legacy.redirect",
+      "type": "decision",
+      "summary": "The browser redirect was previously considered authoritative.",
+      "statement": "Payment completion is accepted from the browser redirect.",
+      "dimensions": { "what": "complete", "why": "partial", "which": "complete" },
+      "scopes": [{ "kind": "directory", "value": "src/payments" }],
+      "evidence": ["ev.payments.legacy-docs"],
+      "provenance": { "created_by": "importer", "method": "observed", "created_at": "2025-01-01T00:00:00Z" },
+      "authority": { "level": "supporting", "subject": "legacy payment completion", "source": "ev.payments.legacy-docs" },
+      "confidence": 0.75,
+      "validity": { "observed_at": "2025-01-01T00:00:00Z", "expires_at": "2026-01-01" },
+      "status": "superseded"
+    },
+    {
+      "id": "orders.unrelated",
+      "type": "constraint",
+      "summary": "Order records use a separate transition policy.",
+      "statement": "Order transitions are governed independently from payment callbacks.",
+      "dimensions": { "what": "complete" },
+      "scopes": [{ "kind": "directory", "value": "src/orders" }],
+      "evidence": ["ev.payments.docs"],
+      "provenance": { "created_by": "human", "method": "declared", "created_at": "2026-08-28T10:45:00Z" },
+      "authority": { "level": "supporting", "subject": "order transitions", "source": "ev.payments.docs" },
+      "confidence": 0.8,
+      "validity": { "observed_at": "2026-08-28T10:45:00Z" },
+      "status": "active"
+    }
+  ]
+}

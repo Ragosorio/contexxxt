@@ -589,5 +589,116 @@ export async function commandStatus(positionals) {
 }
 
 export function helpText() {
-  return `contexxxt — Context OS ${VERSION}\n\nUso:\n  contexxxt <comando> [ruta] [opciones]\n\nComandos:\n  init [ruta]                 Inicializa sin sobrescribir\n  audit [ruta]                Inventario de solo lectura\n  doctor [ruta]               Valida estructura, vigencia y drift\n  add-space <slug>            Crea un espacio configurable\n  sync [ruta] --provider ID   Genera un adaptador\n  export [ruta] --provider ID Genera un bloque para una superficie cloud\n  status [ruta]               Resume la instancia\n  prompt <nombre>             Imprime un prompt para uso solo-chat\n  version                     Muestra la versión\n  help                        Muestra esta ayuda\n\nOpciones:\n  --json       Salida JSON determinista\n  --dry-run    No escribe\n  --provider   codex, claude-code, chatgpt, claude-chat o cowork\n  --path       Ruta para add-space\n`;
+  return `contexxxt — Context OS ${VERSION}
+
+Uso:
+  contexxxt <comando> [argumentos] [opciones]
+
+Core:
+  inspect [ruta]              Produce Evidence nativa sin escribir por defecto
+
+Project Model:
+  model build                 Inspecciona y construye/actualiza el modelo
+  model validate              Valida schema, IDs y referencias
+  query catalog               Resume índices disponibles
+  query knowledge <id>        Recupera una KnowledgeUnit
+  query evidence <id>         Recupera evidencia y provenance
+  query dimension <7q>        Consulta por dimensión
+  query scope <selector>      Consulta scope tipado o path
+  query conflicts|stale       Consulta estados derivados
+  query decisions|constraints|procedures|actors
+  context <target>            Compila contexto determinista por target
+  resolve --target P --intent I Resuelve 7Q y compila un ContextPacket
+  structural capabilities      Detecta providers sin modificar índices
+  structural inspect [ruta]    Obtiene Evidence estructural con fallback Native
+  structural compare [ruta]    Mide Native frente a Codebase Memory
+  observe ingest <run.json>    Captura observación estructurada y candidatos
+  learning list|show           Consulta candidatos sin leer observaciones completas
+  learning reject|promote      Transición explícita; nunca cambia el modelo en silencio
+  drift [ruta]                 Detecta drift de revisión en modo read-only
+  skill synthesize <id>        Compila una candidata; generated != promoted
+  skill validate|eval <ruta>   Verifica bundle, routing y disclosure
+  agent install|status|uninstall codex|claude-code
+  migrate status|contextos     Migra legacy de forma explícita y preservadora
+  eval <suite.json>           Ejecuta query evals deterministas
+  eval behavioral <suite>    Compara agentes baseline/context/candidate
+
+CLI 0.1 compatible:
+  init [ruta]                 Inicializa sin sobrescribir
+  audit [ruta]                Inventario de solo lectura
+  doctor [ruta]               Valida estructura, vigencia y drift
+  add-space <slug>            Crea un espacio configurable
+  sync [ruta] --provider ID   Genera un adaptador
+  export [ruta] --provider ID Genera un bloque para una superficie cloud
+  status [ruta]               Resume la instancia
+  prompt <nombre>             Imprime un prompt legacy
+  version                     Muestra la versión
+  help                        Muestra esta ayuda
+
+Opciones de inspect:
+  --root PATH                 Raíz alternativa del proyecto
+  --limit N                   Máximo de archivos inspeccionados
+  --output PATH               Guarda el report explícitamente; no sobrescribe
+  --json                      Incluye el InspectionReport completo
+
+Opciones de consulta:
+  --root PATH                 Raíz del proyecto (default: .)
+  --model PATH                Project Model (default: .contexxxt/project-model.json)
+  --view ids|summary|detail   Progressive disclosure (default: summary)
+  --limit N                   Máximo de unidades
+  --max-bytes N               Budget del payload estructurado
+  --depth 0..2                Relaciones expandidas en detalle
+  --dimensions LIST           7Q requeridas; las demás son not-required
+  --include LIST              Incluye estados ocultos, por ejemplo superseded
+  --exclude LIST              Excluye tipos o IDs
+  --at YYYY-MM-DD             Vigencia explícita (default: snapshot.as_of)
+  --json                      Salida JSON determinista
+
+Opciones de model build:
+  --inspection PATH           Consume un InspectionReport guardado
+  --model PATH                Destino canónico (default: .contexxxt/project-model.json)
+  --dry-run                   Valida y muestra el cambio sin escribir
+
+Opciones de resolve:
+  --target SELECTOR           Archivo, directorio o scope de la tarea
+  --intent TEXT               Intención humana normal
+  --dimensions LIST           Override explícito de dimensiones 7Q
+  --max-bytes N               Budget máximo del ContextPacket
+  --max-tokens N              Límite estimado adicional (4 bytes/token)
+  --output PATH               Guarda resolution + packet sin sobrescribir
+
+Opciones de structural:
+  --provider ID               auto, native o codebase-memory (default: auto)
+  --project ID                Override del proyecto indexado en Codebase Memory
+  --snapshot PATH             Snapshot MCP entregado por el host; sólo lectura
+  --root PATH                 Raíz alternativa del proyecto
+
+Opciones de observe/learning:
+  --store PATH                Candidate store (default: .contexxxt/learning-candidates.json)
+  --dry-run                   Valida ingest sin escribir
+  --status STATUS             Filtra learning list
+  --reason TEXT               Razón obligatoria para rechazo
+  --eval PATH                 Eval requerido para promoción
+  --output PATH               Propuesta no canónica; no sobrescribe
+  --superseded-by ID          Candidato que reemplaza al promovido
+
+Opciones de skill:
+  --store PATH                Candidate store de origen
+  --output PATH               Directorio de bundle candidato
+  --name SLUG                 Debe coincidir con el contrato de la candidata
+  --at DATE                   Fecha reproducible de generación
+
+Opciones de eval behavioral:
+  --host ID                   codex o claude-code
+  --variant LIST              baseline,context,candidate
+  --agent-model ID            Modelo explícito cuando el host lo permite
+  --max-cases N               Muestra acotada y declarada del dataset
+  --timeout-ms N              Límite por ejecución del host
+  --output PATH               EvalRun requerido; no sobrescribe
+
+Opciones legacy:
+  --dry-run                   No escribe
+  --provider                  codex, claude-code, chatgpt, claude-chat o cowork
+  --path                      Ruta para add-space
+`;
 }

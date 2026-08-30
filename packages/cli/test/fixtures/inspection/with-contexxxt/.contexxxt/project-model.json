@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.1.0",
+  "project": {
+    "id": "fixture.with-contexxxt",
+    "name": "With contexxxt fixture",
+    "root": "."
+  },
+  "snapshot": {
+    "generated_at": "2026-08-28T12:00:00.000Z",
+    "as_of": "2026-08-28T12:00:00.000Z",
+    "revision": "fixture"
+  },
+  "evidence": [],
+  "knowledge": []
+}

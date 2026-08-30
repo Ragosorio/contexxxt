@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>contexxxt architecture</title>
+  <style>
+    :root{--paper:#f4f1e8;--ink:#0b1739;--muted:#526079;--rule:#aeb6c5;--blue:#2458e8;--mint:#147c64;--amber:#9a6400;--coral:#b53f35}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,sans-serif}.frame{width:min(100vw,1280px);margin:auto;padding:24px}.caption{font:600 12px ui-monospace,SFMono-Regular,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}svg{display:block;width:100%;height:auto;border:1px solid rgba(11,23,57,.14);background:var(--paper)}
+  </style>
+</head>
+<body>
+<main class="frame">
+  <p class="caption">Architecture · executable foundation + target flow</p>
+  <svg viewBox="0 0 1280 720" role="img" aria-labelledby="ctx-arch-title ctx-arch-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="ctx-arch-title">Target architecture of contexxxt</title>
+    <desc id="ctx-arch-desc">Repository and human evidence enter a canonical Project Model. A deterministic Query Layer retrieves compact results for a semantic seven-question resolver and Context Compiler. Agents execute, verify, observe and evaluate learning candidates.</desc>
+    <defs>
+      <pattern id="ctx-arch-grid" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="12" cy="12" r=".8" fill="#0b1739" opacity=".10"/></pattern>
+      <marker id="ctx-arch-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0 0L8 3L0 6Z" fill="#526079"/></marker>
+      <marker id="ctx-arch-arrow-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0 0L8 3L0 6Z" fill="#2458e8"/></marker>
+      <style>
+        .zone{fill:#0b1739;fill-opacity:.018;stroke:#0b1739;stroke-opacity:.18}.zone-label{font:600 11px ui-monospace,SFMono-Regular,monospace;letter-spacing:.13em;fill:#526079}.node{fill:#fffdf7;stroke:#0b1739;stroke-opacity:.28}.focus{fill:#2458e8;fill-opacity:.06;stroke:#2458e8;stroke-width:2}.title{font:700 17px Inter,ui-sans-serif,system-ui,sans-serif;fill:#0b1739}.sub{font:12px Inter,ui-sans-serif,system-ui,sans-serif;fill:#526079}.mono{font:600 10px ui-monospace,SFMono-Regular,monospace;letter-spacing:.07em}.flow{fill:none;stroke:#526079;stroke-width:1.5;marker-end:url(#ctx-arch-arrow)}.flow-blue{fill:none;stroke:#2458e8;stroke-width:2;marker-end:url(#ctx-arch-arrow-blue)}.feedback{fill:none;stroke:#526079;stroke-width:1.2;stroke-dasharray:5 5;marker-end:url(#ctx-arch-arrow)}
+      </style>
+    </defs>
+    <rect width="1280" height="720" fill="#f4f1e8"/><rect width="1280" height="720" fill="url(#ctx-arch-grid)" opacity=".45"/>
+    <text x="48" y="52" class="title" font-size="24">Contexxxt reads its Project Model through deterministic queries</text>
+    <text x="48" y="76" class="sub">JSON is storage · indexes are derived · agents receive compact, traceable context</text>
+
+    <rect class="zone" x="36" y="104" width="276" height="500" rx="12"/>
+    <rect x="54" y="98" width="154" height="20" fill="#f4f1e8"/>
+    <text x="60" y="113" class="zone-label">EVIDENCE PLANE</text>
+    <rect class="zone" x="332" y="104" width="560" height="500" rx="12"/>
+    <rect x="350" y="98" width="158" height="20" fill="#f4f1e8"/>
+    <text x="356" y="113" class="zone-label">MODEL + CONTEXT PLANE</text>
+    <rect class="zone" x="912" y="104" width="332" height="500" rx="12"/>
+    <rect x="930" y="98" width="154" height="20" fill="#f4f1e8"/>
+    <text x="936" y="113" class="zone-label">EXECUTION LOOP</text>
+
+    <!-- connectors first -->
+    <path class="flow" d="M176 214V274"/>
+    <path class="flow-blue" d="M276 332H310Q326 332 326 316V210Q326 194 342 194H356"/>
+    <path class="flow-blue" d="M470 250V304"/>
+    <path class="flow-blue" d="M584 364H608Q624 364 624 348V210Q624 194 640 194H652"/>
+    <path class="flow-blue" d="M766 250V304"/>
+    <path class="flow-blue" d="M880 364H904Q920 364 920 348V214Q920 198 936 198H956"/>
+    <path class="flow" d="M1074 246V314"/>
+    <path class="flow" d="M1074 424V488"/>
+    <path class="feedback" d="M956 536H904Q888 536 888 552V574Q888 590 872 590H470Q454 590 454 574V436"/>
+
+    <!-- nodes -->
+    <rect class="node" x="72" y="142" width="208" height="72" rx="8"/>
+    <text x="92" y="168" class="mono" fill="#2458e8">HUMAN / USER INTENT</text>
+    <text x="92" y="192" class="title">Task + authority</text>
+
+    <rect class="node" x="72" y="274" width="204" height="148" rx="8"/>
+    <text x="92" y="302" class="mono" fill="#2458e8">EVIDENCE SOURCES</text>
+    <text x="92" y="329" class="title">Repository Inspector</text>
+    <text x="92" y="351" class="sub">Repository · Git · Docs</text>
+    <text x="92" y="370" class="sub">Native inspection</text>
+    <text x="92" y="389" class="sub">Codebase Memory · optional</text>
+    <text x="92" y="408" class="sub">Human knowledge · when needed</text>
+
+    <rect class="node" x="356" y="138" width="228" height="112" rx="8"/>
+    <text x="378" y="166" class="mono" fill="#2458e8">CANONICAL JSON</text>
+    <text x="378" y="193" class="title">Project Model / IR</text>
+    <text x="378" y="215" class="sub">KnowledgeUnits · evidence</text>
+    <text x="378" y="234" class="sub">scope · authority · validity</text>
+
+    <rect class="node focus" x="356" y="304" width="228" height="132" rx="8"/>
+    <text x="378" y="332" class="mono" fill="#147c64">IMPLEMENTED · DETERMINISTIC</text>
+    <text x="378" y="359" class="title">Query Layer</text>
+    <text x="378" y="381" class="sub">derived indexes · stable order</text>
+    <text x="378" y="400" class="sub">scope · stale · conflicts</text>
+    <text x="378" y="419" class="sub">IDs → summaries → detail</text>
+
+    <rect class="node" x="652" y="138" width="228" height="112" rx="8"/>
+    <text x="674" y="166" class="mono" fill="#9a6400">HOST SEMANTICS · LOCAL FALLBACK</text>
+    <text x="674" y="193" class="title">7Q Resolver</text>
+    <text x="674" y="215" class="sub">required dimensions · gaps</text>
+    <text x="674" y="234" class="sub">infer · resolve · ask</text>
+
+    <rect class="node" x="652" y="304" width="228" height="132" rx="8"/>
+    <text x="674" y="332" class="mono" fill="#2458e8">CONTEXT COMPILER</text>
+    <text x="674" y="359" class="title">Context Packet</text>
+    <text x="674" y="381" class="sub">minimum · relevant · current</text>
+    <text x="674" y="400" class="sub">traceable · budgeted</text>
+    <text x="674" y="419" class="sub">Codex · Claude Code</text>
+
+    <rect class="node" x="956" y="150" width="236" height="96" rx="8"/>
+    <text x="978" y="178" class="mono" fill="#2458e8">CODEX / CLAUDE CODE</text>
+    <text x="978" y="207" class="title">Agent execution</text>
+    <text x="978" y="230" class="sub">uses compiled context</text>
+
+    <rect class="node" x="956" y="314" width="236" height="110" rx="8"/>
+    <text x="978" y="342" class="mono" fill="#147c64">VERIFY + OBSERVE</text>
+    <text x="978" y="369" class="title">Execution evidence</text>
+    <text x="978" y="391" class="sub">deterministic checks</text>
+    <text x="978" y="410" class="sub">observations are not canon</text>
+
+    <rect class="node" x="956" y="488" width="236" height="96" rx="8"/>
+    <text x="978" y="516" class="mono" fill="#9a6400">LEARN + EVAL</text>
+    <text x="978" y="543" class="title">Candidate decision</text>
+    <text x="978" y="565" class="sub">rule · knowledge · skill</text>
+    <text x="978" y="580" class="sub">promote or reject vs baseline</text>
+
+    <text x="48" y="690" class="mono" fill="#526079">SOLID = TASK FLOW</text>
+    <text x="208" y="690" class="mono" fill="#526079">DASHED = LEARNING / FEEDBACK</text>
+    <text x="1218" y="690" class="mono" text-anchor="end" fill="#526079">QUERY + RESOLVE IMPLEMENTED · HOST EVAL PENDING</text>
+  </svg>
+</main>
+</body>
+</html>

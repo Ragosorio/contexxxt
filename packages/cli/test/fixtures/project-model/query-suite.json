@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "id": "phase1-query-foundation",
+  "model": "model.valid.json",
+  "cases": [
+    {
+      "id": "why-dimension",
+      "action": "query",
+      "selector": "dimension",
+      "value": "why",
+      "options": { "view": "ids" },
+      "expect": { "ids": ["payments.webhook.authority"] }
+    },
+    {
+      "id": "payments-target",
+      "action": "context",
+      "target": "src/payments/webhook.ts",
+      "options": { "dimensions": "what,why,how,for_what,which,where" },
+      "expect": {
+        "contains_ids": ["payments.webhook.authority", "payments.idempotency"],
+        "dimension_status": {
+          "what": "resolved",
+          "why": "resolved",
+          "how": "resolved",
+          "for_what": "resolved",
+          "which": "conflicted",
+          "who": "not-required",
+          "where": "resolved"
+        },
+        "conflict_count": 1
+      }
+    },
+    {
+      "id": "empty-scope",
+      "action": "query",
+      "selector": "scope",
+      "value": "src/unknown",
+      "options": { "view": "ids" },
+      "expect": { "empty": true }
+    }
+  ]
+}

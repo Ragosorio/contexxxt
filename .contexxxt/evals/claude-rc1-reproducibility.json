@@ -1,0 +1,419 @@
+{
+  "schema_version": "1.1.0",
+  "id": "evalrun.f56fa7d0da7359998010",
+  "created_at": "2026-08-30T05:17:16.452Z",
+  "provider": {
+    "host": "claude-code",
+    "version": "2.1.251 (Claude Code)",
+    "model": "sonnet"
+  },
+  "repository": {
+    "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+    "dirty": true
+  },
+  "suite": {
+    "id": "contexxxt.core.behavioral.v1",
+    "cases": 2
+  },
+  "configuration": {
+    "variants": [
+      "baseline",
+      "context",
+      "candidate"
+    ],
+    "project_model": "contexxxt.snapshot.14a3d894c72733fd",
+    "candidate_skill": ".contexxxt/generated/skills/contexxxt-core-development"
+  },
+  "results": [
+    {
+      "case_id": "query-resolver-boundary",
+      "variant": "baseline",
+      "task": {
+        "target": "packages/cli/src/resolve/resolver.mjs",
+        "intent": "Explain why Query Layer is separate from the Resolver",
+        "prompt": "Explain why contexxxt keeps the Query Layer separate from the Resolver. State which side is deterministic, which side is semantic, and cite the governing KnowledgeUnit ID."
+      },
+      "status": "completed",
+      "output": "Evidence unavailable — no KnowledgeUnit content, IDs, or documentation about the Query Layer/Resolver split was supplied in this prompt, so I can't state which side is deterministic vs. semantic or cite a governing KnowledgeUnit ID without fabricating it.",
+      "output_digest": "7af2fb1d3791c5ee45e3e43643ce19fcd545b99254d35de22e0d6300e5a0d2f1",
+      "grade": {
+        "passed": 3,
+        "total": 4,
+        "pass_rate": 0.75,
+        "checks": [
+          {
+            "kind": "expected-term",
+            "value": "deterministic",
+            "passed": true
+          },
+          {
+            "kind": "expected-term",
+            "value": "semantic",
+            "passed": true
+          },
+          {
+            "kind": "forbidden-term",
+            "value": "Query Layer and Resolver are the same responsibility",
+            "passed": true
+          },
+          {
+            "kind": "evidence-id",
+            "value": "contexxxt.architecture.query-resolver-separation",
+            "passed": false
+          }
+        ]
+      },
+      "metrics": {
+        "tokens": 11620,
+        "context_bytes": 0,
+        "context_packet_bytes": 0,
+        "skill_bytes": 0,
+        "knowledge_units": 0,
+        "tool_calls": null,
+        "duration_ms": 34135,
+        "output_bytes": 257
+      },
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.047052
+    },
+    {
+      "case_id": "query-resolver-boundary",
+      "variant": "context",
+      "task": {
+        "target": "packages/cli/src/resolve/resolver.mjs",
+        "intent": "Explain why Query Layer is separate from the Resolver",
+        "prompt": "Explain why contexxxt keeps the Query Layer separate from the Resolver. State which side is deterministic, which side is semantic, and cite the governing KnowledgeUnit ID."
+      },
+      "status": "execution-error",
+      "output": "The Query Layer and the Resolver are kept apart because they perform different kinds of work, per **contexxxt.architecture.query-resolver-separation**:\n\n- **Query Layer — deterministic.** It does exact lookup, scope matching, validity, ordering, and budget enforcement without an LLM, and must return the same ordered output for the same model/query/options/as-of date (reinforced by **contexxxt.query.deterministic**).\n- **Resolver — semantic.** It decides which 7Q dimensions and which knowledge a given task needs — a judgment call, not a lookup.\n\nThe separation lets retrieval stay reproducible and auditable while the semantic strategy for deciding *what's relevant* can vary by provider/task without touching the deterministic retrieval path.\n\n**Governing KnowledgeUnit ID:** `contexxxt.architecture.query-resolver-separation` (source: `ev.contexxxt.architecture`), corroborated by `contexxxt.query.deterministic` (source: `ev.contexxxt.project-model`, `ev.contexxxt.query-code`, `ev.contexxxt.query-tests`).\n\nNote: this is evidence stated in the supplied ContextPacket, not independently verified against the resolver's source code in this read-only session.",
+      "output_digest": "f9e0288505719e0d23671d3fdc98d3874bb4b14098aec3f3450b60053614c327",
+      "grade": {
+        "passed": 0,
+        "total": 4,
+        "pass_rate": 0,
+        "checks": [
+          {
+            "kind": "expected-term",
+            "value": "deterministic",
+            "passed": false,
+            "blocked_by": "execution-error"
+          },
+          {
+            "kind": "expected-term",
+            "value": "semantic",
+            "passed": false,
+            "blocked_by": "execution-error"
+          },
+          {
+            "kind": "forbidden-term",
+            "value": "Query Layer and Resolver are the same responsibility",
+            "passed": false,
+            "blocked_by": "execution-error"
+          },
+          {
+            "kind": "evidence-id",
+            "value": "contexxxt.architecture.query-resolver-separation",
+            "passed": false,
+            "blocked_by": "execution-error"
+          }
+        ]
+      },
+      "metrics": {
+        "tokens": 118746,
+        "context_bytes": 11631,
+        "context_packet_bytes": 11631,
+        "skill_bytes": 0,
+        "knowledge_units": 12,
+        "tool_calls": null,
+        "duration_ms": 923569,
+        "output_bytes": 1171
+      },
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.2527,
+      "error": "The Query Layer and the Resolver are kept apart because they perform different kinds of work, per **contexxxt.architecture.query-resolver-separation**:\n\n- **Query Layer — deterministic.** It does exact lookup, scope matching, validity, ordering, and budget enforcement without an LLM, and must return the same ordered output for the same model/query/options/as-of date (reinforced by **contexxxt.query.deterministic**).\n- **Resolver — semantic.** It decides which 7Q dimensions and which knowledge a given task needs — a judgment call, not a lookup.\n\nThe separation lets retrieval stay reproducible and auditable while the semantic strategy for deciding *what's relevant* can vary by provider/task without touching the deterministic retrieval path.\n\n**Governing KnowledgeUnit ID:** `contexxxt.architecture.query-resolver-separation` (source: `ev.contexxxt.architecture`), corroborated by `contexxxt.query.deterministic` (source: `ev.contexxxt.project-model`, `ev.contexxxt.query-code`, `ev.contexxxt.query-tests`).\n\nNote: this is evidence stated in the supplied ContextPacket, not independently verified against the resolver's source code in this read-only session.",
+      "error_classification": "host-execution-error"
+    },
+    {
+      "case_id": "query-resolver-boundary",
+      "variant": "candidate",
+      "task": {
+        "target": "packages/cli/src/resolve/resolver.mjs",
+        "intent": "Explain why Query Layer is separate from the Resolver",
+        "prompt": "Explain why contexxxt keeps the Query Layer separate from the Resolver. State which side is deterministic, which side is semantic, and cite the governing KnowledgeUnit ID."
+      },
+      "status": "completed",
+      "output": "The Query Layer and the Resolver are kept separate because they solve different problems, per the governing decision **`contexxxt.architecture.query-resolver-separation`**:\n\n- **Query Layer — deterministic.** It performs exact lookup, scope matching, validity checks, ordering, and budget enforcement without an LLM. This is reinforced by `contexxxt.query.deterministic`: the same model, query, options, and as-of date must always produce the same ordered output. It's mechanical retrieval, not judgment.\n\n- **Resolver — semantic.** It decides *which* 7Q dimensions and *which* knowledge a given task actually needs — a judgment call about relevance and coverage, not a reproducible lookup.\n\nSplitting them lets retrieval stay reproducible and auditable (the deterministic side) while the decision about what to retrieve can vary by provider or strategy (the semantic side), per the same decision statement: \"Keeping them separate makes retrieval reproducible while allowing provider-neutral semantic strategies.\"\n\n**Evidence vs. inference:** The separation, its rationale, and the determinism claim are directly stated in the supplied KnowledgeUnits (`contexxxt.architecture.query-resolver-separation`, `contexxxt.query.deterministic`), backed by `ev.contexxxt.architecture` and `ev.contexxxt.query-code`. I have not inspected the resolver's actual source (this is a read-only, no-tool-use task), so I can't independently verify the resolver's semantic behavior beyond what the packet asserts — that part is evidence-as-supplied, not something I confirmed by reading `packages/cli/src/resolve/resolver.mjs` myself.",
+      "output_digest": "737fa331ae52814b8bf7f9d5fae0eb0639afb7fbc415db3dd8b9adb90a8af115",
+      "grade": {
+        "passed": 4,
+        "total": 4,
+        "pass_rate": 1,
+        "checks": [
+          {
+            "kind": "expected-term",
+            "value": "deterministic",
+            "passed": true
+          },
+          {
+            "kind": "expected-term",
+            "value": "semantic",
+            "passed": true
+          },
+          {
+            "kind": "forbidden-term",
+            "value": "Query Layer and Resolver are the same responsibility",
+            "passed": true
+          },
+          {
+            "kind": "evidence-id",
+            "value": "contexxxt.architecture.query-resolver-separation",
+            "passed": true
+          }
+        ]
+      },
+      "metrics": {
+        "tokens": 60222,
+        "context_bytes": 13090,
+        "context_packet_bytes": 11631,
+        "skill_bytes": 1459,
+        "knowledge_units": 12,
+        "tool_calls": null,
+        "duration_ms": 12391,
+        "output_bytes": 1623
+      },
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.05387600000000001
+    },
+    {
+      "case_id": "model-validation-command",
+      "variant": "baseline",
+      "task": {
+        "target": "packages/cli/src/model/model.mjs",
+        "intent": "Identify the canonical Project Model and its validation command",
+        "prompt": "What is the canonical Project Model path, which executable schema governs it, and what exact public command validates it? Cite the relevant KnowledgeUnit ID and do not claim validation proves agent quality."
+      },
+      "status": "execution-error",
+      "output": "Evidence is unavailable — no KnowledgeUnit IDs, file paths, schema names, or command definitions describing a \"Project Model,\" its canonical path, its governing executable schema, or a validating public command were supplied in this prompt or in the context provided. I cannot answer this from the given information without inspecting the repository, and I'm operating in a context-only, read-only mode that prohibits tool use here.\n\nI also can't infer these specifics (e.g., a concrete path like `docs/PROJECT_MODEL.md`, a schema file, or a `contexxxt` CLI subcommand) from the CLAUDE.md/AGENTS.md text alone, since that text states working agreements but doesn't name the Project Model's path, schema, or validation command. Guessing would misrepresent inference as evidence.\n\nPer the task constraint, I'll also note: even if such a command existed, passing schema validation would only confirm structural/contractual conformance — it would not by itself demonstrate agent quality.",
+      "output_digest": "b1017f7c592e785b91ec54453ea515c337e6555ed47bb860e4464764f3f8725e",
+      "grade": {
+        "passed": 0,
+        "total": 5,
+        "pass_rate": 0,
+        "checks": [
+          {
+            "kind": "expected-term",
+            "value": ".contexxxt/project-model.json",
+            "passed": false,
+            "blocked_by": "execution-error"
+          },
+          {
+            "kind": "expected-term",
+            "value": "packages/cli/schemas/project-model.schema.json",
+            "passed": false,
+            "blocked_by": "execution-error"
+          },
+          {
+            "kind": "expected-term",
+            "value": "contexxxt model validate",
+            "passed": false,
+            "blocked_by": "execution-error"
+          },
+          {
+            "kind": "forbidden-term",
+            "value": "validation proves agent quality",
+            "passed": false,
+            "blocked_by": "execution-error"
+          },
+          {
+            "kind": "evidence-id",
+            "value": "contexxxt.model.validation-contract",
+            "passed": false,
+            "blocked_by": "execution-error"
+          }
+        ]
+      },
+      "metrics": {
+        "tokens": 54757,
+        "context_bytes": 0,
+        "context_packet_bytes": 0,
+        "skill_bytes": 0,
+        "knowledge_units": 0,
+        "tool_calls": null,
+        "duration_ms": 1740774,
+        "output_bytes": 987
+      },
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.014110600000000001,
+      "error": "Evidence is unavailable — no KnowledgeUnit IDs, file paths, schema names, or command definitions describing a \"Project Model,\" its canonical path, its governing executable schema, or a validating public command were supplied in this prompt or in the context provided. I cannot answer this from the given information without inspecting the repository, and I'm operating in a context-only, read-only mode that prohibits tool use here.\n\nI also can't infer these specifics (e.g., a concrete path like `docs/PROJECT_MODEL.md`, a schema file, or a `contexxxt` CLI subcommand) from the CLAUDE.md/AGENTS.md text alone, since that text states working agreements but doesn't name the Project Model's path, schema, or validation command. Guessing would misrepresent inference as evidence.\n\nPer the task constraint, I'll also note: even if such a command existed, passing schema validation would only confirm structural/contractual conformance — it would not by itself demonstrate agent quality.",
+      "error_classification": "host-execution-error"
+    },
+    {
+      "case_id": "model-validation-command",
+      "variant": "context",
+      "task": {
+        "target": "packages/cli/src/model/model.mjs",
+        "intent": "Identify the canonical Project Model and its validation command",
+        "prompt": "What is the canonical Project Model path, which executable schema governs it, and what exact public command validates it? Cite the relevant KnowledgeUnit ID and do not claim validation proves agent quality."
+      },
+      "status": "completed",
+      "output": "**Canonical Project Model path:** `.contexxxt/project-model.json`\n\n**Governing schema:** `packages/cli/schemas/project-model.schema.json`, combined with semantic reference checks (not schema-only).\n\n**Public validation command:** `contexxxt model validate`\n\n**KnowledgeUnit ID:** `contexxxt.model.validation-contract` (governing authority, subject: \"canonical Project Model validation contract\"; evidence: `ev.contexxxt.model-cli`, `ev.contexxxt.model-schema`, `ev.contexxxt.model-validation-code`, `ev.contexxxt.project-model`).\n\nThis procedure states the command \"must pass before its knowledge is queried or compiled\" — that is a workflow gate on the model's structural/referential integrity, not a claim about agent output quality. Nothing in the supplied evidence asserts that passing `contexxxt model validate` proves agent quality, and I'm not inferring one from the other.\n\nSupporting context (inference, not directly part of the validation contract): `contexxxt.storage.json-first` confirms this JSON file is the single canonical source (indexes are derived, never a second source of truth), and `contexxxt.model.self-reading` notes agents are expected to query it via the Query Layer (`contexxxt query`/`contexxxt context`) rather than read the raw JSON directly, except for debugging/audit.\n\nNo other canonical Project Model path or validation command was present in the supplied evidence.",
+      "output_digest": "aadf99936cadf34bdcb98056a61d8ea87f49fbe768f76be2d18e963d7c4d344d",
+      "grade": {
+        "passed": 5,
+        "total": 5,
+        "pass_rate": 1,
+        "checks": [
+          {
+            "kind": "expected-term",
+            "value": ".contexxxt/project-model.json",
+            "passed": true
+          },
+          {
+            "kind": "expected-term",
+            "value": "packages/cli/schemas/project-model.schema.json",
+            "passed": true
+          },
+          {
+            "kind": "expected-term",
+            "value": "contexxxt model validate",
+            "passed": true
+          },
+          {
+            "kind": "forbidden-term",
+            "value": "validation proves agent quality",
+            "passed": true
+          },
+          {
+            "kind": "evidence-id",
+            "value": "contexxxt.model.validation-contract",
+            "passed": true
+          }
+        ]
+      },
+      "metrics": {
+        "tokens": 59765,
+        "context_bytes": 11520,
+        "context_packet_bytes": 11520,
+        "skill_bytes": 0,
+        "knowledge_units": 12,
+        "tool_calls": null,
+        "duration_ms": 11854,
+        "output_bytes": 1402
+      },
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.052528
+    },
+    {
+      "case_id": "model-validation-command",
+      "variant": "candidate",
+      "task": {
+        "target": "packages/cli/src/model/model.mjs",
+        "intent": "Identify the canonical Project Model and its validation command",
+        "prompt": "What is the canonical Project Model path, which executable schema governs it, and what exact public command validates it? Cite the relevant KnowledgeUnit ID and do not claim validation proves agent quality."
+      },
+      "status": "execution-error",
+      "output": "**Canonical Project Model path:** `.contexxxt/project-model.json`\n\n**Executable schema:** `packages/cli/schemas/project-model.schema.json` (plus semantic reference checks beyond pure schema validation)\n\n**Public validation command:** `contexxxt model validate` — this must pass before the model's knowledge is queried or compiled.\n\n**KnowledgeUnit ID:** `contexxxt.model.validation-contract` (governing authority, source `ev.contexxxt.project-model`)\n\n**Note on inference:** Passing `contexxxt model validate` confirms the JSON conforms to the schema and its semantic reference checks (structural well-formedness) — it does not establish or imply anything about agent quality, correctness, or behavior. That distinction isn't stated in the packet but follows directly from what the command is scoped to check.\n\n**Evidence not supplied here:** the packet doesn't include the schema's actual field contents or the \"semantic reference checks\" logic itself — only that they exist and are cited under `ev.contexxxt.model-schema` / `ev.contexxxt.model-validation-code`.",
+      "output_digest": "fed40dc10585df14718a9e15ad749b1619e4c3b11a33dab9ba3b25b169d26e70",
+      "grade": {
+        "passed": 0,
+        "total": 5,
+        "pass_rate": 0,
+        "checks": [
+          {
+            "kind": "expected-term",
+            "value": ".contexxxt/project-model.json",
+            "passed": false,
+            "blocked_by": "execution-error"
+          },
+          {
+            "kind": "expected-term",
+            "value": "packages/cli/schemas/project-model.schema.json",
+            "passed": false,
+            "blocked_by": "execution-error"
+          },
+          {
+            "kind": "expected-term",
+            "value": "contexxxt model validate",
+            "passed": false,
+            "blocked_by": "execution-error"
+          },
+          {
+            "kind": "forbidden-term",
+            "value": "validation proves agent quality",
+            "passed": false,
+            "blocked_by": "execution-error"
+          },
+          {
+            "kind": "evidence-id",
+            "value": "contexxxt.model.validation-contract",
+            "passed": false,
+            "blocked_by": "execution-error"
+          }
+        ]
+      },
+      "metrics": {
+        "tokens": 17233,
+        "context_bytes": 12979,
+        "context_packet_bytes": 11520,
+        "skill_bytes": 1459,
+        "knowledge_units": 12,
+        "tool_calls": null,
+        "duration_ms": 912713,
+        "output_bytes": 1069
+      },
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.0447652,
+      "error": "**Canonical Project Model path:** `.contexxxt/project-model.json`\n\n**Executable schema:** `packages/cli/schemas/project-model.schema.json` (plus semantic reference checks beyond pure schema validation)\n\n**Public validation command:** `contexxxt model validate` — this must pass before the model's knowledge is queried or compiled.\n\n**KnowledgeUnit ID:** `contexxxt.model.validation-contract` (governing authority, source `ev.contexxxt.project-model`)\n\n**Note on inference:** Passing `contexxxt model validate` confirms the JSON conforms to the schema and its semantic reference checks (structural well-formedness) — it does not establish or imply anything about agent quality, correctness, or behavior. That distinction isn't stated in the packet but follows directly from what the command is scoped to check.\n\n**Evidence not supplied here:** the packet doesn't include the schema's actual field contents or the \"semantic reference checks\" logic itself — only that they exist and are cited under `ev.contexxxt.model-schema` / `ev.contexxxt.model-validation-code`.",
+      "error_classification": "invalid-host-output"
+    }
+  ],
+  "summaries": {
+    "baseline": {
+      "cases": 2,
+      "pass_rate": 0.375,
+      "tokens": 66377,
+      "context_bytes": 0,
+      "tool_calls": null,
+      "duration_ms": 1774909
+    },
+    "context": {
+      "cases": 2,
+      "pass_rate": 0.5,
+      "tokens": 178511,
+      "context_bytes": 23151,
+      "tool_calls": null,
+      "duration_ms": 935423
+    },
+    "candidate": {
+      "cases": 2,
+      "pass_rate": 0.5,
+      "tokens": 77455,
+      "context_bytes": 26069,
+      "tool_calls": null,
+      "duration_ms": 925104
+    }
+  },
+  "comparisons": {
+    "context": {
+      "reference_variant": "baseline",
+      "quality_delta": 0.125,
+      "token_delta": 112134,
+      "context_byte_delta": 23151,
+      "tool_call_delta": null,
+      "duration_ms_delta": -839486
+    },
+    "candidate": {
+      "reference_variant": "context",
+      "quality_delta": 0,
+      "token_delta": -101056,
+      "context_byte_delta": 2918,
+      "tool_call_delta": null,
+      "duration_ms_delta": -10319
+    }
+  },
+  "execution_errors": 3,
+  "claims": {
+    "context": "not-measurable-execution-error",
+    "candidate": "not-measurable-execution-error"
+  }
+}

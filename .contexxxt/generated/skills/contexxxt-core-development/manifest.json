@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "contexxxt-generated-skill",
+  "status": "generated",
+  "name": "contexxxt-core-development",
+  "candidate_id": "learning.skill.f26372f20b561084",
+  "generated_at": "2026-08-29T20:30:00.000Z",
+  "source": {
+    "candidate_store": ".contexxxt/learning-candidates.json",
+    "project_model": ".contexxxt/project-model.json"
+  },
+  "target_agents": [
+    "codex",
+    "claude-code"
+  ],
+  "canonical_knowledge_source": ".contexxxt/project-model.json",
+  "files": [
+    {
+      "path": "SKILL.md",
+      "digest": "f8dac548b013188af743b3d1b6f63bfe9b3ad44279ea7f397e0b4b56d4c49ae0",
+      "bytes": 1459
+    },
+    {
+      "path": "evals/evals.json",
+      "digest": "401e7eb3954d3479e7f1a086914eb851cea4b81c6f6f8a66d3854401b25278da",
+      "bytes": 2099
+    },
+    {
+      "path": "evals/routing.json",
+      "digest": "13818920bcb517836d1bf7c02730f78e5c9a85d3b542096d2e01469ea583e715",
+      "bytes": 1035
+    }
+  ],
+  "promotion": {
+    "status": "pending-behavioral-eval",
+    "generated_is_promoted": false
+  }
+}

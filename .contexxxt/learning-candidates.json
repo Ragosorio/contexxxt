@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-08-29T20:30:00.000Z",
+  "candidates": [
+    {
+      "id": "learning.procedure.fb87b79e6256713a",
+      "kind": "procedure",
+      "statement": "Every new public core command requires contract tests, public CLI dogfood, explicit fallback or failure behavior, and truth-bound documentation before its phase gate closes.",
+      "scopes": [
+        {
+          "kind": "package",
+          "value": "packages/cli"
+        }
+      ],
+      "status": "supported",
+      "support_count": 2,
+      "observation_ids": [
+        "observation.phase5.structural-provider",
+        "observation.phase6.learning-pipeline"
+      ],
+      "evidence_refs": [
+        "verification.phase5.cli-tests",
+        "verification.phase6.check"
+      ],
+      "confidence": 0.95,
+      "authority": "supporting",
+      "risk": "low",
+      "suggested_form": "procedure",
+      "created_at": "2026-08-29T19:45:00.000Z",
+      "updated_at": "2026-08-29T20:00:00.000Z",
+      "transition_log": [
+        {
+          "from": "none",
+          "to": "candidate",
+          "at": "2026-08-29T19:45:00.000Z",
+          "reason": "First structured observation.",
+          "evidence": "verification.phase5.cli-tests"
+        },
+        {
+          "from": "candidate",
+          "to": "supported",
+          "at": "2026-08-29T20:00:00.000Z",
+          "reason": "Repeated independent observations met the deterministic support threshold.",
+          "evidence": "verification.phase6.check"
+        }
+      ]
+    },
+    {
+      "id": "learning.skill.f26372f20b561084",
+      "kind": "skill",
+      "statement": "Route non-trivial contexxxt core changes through the public resolve, verification, and observation loop.",
+      "scopes": [
+        {
+          "kind": "package",
+          "value": "packages/cli"
+        }
+      ],
+      "status": "supported",
+      "support_count": 2,
+      "observation_ids": [
+        "observation.phase7.skill-routing.1",
+        "observation.phase7.skill-routing.2"
+      ],
+      "evidence_refs": [
+        "verification.phase7.routing.1",
+        "verification.phase7.routing.2"
+      ],
+      "confidence": 0.95,
+      "authority": "supporting",
+      "risk": "low",
+      "suggested_form": "skill",
+      "skill_contract": {
+        "name": "contexxxt-core-development",
+        "description": "Use for non-trivial changes to contexxxt core commands, Project Model contracts, Query Layer, resolver, providers, learning, skills, or evals. Route the task through contexxxt resolve, scoped retrieval, verification, and structured observation.",
+        "positive_triggers": [
+          "Add a new filter to the contexxxt Query Layer and preserve deterministic budgets.",
+          "Change the Project Model schema and update the resolver contract safely."
+        ],
+        "negative_triggers": [
+          "Fix a typo in the public landing page heading without changing product behavior.",
+          "Explain what contexxxt is without modifying files or running a development workflow."
+        ],
+        "boundary_triggers": [
+          {
+            "prompt": "Update README wording because a core command changed its actual behavior.",
+            "should_trigger": true
+          },
+          {
+            "prompt": "Translate one README sentence with no product claim change.",
+            "should_trigger": false
+          }
+        ],
+        "workflow": [
+          "Run contexxxt resolve for the target and human intent, then inspect only unresolved decision-relevant gaps.",
+          "Implement the smallest coherent change while respecting the packet constraints and source authority.",
+          "Run deterministic verification from the packet and capture an ExecutionObservation without transcript or secrets."
+        ],
+        "verification": [
+          "Run the relevant focused tests and pnpm check before closing a core phase gate.",
+          "Confirm generated artifacts are no-clobber and the Project Model did not change silently."
+        ]
+      },
+      "created_at": "2026-08-29T20:20:00.000Z",
+      "updated_at": "2026-08-29T20:30:00.000Z",
+      "transition_log": [
+        {
+          "from": "none",
+          "to": "candidate",
+          "at": "2026-08-29T20:20:00.000Z",
+          "reason": "First structured observation.",
+          "evidence": "verification.phase7.routing.1"
+        },
+        {
+          "from": "candidate",
+          "to": "supported",
+          "at": "2026-08-29T20:30:00.000Z",
+          "reason": "Repeated independent observations met the deterministic support threshold.",
+          "evidence": "verification.phase7.routing.2"
+        }
+      ]
+    }
+  ]
+}

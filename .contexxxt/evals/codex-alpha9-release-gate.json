@@ -1,0 +1,372 @@
+{
+  "schema_version": "1.1.0",
+  "id": "evalrun.a1a021aaecdc5a8c1599",
+  "created_at": "2026-08-29T21:40:44.737Z",
+  "provider": {
+    "host": "codex",
+    "version": "codex-cli 0.145.0",
+    "model": "gpt-5.6-luna"
+  },
+  "repository": {
+    "commit": "8a2b12a56d3a52d5c426ce12999cbe842eb76a86",
+    "dirty": true
+  },
+  "suite": {
+    "id": "contexxxt.core.behavioral.v1",
+    "cases": 2
+  },
+  "configuration": {
+    "variants": [
+      "baseline",
+      "context",
+      "candidate"
+    ],
+    "project_model": "contexxxt.snapshot.56e64ab848813fcd",
+    "candidate_skill": ".contexxxt/generated/skills/contexxxt-core-development"
+  },
+  "results": [
+    {
+      "case_id": "query-resolver-boundary",
+      "variant": "baseline",
+      "task": {
+        "target": "packages/cli/src/resolve/resolver.mjs",
+        "intent": "Explain why Query Layer is separate from the Resolver",
+        "prompt": "Explain why contexxxt keeps the Query Layer separate from the Resolver. State which side is deterministic, which side is semantic, and cite the governing KnowledgeUnit ID."
+      },
+      "status": "completed",
+      "output": "Evidence unavailable: this prompt supplies no contexxxt documentation or KnowledgeUnit ID describing the Query Layer and Resolver.\n\nTherefore, I cannot verify which side is deterministic, which is semantic, why they are separated, or cite the governing KnowledgeUnit ID.",
+      "output_digest": "08761da77498133a757a4b094e07fee8be82302035024eac51ab50dd97bc5f13",
+      "grade": {
+        "passed": 3,
+        "total": 4,
+        "pass_rate": 0.75,
+        "checks": [
+          {
+            "kind": "expected-term",
+            "value": "deterministic",
+            "passed": true
+          },
+          {
+            "kind": "expected-term",
+            "value": "semantic",
+            "passed": true
+          },
+          {
+            "kind": "forbidden-term",
+            "value": "Query Layer and Resolver are the same responsibility",
+            "passed": true
+          },
+          {
+            "kind": "evidence-id",
+            "value": "contexxxt.architecture.query-resolver-separation",
+            "passed": false
+          }
+        ]
+      },
+      "metrics": {
+        "tokens": 16677,
+        "context_bytes": 0,
+        "context_packet_bytes": 0,
+        "skill_bytes": 0,
+        "knowledge_units": 0,
+        "tool_calls": 0,
+        "duration_ms": 41238,
+        "output_bytes": 270
+      }
+    },
+    {
+      "case_id": "query-resolver-boundary",
+      "variant": "context",
+      "task": {
+        "target": "packages/cli/src/resolve/resolver.mjs",
+        "intent": "Explain why Query Layer is separate from the Resolver",
+        "prompt": "Explain why contexxxt keeps the Query Layer separate from the Resolver. State which side is deterministic, which side is semantic, and cite the governing KnowledgeUnit ID."
+      },
+      "status": "completed",
+      "output": "**Evidence:** The Query Layer is deterministic: it performs exact lookup, scope matching, validity checks, ordering, relationships, and budgets without an LLM, producing reproducible results.\n\n**Evidence:** The Resolver is semantic: it determines which 7Q dimensions and knowledge a task requires.\n\n**Why separate:** This preserves reproducible retrieval while allowing provider-neutral, semantic task-resolution strategies.\n\nGoverning KnowledgeUnit: `contexxxt.architecture.query-resolver-separation`.",
+      "output_digest": "5ad88244387e7c8c54d76d6fe754aa55fbfec5a42b9005c9b9d0cd4a22592bac",
+      "grade": {
+        "passed": 4,
+        "total": 4,
+        "pass_rate": 1,
+        "checks": [
+          {
+            "kind": "expected-term",
+            "value": "deterministic",
+            "passed": true
+          },
+          {
+            "kind": "expected-term",
+            "value": "semantic",
+            "passed": true
+          },
+          {
+            "kind": "forbidden-term",
+            "value": "Query Layer and Resolver are the same responsibility",
+            "passed": true
+          },
+          {
+            "kind": "evidence-id",
+            "value": "contexxxt.architecture.query-resolver-separation",
+            "passed": true
+          }
+        ]
+      },
+      "metrics": {
+        "tokens": 16058,
+        "context_bytes": 11637,
+        "context_packet_bytes": 11637,
+        "skill_bytes": 0,
+        "knowledge_units": 12,
+        "tool_calls": 0,
+        "duration_ms": 13035,
+        "output_bytes": 502
+      }
+    },
+    {
+      "case_id": "query-resolver-boundary",
+      "variant": "candidate",
+      "task": {
+        "target": "packages/cli/src/resolve/resolver.mjs",
+        "intent": "Explain why Query Layer is separate from the Resolver",
+        "prompt": "Explain why contexxxt keeps the Query Layer separate from the Resolver. State which side is deterministic, which side is semantic, and cite the governing KnowledgeUnit ID."
+      },
+      "status": "completed",
+      "output": "Evidence: The Query Layer is deterministic: it performs exact lookup, scope matching, validity checks, ordering, relationships, and budgets without an LLM, producing reproducible results. The Resolver is semantic: it determines which 7Q dimensions and knowledge a task requires.\n\nThey are separate so retrieval remains reproducible and provider-neutral while task interpretation can use semantic strategies. Governing KnowledgeUnit: `contexxxt.architecture.query-resolver-separation` (supported by `contexxxt.query.deterministic`).",
+      "output_digest": "08e711a3a2fdfefc22125bee89fe5279d2c332e04fe5a4eccb9156b6b9474df0",
+      "grade": {
+        "passed": 4,
+        "total": 4,
+        "pass_rate": 1,
+        "checks": [
+          {
+            "kind": "expected-term",
+            "value": "deterministic",
+            "passed": true
+          },
+          {
+            "kind": "expected-term",
+            "value": "semantic",
+            "passed": true
+          },
+          {
+            "kind": "forbidden-term",
+            "value": "Query Layer and Resolver are the same responsibility",
+            "passed": true
+          },
+          {
+            "kind": "evidence-id",
+            "value": "contexxxt.architecture.query-resolver-separation",
+            "passed": true
+          }
+        ]
+      },
+      "metrics": {
+        "tokens": 19891,
+        "context_bytes": 13096,
+        "context_packet_bytes": 11637,
+        "skill_bytes": 1459,
+        "knowledge_units": 12,
+        "tool_calls": 0,
+        "duration_ms": 8275,
+        "output_bytes": 531
+      }
+    },
+    {
+      "case_id": "model-validation-command",
+      "variant": "baseline",
+      "task": {
+        "target": "packages/cli/src/model/model.mjs",
+        "intent": "Identify the canonical Project Model and its validation command",
+        "prompt": "What is the canonical Project Model path and the exact public command to validate it? Cite the relevant KnowledgeUnit ID and do not claim validation proves agent quality."
+      },
+      "status": "completed",
+      "output": "Evidence is unavailable: the prompt does not supply the canonical Project Model path, exact validation command, or any KnowledgeUnit ID. Therefore, I cannot identify or claim validation—and validation would not prove agent quality.",
+      "output_digest": "b1cbc5f388dace47bedb2d5b353695a50cef9230cc29de5d88c723fde80aa674",
+      "grade": {
+        "passed": 1,
+        "total": 4,
+        "pass_rate": 0.25,
+        "checks": [
+          {
+            "kind": "expected-term",
+            "value": ".contexxxt/project-model.json",
+            "passed": false
+          },
+          {
+            "kind": "expected-term",
+            "value": "contexxxt model validate",
+            "passed": false
+          },
+          {
+            "kind": "forbidden-term",
+            "value": "validation proves agent quality",
+            "passed": true
+          },
+          {
+            "kind": "evidence-id",
+            "value": "contexxxt.model.storage",
+            "passed": false
+          }
+        ]
+      },
+      "metrics": {
+        "tokens": 13129,
+        "context_bytes": 0,
+        "context_packet_bytes": 0,
+        "skill_bytes": 0,
+        "knowledge_units": 0,
+        "tool_calls": 0,
+        "duration_ms": 5528,
+        "output_bytes": 233
+      }
+    },
+    {
+      "case_id": "model-validation-command",
+      "variant": "context",
+      "task": {
+        "target": "packages/cli/src/model/model.mjs",
+        "intent": "Identify the canonical Project Model and its validation command",
+        "prompt": "What is the canonical Project Model path and the exact public command to validate it? Cite the relevant KnowledgeUnit ID and do not claim validation proves agent quality."
+      },
+      "status": "completed",
+      "output": "- Canonical Project Model: `.contexxxt/project-model.json` — KnowledgeUnit `contexxxt.storage.json-first`.\n- Public validation command: `pnpm check` — supported by `contexxxt.observed.command.check` (declared as `astro check && pnpm test`; execution was not verified).\n\nThis validates the project checks, not agent quality.",
+      "output_digest": "6b13eb23ac38f62ae8d83a9c5099253fbbfaefecd6cfe0ab5b1120a2a69a2ea8",
+      "grade": {
+        "passed": 2,
+        "total": 4,
+        "pass_rate": 0.5,
+        "checks": [
+          {
+            "kind": "expected-term",
+            "value": ".contexxxt/project-model.json",
+            "passed": true
+          },
+          {
+            "kind": "expected-term",
+            "value": "contexxxt model validate",
+            "passed": false
+          },
+          {
+            "kind": "forbidden-term",
+            "value": "validation proves agent quality",
+            "passed": true
+          },
+          {
+            "kind": "evidence-id",
+            "value": "contexxxt.model.storage",
+            "passed": false
+          }
+        ]
+      },
+      "metrics": {
+        "tokens": 16149,
+        "context_bytes": 11526,
+        "context_packet_bytes": 11526,
+        "skill_bytes": 0,
+        "knowledge_units": 12,
+        "tool_calls": 0,
+        "duration_ms": 7879,
+        "output_bytes": 327
+      }
+    },
+    {
+      "case_id": "model-validation-command",
+      "variant": "candidate",
+      "task": {
+        "target": "packages/cli/src/model/model.mjs",
+        "intent": "Identify the canonical Project Model and its validation command",
+        "prompt": "What is the canonical Project Model path and the exact public command to validate it? Cite the relevant KnowledgeUnit ID and do not claim validation proves agent quality."
+      },
+      "status": "completed",
+      "output": "- Canonical Project Model: `.contexxxt/project-model.json` — **KnowledgeUnit:** `contexxxt.storage.json-first`.\n- Public validation command: `pnpm check` — **KnowledgeUnit:** `contexxxt.observed.command.check`.\n\nEvidence shows the command is declared, but not executed here; validation does not prove agent quality.",
+      "output_digest": "8435e8fc5efd93f8ba09cd88c841cfc91be1d38c66c4714f7bf5e582d1721a31",
+      "grade": {
+        "passed": 2,
+        "total": 4,
+        "pass_rate": 0.5,
+        "checks": [
+          {
+            "kind": "expected-term",
+            "value": ".contexxxt/project-model.json",
+            "passed": true
+          },
+          {
+            "kind": "expected-term",
+            "value": "contexxxt model validate",
+            "passed": false
+          },
+          {
+            "kind": "forbidden-term",
+            "value": "validation proves agent quality",
+            "passed": true
+          },
+          {
+            "kind": "evidence-id",
+            "value": "contexxxt.model.storage",
+            "passed": false
+          }
+        ]
+      },
+      "metrics": {
+        "tokens": 16364,
+        "context_bytes": 12985,
+        "context_packet_bytes": 11526,
+        "skill_bytes": 1459,
+        "knowledge_units": 12,
+        "tool_calls": 0,
+        "duration_ms": 7367,
+        "output_bytes": 319
+      }
+    }
+  ],
+  "summaries": {
+    "baseline": {
+      "cases": 2,
+      "pass_rate": 0.5,
+      "tokens": 29806,
+      "context_bytes": 0,
+      "tool_calls": 0,
+      "duration_ms": 46766
+    },
+    "context": {
+      "cases": 2,
+      "pass_rate": 0.75,
+      "tokens": 32207,
+      "context_bytes": 23163,
+      "tool_calls": 0,
+      "duration_ms": 20914
+    },
+    "candidate": {
+      "cases": 2,
+      "pass_rate": 0.75,
+      "tokens": 36255,
+      "context_bytes": 26081,
+      "tool_calls": 0,
+      "duration_ms": 15642
+    }
+  },
+  "comparisons": {
+    "context": {
+      "reference_variant": "baseline",
+      "quality_delta": 0.25,
+      "token_delta": 2401,
+      "context_byte_delta": 23163,
+      "tool_call_delta": 0,
+      "duration_ms_delta": -25852
+    },
+    "candidate": {
+      "reference_variant": "context",
+      "quality_delta": 0,
+      "token_delta": 4048,
+      "context_byte_delta": 2918,
+      "tool_call_delta": 0,
+      "duration_ms_delta": -5272
+    }
+  },
+  "execution_errors": 0,
+  "claims": {
+    "context": "measured-positive-on-this-run",
+    "candidate": "no-measured-quality-difference"
+  }
+}
